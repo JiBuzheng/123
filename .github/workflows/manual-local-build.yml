@@ -1,0 +1,110 @@
+name: Build modified eIsland locally
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-windows:
+    name: Build Windows x64 installer
+    runs-on: windows-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout modified source
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 25
+          cache: npm
+
+      - name: Setup .NET 10 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Verify Visual Studio C++ toolchain
+        shell: pwsh
+        run: |
+          $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
+          $installation = & $vswhere -latest -products * `
+            -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
+            -property installationPath
+          if (-not $installation) {
+            throw "Visual Studio C++ x64 tools are unavailable on this runner."
+          }
+          Write-Host "Using Visual Studio: $installation"
+
+      - name: Install JavaScript dependencies without native scripts
+        run: npm ci --ignore-scripts
+
+      - name: Install Electron and FFmpeg runtime files
+        shell: pwsh
+        env:
+          FFMPEG_BINARIES_URL: https://cdn.npmmirror.com/binaries/ffmpeg-static
+        run: |
+          node node_modules/electron/install.js
+          node node_modules/ffmpeg-static/install.js
+
+      - name: Build every Windows native plugin
+        shell: pwsh
+        env:
+          npm_config_msvs_version: 2022
+        run: npm run plugins:build
+
+      - name: Verify required native outputs
+        shell: pwsh
+        run: |
+          $appIconDll = Get-ChildItem `
+            "plugins/eisland-windows-application-icon-helper/src/bin/Release" `
+            -Recurse -File -Filter "eIslandAppIconHelper.dll" |
+            Where-Object { $_.FullName -match '[\\/]win-x64[\\/]' } |
+            Select-Object -First 1
+          if (-not $appIconDll) {
+            throw "Required eIslandAppIconHelper.dll x64 output is missing."
+          }
+          Write-Host "App icon helper: $($appIconDll.FullName)"
+
+          $nativeFiles = Get-ChildItem plugins -Recurse -File |
+            Where-Object { $_.Extension -in ".dll", ".node", ".exe" }
+          if ($nativeFiles.Count -lt 10) {
+            throw "Only $($nativeFiles.Count) native files were built; expected at least 10."
+          }
+          $nativeFiles | ForEach-Object {
+            Write-Host "$($_.Length) $($_.FullName)"
+          }
+
+      - name: Build Windows installer
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: npm run package
+
+      - name: Verify installer
+        shell: pwsh
+        run: |
+          $installer = Get-ChildItem dist -Filter "*-Setup.exe" |
+            Sort-Object LastWriteTime -Descending |
+            Select-Object -First 1
+          if (-not $installer) {
+            throw "Windows installer was not generated."
+          }
+          $hash = Get-FileHash -Algorithm SHA256 $installer.FullName
+          Write-Host "Installer: $($installer.FullName)"
+          Write-Host "Size: $($installer.Length)"
+          Write-Host "SHA256: $($hash.Hash)"
+
+      - name: Upload private workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: eIsland-local-windows-x64
+          path: |
+            dist/*-Setup.exe
+            dist/*.blockmap
+            dist/latest.yml
+          if-no-files-found: error
+          retention-days: 7

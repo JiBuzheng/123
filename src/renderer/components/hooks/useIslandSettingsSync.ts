@@ -1,0 +1,452 @@
+/*
+ * eIsland - A sleek, Apple Dynamic Island inspired floating widget for Windows, built with Electron.
+ * https://github.com/JNTMTMTM/eIsland
+ *
+ * Copyright (C) 2026 JNTMTMTM
+ * Copyright (C) 2026 pyisland.com
+ *
+ * Original author: JNTMTMTM[](https://github.com/JNTMTMTM)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/**
+ * @file useIslandSettingsSync.ts
+ * @description 灵动岛设置读取与同步 Hook。
+ * @author 鸡哥
+ */
+
+import { useEffect } from 'react';
+import useIslandStore from '../../store/isLandStore';
+import type { NotificationData } from '../../store/types';
+import {
+  ISLAND_BG_MEDIA_STORE_KEY,
+  ISLAND_BG_IMAGE_STORE_KEY,
+  ISLAND_BG_VIDEO_FIT_STORE_KEY,
+  ISLAND_BG_VIDEO_MUTED_STORE_KEY,
+  ISLAND_BG_VIDEO_LOOP_STORE_KEY,
+  ISLAND_BG_VIDEO_VOLUME_STORE_KEY,
+  ISLAND_BG_VIDEO_RATE_STORE_KEY,
+  ISLAND_BG_VIDEO_HW_DECODE_STORE_KEY,
+  LOCAL_ISLAND_BG_SYNC_EVENT,
+  normalizeBgMediaConfig,
+  resolveBgMediaPreviewUrl,
+} from '../config/dynamicIslandConfig';
+import { ISLAND_AUTO_DIM_ENABLED_STORE_KEY, ISLAND_AUTO_DIM_DELAY_STORE_KEY, DEFAULT_AUTO_DIM_DELAY_SEC } from './useIslandAutoDim';
+import type { IslandBgMediaConfig, UpdateSourceKey } from '../config/dynamicIslandConfig';
+
+interface UseIslandSettingsSyncOptions {
+  language: string | undefined;
+  initRef: React.MutableRefObject<boolean>;
+  setNotificationRef: React.MutableRefObject<(data: NotificationData) => void>;
+  applyBgMedia: (media: IslandBgMediaConfig | null, previewUrl: string | null) => void;
+  expandLeaveIdleRef: React.MutableRefObject<boolean>;
+  maxExpandLeaveIdleRef: React.MutableRefObject<boolean>;
+  idleClickExpandRef: React.MutableRefObject<boolean>;
+  bgOpacityRef: React.MutableRefObject<number>;
+  bgBlurRef: React.MutableRefObject<number>;
+  setBgVideoFit: React.Dispatch<React.SetStateAction<'cover' | 'contain'>>;
+  setBgVideoMuted: React.Dispatch<React.SetStateAction<boolean>>;
+  setBgVideoLoop: React.Dispatch<React.SetStateAction<boolean>>;
+  setBgVideoVolume: React.Dispatch<React.SetStateAction<number>>;
+  setBgVideoRate: React.Dispatch<React.SetStateAction<number>>;
+  setBgVideoHwDecode: React.Dispatch<React.SetStateAction<boolean>>;
+  autoDimEnabledRef: React.MutableRefObject<boolean>;
+  autoDimDelayRef: React.MutableRefObject<number>;
+}
+
+/**
+ * @description 同步存储中的灵动岛设置并监听配置变更。
+ * @param options - 设置同步配置。
+ */
+export function useIslandSettingsSync(options: UseIslandSettingsSyncOptions): void {
+  const {
+    language,
+    initRef,
+    setNotificationRef,
+    applyBgMedia,
+    expandLeaveIdleRef,
+    maxExpandLeaveIdleRef,
+    idleClickExpandRef,
+    bgOpacityRef,
+    bgBlurRef,
+    setBgVideoFit,
+    setBgVideoMuted,
+    setBgVideoLoop,
+    setBgVideoVolume,
+    setBgVideoRate,
+    setBgVideoHwDecode,
+    autoDimEnabledRef,
+    autoDimDelayRef,
+  } = options;
+
+  useEffect(() => {
+    if (!initRef.current) {
+      initRef.current = true;
+      window.api?.enableMousePassthrough();
+      window.api?.expandMouseleaveIdleGet?.().then((value) => { expandLeaveIdleRef.current = value; }).catch(() => {});
+      window.api?.maxexpandMouseleaveIdleGet?.().then((value) => { maxExpandLeaveIdleRef.current = value; }).catch(() => {});
+      window.api?.idleClickExpandGet?.().then((value) => { idleClickExpandRef.current = value; }).catch(() => {});
+      window.api?.storeRead?.(ISLAND_AUTO_DIM_ENABLED_STORE_KEY).then((value) => { autoDimEnabledRef.current = value === true; }).catch(() => {});
+      window.api?.storeRead?.(ISLAND_AUTO_DIM_DELAY_STORE_KEY).then((value) => { autoDimDelayRef.current = typeof value === 'number' && Number.isFinite(value) ? Math.max(1, value) : DEFAULT_AUTO_DIM_DELAY_SEC; }).catch(() => {});
+      window.api?.springAnimationGet?.().then((value) => { useIslandStore.getState().setSpringAnimation(value); }).catch(() => {});
+      window.api?.animationSpeedGet?.().then((value) => {
+        const speed = value === 'slow' || value === 'medium' || value === 'fast' ? value : 'medium';
+        useIslandStore.getState().setAnimationSpeed(speed);
+      }).catch(() => {});
+      window.api?.shapeModeGet?.().then((value) => {
+        const mode = value === 'notch' || value === 'pill' ? value : 'notch';
+        useIslandStore.getState().setShapeMode(mode);
+      }).catch(() => {});
+
+      Promise.all([
+        window.api?.storeRead?.(ISLAND_BG_MEDIA_STORE_KEY),
+        window.api?.storeRead?.(ISLAND_BG_IMAGE_STORE_KEY) as Promise<string | null>,
+        window.api?.storeRead?.(ISLAND_BG_VIDEO_FIT_STORE_KEY) as Promise<'cover' | 'contain' | null>,
+        window.api?.storeRead?.(ISLAND_BG_VIDEO_MUTED_STORE_KEY) as Promise<boolean | null>,
+        window.api?.storeRead?.(ISLAND_BG_VIDEO_LOOP_STORE_KEY) as Promise<boolean | null>,
+        window.api?.storeRead?.('island-bg-opacity') as Promise<number | null>,
+        window.api?.storeRead?.('island-bg-blur') as Promise<number | null>,
+        window.api?.storeRead?.(ISLAND_BG_VIDEO_VOLUME_STORE_KEY) as Promise<number | null>,
+        window.api?.storeRead?.(ISLAND_BG_VIDEO_RATE_STORE_KEY) as Promise<number | null>,
+        window.api?.storeRead?.(ISLAND_BG_VIDEO_HW_DECODE_STORE_KEY) as Promise<boolean | null>,
+      ]).then(async ([mediaRaw, legacyImage, videoFit, videoMuted, videoLoop, bgOpacity, bgBlur, videoVolume, videoRate, videoHwDecode]) => {
+        const el = document.getElementById('island-bg-layer');
+        if (!el) return;
+        if (videoFit === 'cover' || videoFit === 'contain') {
+          setBgVideoFit(videoFit);
+        }
+        if (typeof videoMuted === 'boolean') {
+          setBgVideoMuted(videoMuted);
+        }
+        if (typeof videoLoop === 'boolean') {
+          setBgVideoLoop(videoLoop);
+        }
+        if (typeof videoVolume === 'number' && Number.isFinite(videoVolume)) {
+          setBgVideoVolume(Math.max(0, Math.min(1, videoVolume)));
+        }
+        if (typeof videoRate === 'number' && Number.isFinite(videoRate)) {
+          setBgVideoRate(Math.max(0.25, Math.min(3, videoRate)));
+        }
+        if (typeof videoHwDecode === 'boolean') {
+          setBgVideoHwDecode(videoHwDecode);
+        }
+        if (typeof bgOpacity === 'number' && Number.isFinite(bgOpacity)) {
+          bgOpacityRef.current = Math.max(0, Math.min(100, bgOpacity));
+        }
+        if (typeof bgBlur === 'number' && Number.isFinite(bgBlur)) {
+          bgBlurRef.current = Math.max(0, Math.min(20, Math.round(bgBlur)));
+        }
+        const media = normalizeBgMediaConfig(mediaRaw)
+          ?? (typeof legacyImage === 'string' ? normalizeBgMediaConfig(legacyImage) : null);
+        if (media) {
+          const previewUrl = await resolveBgMediaPreviewUrl(media);
+          if (previewUrl) {
+            applyBgMedia(media, previewUrl);
+          }
+        } else {
+          el.style.opacity = String(bgOpacityRef.current / 100);
+          const safeBlur = bgBlurRef.current;
+          el.style.filter = safeBlur > 0 ? `blur(${safeBlur}px)` : 'none';
+        }
+      }).catch(() => {});
+
+      const unsubscribeSettings = window.api?.onSettingsChanged?.((channel: string, value: unknown) => {
+        if (channel === 'shortcut:open-clipboard-history') {
+          const store = useIslandStore.getState();
+          store.setMaxExpandTab('clipboardHistory');
+          store.setMaxExpand();
+        }
+        if (channel === 'shortcut:toggle-ui-lock') {
+          const store = useIslandStore.getState();
+          store.toggleUiStateLock();
+        }
+        if (channel === 'notification:show') {
+          if (value && typeof value === 'object' && 'title' in (value as object) && 'body' in (value as object)) {
+            setNotificationRef.current(value as NotificationData & {
+              startupUpdateSource?: UpdateSourceKey;
+              startupUpdateResolvedUrl?: string;
+            });
+          }
+        }
+        if (channel === 'island:opacity') {
+          const v = typeof value === 'number' ? Math.max(10, Math.min(100, Math.round(value))) : 100;
+          document.documentElement.style.setProperty('--island-opacity', String(v));
+        }
+        if (channel === 'island:expand-mouseleave-idle') {
+          expandLeaveIdleRef.current = Boolean(value);
+        }
+        if (channel === 'island:maxexpand-mouseleave-idle') {
+          maxExpandLeaveIdleRef.current = Boolean(value);
+        }
+        if (channel === 'island:idle-click-expand') {
+          idleClickExpandRef.current = Boolean(value);
+        }
+        if (channel === `store:${ISLAND_AUTO_DIM_ENABLED_STORE_KEY}`) {
+          autoDimEnabledRef.current = value === true;
+        }
+        if (channel === `store:${ISLAND_AUTO_DIM_DELAY_STORE_KEY}`) {
+          autoDimDelayRef.current = typeof value === 'number' && Number.isFinite(value) ? Math.max(1, value) : DEFAULT_AUTO_DIM_DELAY_SEC;
+        }
+        if (channel === 'island:spring-animation') {
+          useIslandStore.getState().setSpringAnimation(Boolean(value));
+        }
+        if (channel === 'island:animation-speed') {
+          const v = value === 'slow' || value === 'medium' || value === 'fast' ? value : 'medium';
+          useIslandStore.getState().setAnimationSpeed(v);
+        }
+        if (channel === 'island:shape-mode') {
+          const v = value === 'notch' || value === 'pill' ? value : 'notch';
+          useIslandStore.getState().setShapeMode(v);
+        }
+        if (channel === 'store:island-bg-media') {
+          const media = normalizeBgMediaConfig(value);
+          if (!media) {
+            applyBgMedia(null, null);
+            return;
+          }
+          resolveBgMediaPreviewUrl(media).then((previewUrl) => {
+            if (!previewUrl) {
+              applyBgMedia(null, null);
+              return;
+            }
+            applyBgMedia(media, previewUrl);
+          }).catch(() => {});
+        }
+        if (channel === 'store:island-bg-opacity') {
+          const el = document.getElementById('island-bg-layer');
+          if (!el) return;
+          const v = typeof value === 'number' && Number.isFinite(value) ? value : 100;
+          bgOpacityRef.current = Math.max(0, Math.min(100, v));
+          el.style.opacity = String(bgOpacityRef.current / 100);
+        }
+        if (channel === 'store:island-bg-blur') {
+          const el = document.getElementById('island-bg-layer');
+          if (!el) return;
+          const v = typeof value === 'number' && Number.isFinite(value) ? value : 0;
+          bgBlurRef.current = Math.max(0, Math.min(20, Math.round(v)));
+          el.style.filter = bgBlurRef.current > 0 ? `blur(${bgBlurRef.current}px)` : 'none';
+        }
+        if (channel === `store:${ISLAND_BG_VIDEO_FIT_STORE_KEY}`) {
+          if (value === 'cover' || value === 'contain') {
+            setBgVideoFit(value);
+          }
+        }
+        if (channel === `store:${ISLAND_BG_VIDEO_MUTED_STORE_KEY}`) {
+          if (typeof value === 'boolean') {
+            setBgVideoMuted(value);
+          }
+        }
+        if (channel === `store:${ISLAND_BG_VIDEO_LOOP_STORE_KEY}`) {
+          if (typeof value === 'boolean') {
+            setBgVideoLoop(value);
+          }
+        }
+        if (channel === `store:${ISLAND_BG_VIDEO_VOLUME_STORE_KEY}`) {
+          if (typeof value === 'number' && Number.isFinite(value)) {
+            setBgVideoVolume(Math.max(0, Math.min(1, value)));
+          }
+        }
+        if (channel === `store:${ISLAND_BG_VIDEO_RATE_STORE_KEY}`) {
+          if (typeof value === 'number' && Number.isFinite(value)) {
+            setBgVideoRate(Math.max(0.25, Math.min(3, value)));
+          }
+        }
+        if (channel === `store:${ISLAND_BG_VIDEO_HW_DECODE_STORE_KEY}`) {
+          if (typeof value === 'boolean') {
+            setBgVideoHwDecode(value);
+          }
+        }
+        if (channel === 'island:position') {
+          const offset = value as { x: number; y: number };
+          if (offset && typeof offset.x === 'number' && typeof offset.y === 'number') {
+            window.api?.setIslandPositionOffset?.(offset).catch(() => {});
+          }
+        }
+      });
+
+      const localBgSyncHandler = (event: Event): void => {
+        const customEvent = event as CustomEvent<{ media?: IslandBgMediaConfig | null; previewUrl?: string | null; opacity?: number; blur?: number; videoFit?: 'cover' | 'contain'; videoMuted?: boolean; videoLoop?: boolean; videoVolume?: number; videoRate?: number; videoHwDecode?: boolean }>;
+        const detail = customEvent.detail;
+        if (!detail || typeof detail !== 'object') return;
+        if ('media' in detail || 'previewUrl' in detail) {
+          applyBgMedia(detail.media ?? null, detail.previewUrl ?? null);
+        }
+        if (detail.videoFit === 'cover' || detail.videoFit === 'contain') {
+          setBgVideoFit(detail.videoFit);
+        }
+        if (typeof detail.videoMuted === 'boolean') {
+          setBgVideoMuted(detail.videoMuted);
+        }
+        if (typeof detail.videoLoop === 'boolean') {
+          setBgVideoLoop(detail.videoLoop);
+        }
+        if (typeof detail.videoVolume === 'number' && Number.isFinite(detail.videoVolume)) {
+          setBgVideoVolume(Math.max(0, Math.min(1, detail.videoVolume)));
+        }
+        if (typeof detail.videoRate === 'number' && Number.isFinite(detail.videoRate)) {
+          setBgVideoRate(Math.max(0.25, Math.min(3, detail.videoRate)));
+        }
+        if (typeof detail.videoHwDecode === 'boolean') {
+          setBgVideoHwDecode(detail.videoHwDecode);
+        }
+      };
+      window.addEventListener(LOCAL_ISLAND_BG_SYNC_EVENT, localBgSyncHandler as EventListener);
+
+      const autoDimLocalHandler = (event: Event): void => {
+        const detail = (event as CustomEvent).detail;
+        if (!detail || typeof detail !== 'object') return;
+        if (typeof detail.autoDimEnabled === 'boolean') {
+          autoDimEnabledRef.current = detail.autoDimEnabled;
+        }
+        if (typeof detail.autoDimDelaySec === 'number' && Number.isFinite(detail.autoDimDelaySec)) {
+          autoDimDelayRef.current = Math.max(1, detail.autoDimDelaySec);
+        }
+      };
+      window.addEventListener('island-auto-dim-local-sync', autoDimLocalHandler as EventListener);
+
+      // cleanup: 释放所有监听器，防止组件卸载后残留
+      return () => {
+        unsubscribeSettings?.();
+        window.removeEventListener(LOCAL_ISLAND_BG_SYNC_EVENT, localBgSyncHandler as EventListener);
+        window.removeEventListener('island-auto-dim-local-sync', autoDimLocalHandler as EventListener);
+      };
+    }
+  }, [
+    language,
+    initRef,
+    setNotificationRef,
+    applyBgMedia,
+    expandLeaveIdleRef,
+    maxExpandLeaveIdleRef,
+    idleClickExpandRef,
+    bgOpacityRef,
+    bgBlurRef,
+    setBgVideoFit,
+    setBgVideoMuted,
+    setBgVideoLoop,
+    setBgVideoVolume,
+    setBgVideoRate,
+    setBgVideoHwDecode,
+    autoDimEnabledRef,
+    autoDimDelayRef,
+  ]);
+
+  /** 专用形态模式变更监听（独立于 initRef 守卫，确保始终活跃） */
+  useEffect(() => {
+    const ANIM_DURATION = 300;
+
+    /**
+     * 平滑移动窗口（增量式，每帧计算差值）
+     * @param totalDx - 水平总位移
+     * @param totalDy - 垂直总位移
+     * @param duration - 动画时长（毫秒）
+     */
+    /** 当前动画帧 ID，用于取消 */
+    let animFrameId = 0;
+
+    const animateWindowMove = (totalDx: number, totalDy: number, duration: number): Promise<void> => {
+      return new Promise((resolve) => {
+        const startTime = performance.now();
+        let lastProgress = 0;
+        const step = (now: number): void => {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          /** easeOutCubic 缓动 */
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const dx = Math.round(totalDx * (eased - lastProgress));
+          const dy = Math.round(totalDy * (eased - lastProgress));
+          if (dx !== 0 || dy !== 0) {
+            window.api?.moveWindowDelta?.(dx, dy);
+          }
+          lastProgress = eased;
+          if (progress < 1) {
+            animFrameId = requestAnimationFrame(step);
+          } else {
+            resolve();
+          }
+        };
+        animFrameId = requestAnimationFrame(step);
+      });
+    };
+
+    /** 根据当前状态调用对应的窗口 resize */
+    const applyWindowForState = (state: string): void => {
+      if (state === 'hover') {
+        window.api?.expandWindow();
+      } else if (state === 'notification' || state === 'agent' || state === 'stt' || state === 'cli') {
+        window.api?.expandWindowNotification();
+      } else if (state === 'lyrics' || state === 'agentVoiceInput') {
+        window.api?.expandWindowLyrics();
+      } else if (state === 'lyricsTranslation') {
+        window.api?.expandWindowLyricsTranslation();
+      } else if (state === 'expanded') {
+        window.api?.expandWindowFull();
+      } else if (state === 'maxExpand' || state === 'guide' || state === 'login' || state === 'register' || state === 'resetPassword' || state === 'setPassword' || state === 'bindOAuth' || state === 'bindEmail' || state === 'payment' || state === 'announcement') {
+        window.api?.expandWindowSettings();
+      } else {
+        window.api?.collapseWindow();
+      }
+    };
+
+    const unsub = window.api?.onShapeModeChanged?.((mode: string, targetX: number, targetY: number) => {
+      const v = mode === 'notch' || mode === 'pill' ? mode : 'notch';
+      const store = useIslandStore.getState();
+      if (store.shapeMode === v) return;
+
+      const currentState = store.state;
+      const isIdleSize = currentState === 'idle' || currentState === 'lyrics' || currentState === 'lyricsTranslation' || currentState === 'agentVoiceInput';
+      /** notch 与 pill 基准 Y 差值（pill 在 notch 下方 46px） */
+      const pillNotchDeltaY = 46;
+
+      if (v === 'notch') {
+        if (isIdleSize) {
+          /** pill → notch idle：先动画移动窗口到顶部，再切换 CSS + resize */
+          /** targetX 基于 islandWidth(260) 计算，lyrics 等状态窗口宽度为 500，
+           *  需按实际宽度计算目标 X，使动画与 applyWindowForState 的最终位置一致，避免两步跳动 */
+          const ISLAND_WIDTH = 260;
+          const notchModeCenterX = targetX + ISLAND_WIDTH / 2;
+          const targetWindowX = Math.round(notchModeCenterX - window.outerWidth / 2);
+          const dx = targetWindowX - window.screenX;
+          const dy = targetY - window.screenY;
+          animateWindowMove(dx, dy, ANIM_DURATION).then(() => {
+            useIslandStore.getState().setShapeMode('notch');
+            applyWindowForState(currentState);
+          }).catch(() => {});
+        } else {
+          /** pill → notch 非 idle：切换 CSS，展开 handler 设置正确位置（getEffectiveY 贴顶） */
+          useIslandStore.getState().setShapeMode('notch');
+          applyWindowForState(currentState);
+        }
+      } else {
+        if (isIdleSize) {
+          /** notch → pill idle：先 resize 到 pill 尺寸，再切换 CSS，再动画移动窗口 */
+          applyWindowForState(currentState);
+          useIslandStore.getState().setShapeMode('pill');
+          /** targetX 基于 islandWidth(260) 计算，但 lyrics/lyricsTranslation/agentVoiceInput
+           *  窗口宽度为 500，与 idle(260) 不同，水平方向不移动，仅垂直下移 */
+          const dx = currentState === 'idle' ? targetX - window.screenX : 0;
+          const dy = targetY - window.screenY;
+          animateWindowMove(dx, dy, ANIM_DURATION).catch(() => {});
+        } else {
+          /** notch → pill 非 idle：切换 CSS + resize，再动画下移 */
+          useIslandStore.getState().setShapeMode('pill');
+          applyWindowForState(currentState);
+          animateWindowMove(0, pillNotchDeltaY, ANIM_DURATION).catch(() => {});
+        }
+      }
+    });
+    return () => {
+      if (animFrameId) cancelAnimationFrame(animFrameId);
+      unsub?.();
+    };
+  }, []);
+}

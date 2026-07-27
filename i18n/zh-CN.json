@@ -1,0 +1,3748 @@
+{
+  "common": {
+    "appName": "eIsland",
+    "errors": {
+      "rootMountNotFound": "未找到 #root 挂载节点"
+    }
+  },
+  "standalone": {
+    "tabs": {
+      "todo": "待办事项",
+      "countdown": "倒数日",
+      "urlFavorites": "URL 收藏",
+      "album": "相册",
+      "mail": "邮箱",
+      "localFileSearch": "文件查找",
+      "clipboardHistory": "剪贴板历史",
+      "memo": "备忘录",
+      "alarm": "闹钟",
+      "toolbox": "工具箱",
+      "settings": "设置"
+    },
+    "controls": {
+      "minimize": "最小化",
+      "maximize": "最大化",
+      "close": "关闭"
+    }
+  },
+  "capture": {
+    "source": {
+      "plugin": "使用插件",
+      "js": "使用js"
+    },
+    "tools": {
+      "select": "选区",
+      "mosaic": "马赛克",
+      "line": "直线",
+      "rect": "矩形",
+      "pen": "画笔",
+      "undo": "撤销",
+      "color": "颜色",
+      "size": "粗细",
+      "save": "保存",
+      "cancel": "取消",
+      "done": "完成"
+    }
+  },
+  "guide": {
+    "actions": {
+      "skip": "一键跳过",
+      "prev": "上一步",
+      "next": "下一步",
+      "start": "开始使用",
+      "loginNow": "立即登录",
+      "registerNow": "立即注册"
+    },
+    "language": {
+      "title": "选择语言",
+      "subtitle": "选择你偏好的语言以继续",
+      "zhCN": "中文",
+      "enUS": "English",
+      "jaJP": "日本語",
+      "koKR": "한국어",
+      "frFR": "Français",
+      "deDE": "Deutsch",
+      "esES": "Español",
+      "ruRU": "Русский"
+    },
+    "smtc": {
+      "title": "SMTC 媒体测试",
+      "subtitle": "检测系统媒体会话是否可用",
+      "hint": "请使用播放器播放一首歌",
+      "player": "播放器",
+      "unknownPlayer": "未知",
+      "state": "状态",
+      "playing": "播放中",
+      "paused": "已暂停",
+      "prev": "上一曲",
+      "next": "下一曲",
+      "pause": "暂停",
+      "play": "播放"
+    },
+    "whitelist": {
+      "title": "选择播放器",
+      "subtitle": "选择需要监听的播放器",
+      "qqmusic": "QQ 音乐",
+      "netease": "网易云音乐",
+      "sodamusic": "汽水音乐",
+      "kugou": "酷狗音乐",
+      "applemusic": "Apple Music",
+      "spotify": "Spotify"
+    },
+    "theme": {
+      "title": "外观设置",
+      "subtitle": "选择主题模式并调整透明度",
+      "modeLabel": "主题模式",
+      "opacityLabel": "透明度",
+      "dark": "深色",
+      "light": "浅色",
+      "system": "跟随系统"
+    },
+    "shape": {
+      "title": "灵动岛形态",
+      "subtitle": "选择灵动岛的外观形态",
+      "notch": "刘海屏",
+      "pill": "灵动岛",
+      "notchDesc": "贴于屏幕顶部，模拟刘海屏效果",
+      "pillDesc": "悬浮于屏幕中，胶囊形状更灵动"
+    },
+    "lyricMode": {
+      "title": "歌词显示模式",
+      "subtitle": "选择歌词的高亮显示方式",
+      "normal": "普通模式",
+      "karaoke": "逐字模式",
+      "normalDesc": "歌词以纯文本方式整行高亮显示",
+      "karaokeDesc": "歌词逐字扫光高亮，卡拉 OK 效果",
+      "sampleLyrics": {
+        "0": "这是一句测试歌词",
+        "1": "音乐在空中飘荡",
+        "2": "旋律轻轻回响",
+        "3": "每个音符都在歌唱"
+      }
+    },
+    "update": {
+      "title": "选择更新源",
+      "subtitle": "选择检查更新时使用的下载源"
+    },
+    "github": {
+      "title": "开源信息",
+      "subtitle": "eIsland 是一个开源项目",
+      "links": {
+        "repo": "GitHub",
+        "website": "官网",
+        "docs": "文档",
+        "devDocs": "开发文档"
+      },
+      "license": "GPL-3.0 许可证",
+      "depsTitle": "开源框架 & 依赖 & 项目"
+    },
+    "sponsors": {
+      "title": "赞助商",
+      "subtitle": "感谢赞助商的支持"
+    },
+    "welcome": {
+      "title": "欢迎使用 eIsland",
+      "subtitle": "配置完成，开始体验灵动岛吧",
+      "desc": "一款灵感来自 Apple 灵动岛的 Windows 桌面浮窗小组件，\n让你的桌面更加灵动、高效。"
+    },
+    "sections": {
+      "basic": {
+        "title": "基本交互",
+        "desc": "通过鼠标与灵动岛进行交互，解锁不同状态。"
+      },
+      "music": {
+        "title": "音乐与歌词",
+        "desc": "自动识别正在播放的音乐，实时显示同步歌词。"
+      },
+      "tools": {
+        "title": "实用工具",
+        "desc": "扩展面板中集成了多种实用功能。"
+      },
+      "settings": {
+        "title": "个性化设置",
+        "desc": "在扩展面板的设置中自定义你的灵动岛体验。"
+      },
+      "auth": {
+        "title": "账号服务",
+        "desc": "现在就登录或注册，开启跨设备同步与账号管理。",
+        "tipSync": "登录后可同步账号资料。",
+        "tipMode": "可使用壁纸市场功能。"
+      }
+    },
+    "interactionCards": {
+      "scroll": {
+        "title": "基本交互",
+        "desc": "在灵动岛顶部滚动鼠标滚轮，切换灵动岛状态。"
+      },
+      "hover": {
+        "title": "悬停展开",
+        "desc": "将鼠标悬停在灵动岛上方，即可展开预览面板。"
+      },
+      "click": {
+        "title": "单击操作",
+        "desc": "单击灵动岛，打开完整的操作面板。"
+      },
+      "retract": {
+        "title": "自动收回",
+        "desc": "将鼠标移开灵动岛，自动收回至待机状态。"
+      }
+    },
+    "musicCards": {
+      "smtc": {
+        "title": "SMTC 自动检测",
+        "desc": "自动识别正在播放的音乐源，实时同步播放信息。"
+      },
+      "lyrics": {
+        "title": "歌词匹配与同步",
+        "desc": "多源歌词自动匹配，实时滚动显示当前歌词。"
+      },
+      "karaoke": {
+        "title": "逐字扫光模式",
+        "desc": "支持逐字高亮的卡拉 OK 歌词显示模式。"
+      }
+    },
+    "toolCards": {
+      "todo": {
+        "title": "待办事项",
+        "desc": "在扩展面板中管理你的待办任务清单。"
+      },
+      "ai": {
+        "title": "AI 对话助手",
+        "desc": "内置 AI 对话，随时获取智能回答与建议。"
+      },
+      "timer": {
+        "title": "倒数日与计时器",
+        "desc": "设置倒计时或倒数日，精准跟踪重要时刻。"
+      },
+      "pomodoro": {
+        "title": "番茄钟专注",
+        "desc": "番茄工作法，帮助你保持高效专注。"
+      }
+    },
+    "settingCards": {
+      "theme": {
+        "title": "主题切换",
+        "desc": "在深色、浅色和跟随系统之间自由切换。"
+      },
+      "opacity": {
+        "title": "透明度调整",
+        "desc": "自定义灵动岛的背景透明度。"
+      },
+      "position": {
+        "title": "位置微调",
+        "desc": "微调灵动岛在屏幕顶部的水平与垂直偏移。"
+      },
+      "autostart": {
+        "title": "开机自启",
+        "desc": "设置灵动岛是否随系统启动自动运行。"
+      },
+      "shortcut": {
+        "title": "快捷键",
+        "desc": "通过全局快捷键快速控制灵动岛。"
+      }
+    },
+    "hints": {
+      "basicWheel": "在此区域附近滚动滚轮可切换灵动岛状态",
+      "musicWheel": "滚动查看更多音乐功能",
+      "toolsWheel": "滚动查看更多实用工具",
+      "settingsWheel": "滚动查看个性化设置"
+    },
+    "tipsAria": "要点",
+    "nav": {
+      "pageAria": "第 {{index}} 页"
+    },
+    "mini": {
+      "music": {
+        "playing": "正在播放",
+        "karaokeSample": "这是一句歌词",
+        "sampleLyrics": {
+          "0": "这是一句歌词示例",
+          "1": "音乐在空中飘荡",
+          "2": "旋律轻轻回响"
+        }
+      },
+      "tool": {
+        "todo": {
+          "title": "待办事项",
+          "items": {
+            "design": "完成设计稿",
+            "weeklyReport": "发送周报邮件",
+            "notes": "整理项目笔记"
+          }
+        },
+        "ai": {
+          "title": "AI 对话",
+          "hello": "你好"
+        },
+        "timer": {
+          "badge": "倒数日",
+          "name": "重要截止日",
+          "days": "{{days}}天",
+          "expired": "已到期"
+        },
+        "pomodoro": {
+          "focusing": "专注中"
+        }
+      },
+      "setting": {
+        "theme": {
+          "dark": "深色",
+          "light": "浅色",
+          "system": "系统",
+          "auto": "自动"
+        },
+        "autostart": {
+          "on": "已开启",
+          "highPriority": "高优先级",
+          "off": "已关闭"
+        },
+        "controls": {
+          "autostart": {
+            "disabled": "关闭",
+            "enabled": "开启",
+            "highPriority": "高优先级"
+          }
+        },
+        "shortcut": {
+          "toggleIsland": "隐藏/显示",
+          "quitIsland": "关闭灵动岛",
+          "resetPosition": "还原默认位置快捷键",
+          "screenshot": "选区截图",
+          "switchSong": "切换歌曲"
+        }
+      }
+    }
+  },
+  "todo": {
+    "title": "待办事项",
+    "addPlaceholder": "添加待办...",
+    "addSubPlaceholder": "添加子任务...",
+    "priorityTitle": "紧急程度 {{label}}",
+    "sizeTitle": "事件大小 {{label}}",
+    "markDone": "标记完成",
+    "markUndone": "标记未完成",
+    "delete": "删除",
+    "descPlaceholder": "添加详细描述...",
+    "saveTitle": "保存 (Ctrl+Enter)",
+    "save": "保存",
+    "noDesc": "暂无描述",
+    "editDescTitle": "编辑描述",
+    "edit": "编辑",
+    "subtasks": "子任务",
+    "onboarding": {
+      "title": "待办事项",
+      "desc": "在这里管理你的任务，保持高效有序",
+      "feature1": "创建待办并设置紧急程度与大小",
+      "feature2": "点击展开查看详情，添加描述",
+      "feature3": "拆分子任务，追踪完成进度",
+      "hint": "在上方输入框添加你的第一个待办 ↑"
+    }
+  },
+  "countdown": {
+    "editTitle": "编辑事件",
+    "newTitleWithDate": "新建事件 - {{date}}",
+    "newTitlePlaceholder": "< 选择日期以添加事件",
+    "namePlaceholder": "事件名称",
+    "descPlaceholder": "描述（可选）",
+    "preview": "预览",
+    "empty": "选择日期并添加事件",
+    "datePlaceholder": "YYYY-MM-DD",
+    "days": {
+      "after": "{{days}} 天后",
+      "today": "就是今天",
+      "before": "{{days}} 天前",
+      "placeholder": "-- 天"
+    },
+    "types": {
+      "countdown": "倒数日",
+      "anniversary": "纪念日",
+      "birthday": "生日",
+      "holiday": "节日",
+      "exam": "考试"
+    },
+    "form": {
+      "type": "类型",
+      "color": "颜色",
+      "customColor": "自定义颜色",
+      "background": "背景",
+      "useAlbumCover": "使用当前专辑封面",
+      "noPlayingSong": "暂无正在播放的歌曲",
+      "albumBackground": "专辑背景",
+      "selectImageFile": "从文件选择图片",
+      "customBackground": "自定义背景",
+      "clearBackground": "清除背景",
+      "opacity": "透明度"
+    },
+    "actions": {
+      "add": "添加",
+      "save": "保存",
+      "cancel": "取消",
+      "delete": "删除"
+    }
+  },
+  "hover": {
+    "nav": {
+      "time": "工具",
+      "lyrics": "歌曲",
+      "weather": "天气",
+      "expand": "展开",
+      "switchToPage": "切换到{{label}}页面"
+    },
+    "actions": {
+      "hideIsland": "隐藏灵动岛",
+      "hide": "隐藏",
+      "quitIsland": "退出灵动岛",
+      "quit": "退出"
+    },
+    "tools": {
+      "screenshot": "截图",
+      "taskManager": "任务管理器"
+    },
+    "media": {
+      "brightness": "亮度",
+      "volume": "音量"
+    },
+    "brightness": {
+      "title": "屏幕亮度",
+      "hint": "拖动调节",
+      "sliderLabel": "屏幕亮度",
+      "unavailable": "不可用"
+    },
+    "volume": {
+      "title": "系统音量",
+      "hint": "拖动调节",
+      "sliderLabel": "系统音量",
+      "unavailable": "不可用"
+    },
+    "timer": {
+      "title": "倒计时",
+      "editHint": "滚动滚轮编辑时间",
+      "actions": {
+        "start": "开始",
+        "pause": "暂停",
+        "resume": "继续",
+        "reset": "重置"
+      }
+    },
+    "music": {
+      "unknownArtist": "未知艺术家",
+      "unknownTitle": "未知歌曲",
+      "prev": "上一曲",
+      "pause": "暂停",
+      "play": "播放",
+      "next": "下一曲"
+    },
+    "time": {
+      "lunarPrefix": "农历"
+    },
+    "weather": {
+      "refreshTitle": "点击刷新天气",
+      "today": "今天",
+      "unknownCity": "未知",
+      "na": "N/A",
+      "week": {
+        "tomorrow": "明",
+        "dayAfterTomorrow": "后"
+      },
+      "rainPrefix": "雨",
+      "windPrefix": "风"
+    }
+  },
+  "weatherAbbr": {
+    "thunder": "雷雨",
+    "snow": "降雪",
+    "hail": "冰雹",
+    "sleet": "雨夹雪",
+    "freezingRain": "冻雨",
+    "heavyRain": "暴雨",
+    "shower": "阵雨",
+    "drizzle": "毛毛雨",
+    "rain": "降雨",
+    "sandstorm": "沙尘暴",
+    "haze": "霾",
+    "fog": "雾",
+    "wind": "大风",
+    "hot": "高温",
+    "cold": "低温",
+    "overcast": "阴天",
+    "cloudy": "多云",
+    "sunny": "晴天",
+    "unknown": "未知"
+  },
+  "announcement": {
+    "loading": "正在加载公告…",
+    "empty": "暂无公告内容",
+    "title": "公告",
+    "subtitle": "当前已是最新版本，以下为最新公告内容。",
+    "defaultTitle": "系统公告",
+    "updatedAt": "更新时间：{{time}}",
+    "close": "关闭"
+  },
+  "notification": {
+    "alarm": {
+      "title": "闹钟",
+      "body": "{{time}}",
+      "bodyWithLabel": "{{time}} — {{label}}"
+    },
+    "timer": {
+      "title": "计时器",
+      "finished": "倒计时已结束"
+    },
+    "sourceSwitch": {
+      "title": "检测到其他播放源"
+    },
+    "update": {
+      "availableTitle": "发现新版本",
+      "availableBody": "是否立即下载？",
+      "currentSource": "当前更新源：{{source}}",
+      "downloadingTitle": "正在下载更新",
+      "downloadingPreparing": "正在准备下载更新…",
+      "downloadingBodyProgress": "已下载 {{percent}} · {{speed}} · 预计剩余 {{eta}}",
+      "downloadingSpeedUnknown": "计算中",
+      "downloadingEtaUnknown": "计算中",
+      "readyTitle": "更新就绪",
+      "readyBody": "新版本 v{{version}} 已下载完成，是否立即安装？"
+    },
+    "weatherAlert": {
+      "title": "天气预警提醒",
+      "defaultTitle": "天气预警",
+      "unknownCity": "当前位置",
+      "bodySingle": "{{city}}：{{title}}",
+      "bodyWithMore": "{{city}}：{{title}}，另有 {{count}} 条预警。",
+      "timeLabel": "更新时间",
+      "timeUnknown": "未知"
+    },
+    "clipboard": {
+      "detectedTitle": "检测到链接",
+      "officialBadge": "官网",
+      "prevUrl": "上一个链接",
+      "nextUrl": "下一个链接",
+      "jumpToFavorites": "前往 URL 收藏"
+    },
+    "pomodoro": {
+      "title": "番茄钟",
+      "workFinished": "专注时间结束，开始休息吧",
+      "breakFinished": "休息时间结束，开始专注吧"
+    },
+    "externalAgent": {
+      "title": "检测到桌面 Agent",
+      "body": "{{agentName}} 已开始工作",
+      "stoppedTitle": "桌面 Agent 已关闭",
+      "stoppedBody": "{{agentName}} 已停止工作"
+    },
+    "actions": {
+      "gotIt": "知道了",
+      "installRestart": "安装并重启",
+      "later": "稍后",
+      "downloadUpdate": "下载更新",
+      "downloadNow": "立即下载",
+      "configureUpdateSource": "自行配置更新源",
+      "restartNow": "立即重启",
+      "openAllLinks": "打开全部链接",
+      "openLink": "打开链接",
+      "favorited": "已收藏",
+      "favorite": "收藏",
+      "addBlacklist": "加入黑名单",
+      "hide": "隐藏",
+      "ignore": "忽略",
+      "switch": "切换",
+      "switchCliState": "切换到灵动岛",
+      "snooze5m": "稍后 5m",
+      "snooze15m": "稍后 15m",
+      "snooze1h": "稍后 1h",
+      "closeAndContinueUpdateCheck": "关闭并继续检查更新",
+      "complete": "完成"
+    }
+  },
+  "expanded": {
+    "nav": {
+      "hover": "返回",
+      "overview": "总览",
+      "song": "歌曲",
+      "tools": "工具",
+      "translation": "翻译",
+      "performanceMonitor": "性能监控",
+      "maxExpand": "最大展开",
+      "switchToPage": "切换到{{label}}页面"
+    },
+    "performanceMonitor": {
+      "title": "系统性能",
+      "subtitle": "实时硬件状态与温度",
+      "hardwareSettingsLink": "和您的硬件不一样？点击前往调整",
+      "startMonitor": "开始监控",
+      "stopMonitor": "停止监控",
+      "hidePage": "隐藏本页面",
+      "startHint": "首次进入请点击开始监控",
+      "loading": "正在读取系统性能数据...",
+      "error": "系统性能数据暂不可用",
+      "labels": {
+        "cpu": "CPU",
+        "gpu": "GPU",
+        "memory": "内存",
+        "disk": "磁盘",
+        "available": "可用",
+        "host": "主机",
+        "os": "系统",
+        "cpuModel": "处理器",
+        "gpuModel": "显卡",
+        "uptime": "运行"
+      },
+      "status": {
+        "unavailable": "不可用",
+        "noGpu": "未检测到显卡"
+      }
+    },
+    "settingsTab": {
+      "label": "设置"
+    },
+    "translation": {
+      "title": "快速翻译",
+      "sourceLabel": "源语言",
+      "targetLabel": "目标语言",
+      "inputTitle": "原文",
+      "outputTitle": "译文",
+      "languageAria": "翻译语言选择"
+    }
+  },
+  "toolsTab": {
+    "defaultAppName": "应用",
+    "title": "快捷启动",
+    "count": "{{count}} 项",
+    "empty": "暂无快捷启动项",
+    "launchTitle": "点击启动",
+    "editNameByDoubleClick": "双击编辑名称",
+    "editName": "编辑名称",
+    "delete": "删除",
+    "drop": {
+      "releaseToAdd": "松开添加",
+      "onlyExe": "仅支持 .exe 或 .lnk 文件",
+      "duplicate": "已存在该应用",
+      "dragExe": "拖入 .exe 或 .lnk"
+    }
+  },
+  "overview": {
+    "song": {
+      "nowPlaying": "正在播放",
+      "unknownTitle": "未知歌曲",
+      "unknownArtist": "未知艺术家",
+      "prev": "上一首",
+      "pause": "暂停",
+      "play": "播放",
+      "next": "下一首",
+      "empty": "暂无播放中的歌曲"
+    },
+    "album": {
+      "title": "相册轮播",
+      "count": "{{count}} 项",
+      "empty": "相册暂无媒体",
+      "open": "点击进入相册",
+      "prev": "上一张",
+      "next": "下一张",
+      "pause": "暂停轮播",
+      "play": "继续轮播",
+      "position": "{{index}} / {{total}}",
+      "videoTag": "视频"
+    },
+    "countdown": {
+      "title": "倒数日",
+      "empty": "暂无倒数日"
+    },
+    "breakReminder": {
+      "title": "休息提醒",
+      "count": "{{count}} 项",
+      "empty": "暂无启用的提醒",
+      "remain": "{{min}} 分钟",
+      "due": "即将提醒"
+    },
+    "pomodoro": {
+      "title": "番茄钟",
+      "completedTitle": "已完成番茄数",
+      "tomato": "番茄",
+      "resetCount": "重置计数",
+      "reset": "重置",
+      "start": "开始",
+      "pause": "暂停",
+      "skip": "跳过",
+      "phases": {
+        "work": "专注中",
+        "shortBreak": "短休息",
+        "longBreak": "长休息"
+      }
+    },
+    "mokugyo": {
+      "title": "电子木鱼",
+      "hint": "点击木鱼积攒专注",
+      "strike": "敲一下",
+      "total": "累计功德",
+      "plusOne": "功德+1"
+    },
+    "urlFavorites": {
+      "title": "URL 收藏",
+      "count": "{{count}} 条",
+      "empty": "暂无收藏",
+      "viewAll": "查看全部 {{count}} 条收藏"
+    },
+    "shortcuts": {
+      "title": "快捷启动",
+      "editTitle": "编辑快捷启动",
+      "count": "{{count}} 项",
+      "emptyHint": "在系统工具中添加"
+    },
+    "todo": {
+      "title": "待办事项",
+      "goToPage": "前往待办事项页面",
+      "empty": "暂无待办",
+      "delete": "删除",
+      "completed": "已完成 {{count}}"
+    },
+    "time": {
+      "date": "{{yyyy}}年{{month}}月{{day}}日 {{dayName}}",
+      "weekdays": {
+        "0": "周日",
+        "1": "周一",
+        "2": "周二",
+        "3": "周三",
+        "4": "周四",
+        "5": "周五",
+        "6": "周六"
+      },
+      "yi": "宜",
+      "ji": "忌"
+    }
+  },
+  "songTab": {
+    "meta": {
+      "notPlaying": "未在播放"
+    },
+    "controls": {
+      "prev": "上一曲",
+      "pause": "暂停",
+      "play": "播放",
+      "next": "下一曲"
+    },
+    "lyrics": {
+      "loading": "正在加载歌词",
+      "empty": "暂无歌词",
+      "enjoyMusic": "享受音乐"
+    },
+    "onboarding": {
+      "title": "音乐总览",
+      "desc": "播放音乐后，这里将展示实时信息",
+      "feature1": "封面碟片、实时歌词与频谱动画",
+      "feature2": "时间、天气与倒计时一览",
+      "hint": "播放任意歌曲即可开始"
+    },
+    "time": {
+      "weekdays": {
+        "0": "周日",
+        "1": "周一",
+        "2": "周二",
+        "3": "周三",
+        "4": "周四",
+        "5": "周五",
+        "6": "周六"
+      }
+    },
+    "countdown": {
+      "expired": "已到期",
+      "dayHour": "{{days}}天{{hours}}时",
+      "hourMinute": "{{hours}}时{{minutes}}分",
+      "minute": "{{minutes}}分"
+    }
+  },
+  "aiChat": {
+    "title": "mihtnelis Agent",
+    "notConfigured": "未配置",
+    "localModelGenerated": "本地模型生成",
+    "customDirectGenerated": "本地直连 LLM 提供商",
+    "actions": {
+      "clear": "清空",
+      "newChat": "新建对话",
+      "deleteSession": "删除会话",
+      "loadMoreHistory": "加载更多对话",
+      "reportIssue": "报告问题",
+      "stop": "停止",
+      "send": "发送",
+      "quote": "引用",
+      "copy": "复制"
+    },
+    "session": {
+      "historyTitle": "历史会话",
+      "toggleHistory": "展开历史会话",
+      "untitled": "新对话"
+    },
+    "modelCard": {
+      "title": "模型选择卡片",
+      "focusMode": "专注模式",
+      "contextLimit": "上下文",
+      "customApiMode": "调用模式",
+      "customApiModeTitle": "选择自定义 API 调用模式",
+      "customApiModeRelay": "服务器转发",
+      "customApiModeDirect": "直连"
+    },
+    "skills": {
+      "title": "Skills",
+      "add": "+ 添加",
+      "enable": "启用",
+      "disable": "禁用",
+      "remove": "移除",
+      "dropHint": "拖入 .md 文件或点击添加"
+    },
+    "attachments": {
+      "add": "添加文本附件",
+      "remove": "移除附件"
+    },
+    "codeBlock": {
+      "copy": "复制",
+      "copied": "已复制"
+    },
+    "messages": {
+      "missingApiKeyWarn": "请先在「设置 → AI配置」中填写 API Key。",
+      "unknownError": "未知错误",
+      "contextLimitExceeded": "⚠️ 当前会话已累计使用 {{used}} tokens，超出上下文限制（{{max}} tokens）。请新建会话继续对话。",
+      "emptyWithApiKey": "有什么可以帮你的？",
+      "emptyWithoutApiKey": "请先在「设置 → AI配置」中填写 API Key",
+      "emptyGreetingVariants": {
+        "0": "你好呀，今天想一起处理点什么？",
+        "1": "嗨，我在这儿，随时可以帮你。",
+        "2": "欢迎回来，先聊聊你现在最想解决的问题吧。",
+        "3": "今天也一起高效一点，你想从哪件事开始？"
+      },
+      "aiGeneratedDisclaimer": "内容由 AI 生成，请仔细甄别。",
+      "localModelGenerated": "本地模型生成",
+      "agentError": "mihtnelis agent 返回错误",
+      "noModelOutput": "⚠️ 未收到模型输出，请检查 DeepSeek 配置与服务端日志。",
+      "noModelOutputOllama": "⚠️ 未收到模型输出，请检查 Ollama 服务是否运行中。",
+      "noModelOutputCustomDirect": "⚠️ 未收到模型输出，请检查自定义 API 端点和密钥是否正确。",
+      "localToolExecuteFailed": "本地工具执行失败",
+      "localToolSubmitFailed": "本地工具结果提交失败",
+      "apiRequestFailed": "API 请求失败 ({{status}}): {{detail}}",
+      "cannotReadResponseStream": "无法读取响应流"
+    },
+    "timeline": {
+      "todoList": "任务清单",
+      "thinkingProcess": "思考过程 #{{index}}",
+      "toolResultTitle": "工具返回结果",
+      "toolStatus": {
+        "pending": "执行中",
+        "success": "完成",
+        "failed": "失败"
+      }
+    },
+    "localToolAccess": {
+      "title": "本地高风险操作授权",
+      "requestHint": "Agent 请求执行以下本地操作，是否允许？",
+      "argumentsTitle": "参数",
+      "toolLabel": "工具",
+      "purposeTitle": "用途",
+      "purposeFallback": "未提供用途说明",
+      "riskLabel": "风险等级",
+      "screenshotTag": "截图",
+      "riskLevel": {
+        "high": "高"
+      },
+      "allow": "允许执行",
+      "deny": "拒绝执行",
+      "expiredHint": "本地工具授权请求已失效，请重新发起请求后再授权。"
+    },
+    "webAccess": {
+      "title": "网页访问授权",
+      "allow": "允许访问",
+      "deny": "拒绝访问",
+      "requestHint": "Agent 需要访问以下 URL，是否允许？",
+      "allowedHint": "已授权，下一轮可继续读取该 URL。",
+      "deniedHint": "已拒绝该 URL 访问。",
+      "expiredHint": "网页授权请求已失效，请重新发起请求后再授权。",
+      "policyLabel": "此域名授权策略",
+      "policy": {
+        "ask": "每次都询问",
+        "allow": "始终批准",
+        "deny": "始终禁止"
+      }
+    },
+    "auth": {
+      "entryTitle": "登录后即可使用 AI 智能助手",
+      "gotoLogin": "前往登录",
+      "gotoRegister": "前往注册",
+      "hint": "mihtnelis Agent 为登录用户提供 AI 对话、工具调用与知识检索服务。"
+    },
+    "input": {
+      "generatingPlaceholder": "生成中...",
+      "placeholder": "输入消息..."
+    },
+    "contextUsage": {
+      "title": "上下文使用量",
+      "inline": "{{used}} / {{max}} · {{percent}}",
+      "tooltip": "上下文使用：{{used}} / {{max}}（{{percent}}）",
+      "aria": "上下文使用情况：{{used}} / {{max}}（{{percent}}）"
+    },
+    "agentMode": {
+      "switch": "切换 Agent 模式"
+    },
+    "feedback": {
+      "issueTitle": "Agent输出不符合预期 - {{traceId}}"
+    }
+  },
+  "urlFavoritesTab": {
+    "title": "URL 收藏",
+    "count": "{{count}} 条",
+    "filteredCount": "{{count}} / {{total}} 条",
+    "empty": "还没有收藏，先添加一个 URL 吧。",
+    "openWebsiteTitle": "点击打开网站",
+    "resolvingTitle": "读取网页名称中…",
+    "noNote": "未备注",
+    "input": {
+      "placeholderWithItems": "输入并添加新的 URL 收藏",
+      "placeholderEmpty": "输入 URL，例如 github.com"
+    },
+    "actions": {
+      "add": "添加",
+      "save": "保存",
+      "manageFolders": "分组",
+      "manageImportExport": "导入导出",
+      "import": "导入",
+      "export": "导出",
+      "expand": "展开",
+      "collapse": "收起",
+      "removeAria": "删除 URL 收藏"
+    },
+    "import": {
+      "formatAria": "导入格式"
+    },
+    "export": {
+      "formatAria": "导出格式"
+    },
+    "folders": {
+      "all": "全部",
+      "uncategorized": "未分类",
+      "newPlaceholder": "新建文件夹",
+      "create": "新建",
+      "clearCurrent": "清空当前分类",
+      "emptyFiltered": "当前文件夹还没有收藏。"
+    },
+    "messages": {
+      "importSuccess": "已导入 {{count}} 条收藏",
+      "importEmpty": "未识别到可导入的收藏",
+      "importFailed": "导入失败，请检查文件格式",
+      "exportSuccess": "已导出 {{count}} 条收藏",
+      "exportFailed": "导出失败，请稍后重试"
+    },
+    "editor": {
+      "urlLabel": "URL",
+      "urlPlaceholder": "编辑 URL",
+      "noteLabel": "备注",
+      "notePlaceholder": "输入备注",
+      "folderLabel": "文件夹",
+      "folderPlaceholder": "输入文件夹名称，留空为未分类"
+    }
+  },
+  "mailTab": {
+    "title": "邮箱",
+    "accounts": {
+      "unnamed": "未命名"
+    },
+    "introTitle": "客户端直连邮箱（无服务器）",
+    "introDesc": "收信用 IMAP，发信用 SMTP。请先在设置中填写服务器参数与账号认证信息。",
+    "goSettings": "前往邮箱设置",
+    "inboxTitle": "收件箱（最近 10 封）",
+    "emptyInbox": "暂无邮件或读取失败",
+    "composeTitle": "发送邮件",
+    "fields": {
+      "to": "收件人",
+      "subject": "主题",
+      "subjectPlaceholder": "输入主题",
+      "content": "正文",
+      "contentPlaceholder": "输入正文"
+    },
+    "actions": {
+      "refresh": "刷新收件箱",
+      "refreshing": "刷新中…",
+      "search": "搜索发件人、主题或正文…",
+      "send": "发送",
+      "sending": "发送中…"
+    },
+    "messages": {
+      "loading": "正在获取邮件…",
+      "inboxFetchFailed": "收件箱读取失败",
+      "inboxFetchTimeout": "收件箱读取超时，请检查网络或邮箱配置",
+      "needRecipient": "请填写收件人邮箱",
+      "sendFailed": "发送失败，请稍后重试",
+      "sendSuccess": "发送成功"
+    },
+    "emptyGuide": {
+      "title": "配置邮箱 IMAP 账户后即可在此收取和查看邮件",
+      "hint": "需要填写 IMAP 服务器地址、认证用户名和密钥。",
+      "action": "前往设置",
+      "imapHelp": "如何获取 IMAP 信息"
+    },
+    "fallbacks": {
+      "noSubject": "(无主题)",
+      "noSender": "-"
+    }
+  },
+  "clipboardHistoryTab": {
+    "title": "剪贴板历史",
+    "count": "{{count}} 条",
+    "filteredCount": "{{count}} / {{total}} 条",
+    "empty": "暂时没有记录，复制一些文本后会显示在这里。",
+    "emptyFiltered": "当前类型下没有记录。",
+    "messages": {
+      "copySuccess": "已复制到剪贴板",
+      "copyFailed": "复制失败，请稍后重试",
+      "exportSuccess": "已导出 {{count}} 条剪贴板记录",
+      "exportFailed": "导出失败，请稍后重试"
+    },
+    "filters": {
+      "aria": "剪贴板类型筛选",
+      "all": "全部",
+      "url": "URL",
+      "text": "纯文本"
+    },
+    "actions": {
+      "clear": "清空",
+      "export": "导出",
+      "exportAllTitle": "导出全部记录",
+      "exportSelectedTitle": "导出已选记录",
+      "select": "选择",
+      "cancelSelect": "取消",
+      "save": "保存",
+      "selectAll": "全选",
+      "deleteSelected": "删除已选",
+      "clearRange": "清理范围",
+      "rangeAria": "选择清理时间范围",
+      "selectItemAria": "选择该剪贴板记录",
+      "copyTitle": "复制到剪贴板",
+      "copyAria": "复制该记录到剪贴板",
+      "expand": "展开",
+      "collapse": "收起",
+      "removeAria": "删除该剪贴板记录"
+    },
+    "ranges": {
+      "lastHour": "最近 1 小时",
+      "today": "今天",
+      "last7Days": "最近 7 天",
+      "last30Days": "最近 30 天",
+      "olderThan30Days": "30 天前"
+    }
+  },
+  "albumTab": {
+    "title": "相册",
+    "count": "{{count}} 项",
+    "dropHint": "释放鼠标即可导入媒体文件",
+    "empty": {
+      "title": "还没有媒体内容",
+      "desc": "拖拽图片/视频到这里，或点击“添加媒体”",
+      "filteredTitle": "当前筛选下没有内容",
+      "filteredDesc": "切换为全部/图片/视频查看"
+    },
+    "actions": {
+      "add": "添加媒体",
+      "remove": "移除",
+      "removeAria": "移除媒体 {{name}}",
+      "selectAllVisible": "全选当前",
+      "unselectAllVisible": "取消全选",
+      "clearSelection": "取消选择",
+      "removeSelected": "删除已选",
+      "select": "选择",
+      "cancelSelect": "取消选择"
+    },
+    "selection": {
+      "selectedCount": "已选 {{count}} 项",
+      "toggle": "选择媒体 {{name}}",
+      "hint": "点击图片进行选择"
+    },
+    "sort": {
+      "label": "排序",
+      "addedDesc": "最近添加优先",
+      "addedAsc": "最早添加优先",
+      "nameAsc": "文件名升序",
+      "nameDesc": "文件名降序",
+      "durationDesc": "时长从长到短",
+      "durationAsc": "时长从短到长"
+    },
+    "filter": {
+      "label": "媒体筛选",
+      "all": "全部",
+      "image": "仅图片",
+      "video": "仅视频"
+    },
+    "group": {
+      "label": "浏览方式",
+      "none": "全部",
+      "folder": "按文件夹",
+      "date": "按日期",
+      "all": "全部媒体",
+      "count": "{{count}} 项",
+      "unknownFolder": "未知文件夹",
+      "unknownDate": "未知日期"
+    },
+    "columns": {
+      "aria": "调整每行列数",
+      "smaller": "减少列数",
+      "larger": "增加列数"
+    },
+    "thumb": {
+      "loading": "加载中…",
+      "failed": "加载失败"
+    },
+    "viewer": {
+      "back": "返回总览",
+      "prev": "上一张",
+      "next": "下一张",
+      "zoomIn": "放大",
+      "zoomOut": "缩小",
+      "zoomOne": "实际大小（1:1）",
+      "zoomFit": "适应窗口",
+      "fit": "适应",
+      "play": "播放",
+      "pause": "暂停",
+      "mute": "静音",
+      "unmute": "取消静音",
+      "hideControls": "隐藏控制条",
+      "showControls": "显示控制条",
+      "seek": "进度",
+      "volume": "音量",
+      "openInExplorer": "在资源管理器中打开",
+      "saveAs": "另存为",
+      "loading": "媒体加载中…",
+      "failed": "媒体加载失败"
+    },
+    "meta": {
+      "title": "媒体信息",
+      "name": "文件名",
+      "format": "格式",
+      "resolution": "分辨率",
+      "duration": "时长",
+      "size": "文件大小",
+      "addedAt": "添加时间",
+      "path": "完整路径",
+      "mediaType": "媒体类型",
+      "mediaTypeImage": "图片",
+      "mediaTypeVideo": "视频",
+      "codec": "编码",
+      "fps": "帧率",
+      "setAsIslandBackground": "设为灵动岛背景",
+      "exifTitle": "EXIF 信息",
+      "exifEmpty": "未读取到 EXIF 信息",
+      "make": "厂商",
+      "model": "机型",
+      "dateTimeOriginal": "拍摄时间",
+      "exposure": "曝光时间",
+      "fNumber": "光圈",
+      "iso": "ISO",
+      "focalLength": "焦距"
+    },
+    "status": {
+      "added": "已添加 {{count}} 个媒体文件",
+      "allDuplicated": "媒体文件已存在，未重复添加",
+      "unsupportedOnly": "未识别到受支持的图片/视频格式",
+      "zoomReset": "已恢复到实际大小",
+      "openInExplorerFailed": "无法定位 {{name}}，文件可能已被移动或删除",
+      "saveAsSuccess": "已保存 {{name}}",
+      "saveAsCanceled": "已取消保存",
+      "saveAsFailed": "保存 {{name}} 失败，请稍后重试",
+      "removedSelected": "已删除 {{count}} 个媒体文件",
+      "setIslandBackgroundSuccess": "已将 {{name}} 设为灵动岛背景",
+      "setIslandBackgroundFailed": "设置灵动岛背景失败，请稍后重试"
+    }
+  },
+  "sliderCaptcha": {
+    "title": "滑块验证",
+    "subtitle": "由 Pyisland Server & eIsland 提供质询服务",
+    "hint": "请先计算下方算式结果，再将滑块拖到对应值",
+    "traceCode": "traceCode: {{code}}",
+    "equationLabel": "算式挑战",
+    "currentValueLabel": "当前值",
+    "valueRange": "范围 {{min}} - {{max}}",
+    "actions": {
+      "cancel": "取消",
+      "confirm": "确认"
+    }
+  },
+  "miniGameTab": {
+    "sidebar": {
+      "index": "快速导航"
+    },
+    "index": {
+      "title": "快速导航",
+      "reset": "恢复默认",
+      "edit": "编辑",
+      "done": "完成",
+      "searchPlaceholder": "搜索游戏项...",
+      "searchClear": "清空搜索",
+      "searchEmpty": "没有找到匹配的游戏项",
+      "hintEdit": "拖拽卡片可调整排列顺序，点击「完成」保存。",
+      "hintView": "点击卡片可快速跳转到对应游戏。",
+      "ariaNav": "小游戏快速导航",
+      "removeCard": "删除 {{label}}",
+      "ariaAddPanel": "可添加导航卡片",
+      "addableTitle": "可添加卡片",
+      "emptyAddable": "当前没有可添加的卡片"
+    },
+    "nav": {
+      "game-2048": {
+        "label": "2048",
+        "desc": "经典数字合并小游戏，支持成绩与排行榜。"
+      },
+      "game-gomoku": {
+        "label": "五子棋",
+        "desc": "本地双人五子棋对战，先连成五子获胜。"
+      }
+    },
+    "games": {
+      "2048": "2048",
+      "gomoku": "五子棋"
+    },
+    "comingSoon": "即将上线",
+    "unknownUser": "未知用户",
+    "loginRequired": "请先登录以查看成绩与排行榜",
+    "loading": "加载中...",
+    "loadError": "数据加载失败",
+    "retry": "重试",
+    "refresh": "刷新",
+    "myBest": "个人最高分",
+    "highScore": "最高分",
+    "duration": "用时",
+    "moves": "步数",
+    "plays": "游玩次数",
+    "noRecord": "暂无记录",
+    "leaderboard": "排行榜",
+    "myRank": "您的排名",
+    "leaderboardRestartHint": "重启后进行的对局成绩不会计入排行榜，请保持当前会话完成游戏。",
+    "rankUnavailable": "未上榜",
+    "lbUser": "用户",
+    "lbScore": "分数",
+    "lbEmpty": "暂无排行数据",
+    "auth": {
+      "entryTitle": "登录后查看排行榜与个人成绩",
+      "gotoLogin": "前往登录",
+      "gotoRegister": "前往注册",
+      "hint": "登录后可同步游戏成绩、查看排行榜并与其他玩家竞争。"
+    },
+    "game2048": {
+      "score": "分数",
+      "best": "最高",
+      "newGame": "新游戏",
+      "gameOver": "游戏结束",
+      "tryAgain": "再来一局",
+      "hint": "使用方向键或 WASD 滑动方块"
+    },
+    "gomoku": {
+      "hint": "黑白双方轮流落子，先连成五子者获胜。",
+      "mode": "对战模式",
+      "modePve": "人机对战",
+      "modePvp": "人人对战",
+      "difficulty": "选择对局难度",
+      "difficultyNovice": "新手",
+      "difficultyEasy": "简单",
+      "difficultyHard": "困难",
+      "difficultyExpert": "专家",
+      "difficultyMaster": "大师",
+      "status": "当前状态",
+      "thinking": "正在思考",
+      "turnBlack": "黑棋回合",
+      "turnWhite": "白棋回合",
+      "winnerBlack": "黑棋获胜",
+      "winnerWhite": "白棋获胜",
+      "victory": "胜利",
+      "defeat": "失败",
+      "draw": "平局",
+      "restart": "重新开始",
+      "highlightLastMove": "高亮上一手",
+      "unrankedHint": "五子棋暂不接入在线排行榜。",
+      "boardAria": "五子棋棋盘",
+      "cellAria": "第 {{row}} 行第 {{col}} 列"
+    }
+  },
+  "stockTab": {
+    "title": "股票行情",
+    "subtitle": "搜索股票代码并查看实时价格、涨跌幅和专业 K 线。",
+    "autoRefresh": "每 30 秒自动刷新",
+    "sidebar": {
+      "toggle": "展开/收起侧边栏",
+      "deleteFavorite": "删除自选",
+      "favorites": "自选",
+      "search": "搜索",
+      "favoritesHint": "管理您的自选股列表",
+      "searchHint": "按名称或代码搜索股票",
+      "favoriteSearchLabel": "搜索自选",
+      "favoriteSearchPlaceholder": "输入自选名称或代码",
+      "selectedCount": "已选 {{count}} 项",
+      "deleteSelected": "删除",
+      "noFavoriteMatches": "未找到匹配的自选股",
+      "noFavorites": "暂无自选股"
+    },
+    "empty": {
+      "name": "未选择股票",
+      "chart": "暂无 K 线数据"
+    },
+    "loading": {
+      "chart": "正在加载 K 线..."
+    },
+    "period": {
+      "day": "日 K 线",
+      "week": "周 K 线",
+      "month": "月 K 线",
+      "short": {
+        "day": "日",
+        "week": "周",
+        "month": "月"
+      }
+    },
+    "actions": {
+      "search": "搜索",
+      "searching": "搜索中...",
+      "clear": "清除",
+      "addFavorite": "添加",
+      "addFavoriteWithName": "添加 {{name}} 到自选",
+      "removeFavorite": "移除 {{name}} 自选",
+      "refresh": "刷新行情"
+    },
+    "search": {
+      "aria": "股票搜索与筛选",
+      "keywordLabel": "搜索股票",
+      "keywordPlaceholder": "输入名称或代码"
+    },
+    "metrics": {
+      "aria": "股票关键指标",
+      "updatedAt": "更新于 {{time}}",
+      "previousClose": "昨收",
+      "high": "最高",
+      "low": "最低",
+      "volume": "成交量",
+      "amount": "成交额",
+      "source": "数据源"
+    },
+    "chart": {
+      "aria": "股票 K 线图",
+      "title": "股票 K 线",
+      "candlestick": "K 线",
+      "volume": "成交量",
+      "priceAxis": "价格",
+      "volumeAxis": "成交量",
+      "exportMenu": "图表导出菜单",
+      "range": {
+        "1m": "1月",
+        "3m": "3月",
+        "6m": "6月",
+        "1y": "1年",
+        "all": "全部"
+      }
+    },
+    "error": {
+      "default": "行情加载失败，请稍后重试。",
+      "symbolFormat": "请输入带市场前缀的股票代码，例如 SH600519、SZ000651、HK00700 或 USMSFT。"
+    }
+  },
+  "stt": {
+    "label": "识别结果",
+    "asrQuickAdd": "ASR快速添加",
+    "actions": {
+      "sendToAgent": "发送给Agent",
+      "added": "已添加",
+      "addToMemo": "添加到备忘录",
+      "addTodo": "添加待办",
+      "copied": "已复制",
+      "copy": "复制",
+      "ignore": "忽略"
+    }
+  },
+  "agent": {
+    "actions": {
+      "denyAuth": "不授权",
+      "allowAuth": "授权",
+      "close": "关闭"
+    }
+  },
+  "cli": {
+    "permission": {
+      "allow": "批准",
+      "always": "永久批准",
+      "deny": "拒绝"
+    }
+  },
+  "maxExpand": {
+    "loading": "正在加载最大展开界面...",
+    "nav": {
+      "expanded": "返回",
+      "todo": "待办",
+      "urlFavorites": "URL 收藏",
+      "album": "相册",
+      "mail": "邮箱",
+      "localFileSearch": "文件查找",
+      "clipboardHistory": "剪贴板",
+      "aiChat": "AI 对话",
+      "memo": "备忘录",
+      "countdown": "倒数日",
+      "alarm": "闹钟",
+      "toolbox": "工具箱",
+      "miniGame": "小游戏",
+      "cli": "CLI 控制台",
+      "localHub": "本地工作台",
+      "settings": "设置",
+      "switchTo": "切换到{{label}}"
+    },
+    "cli": {
+      "eyebrow": "Claude Code",
+      "title": "CLI 控制台",
+      "subtitle": "实时汇总 Claude Code CLI 的会话、工具调用、通知和授权请求。首次使用需要启用本地 hook，新的 Claude Code 会话会开始上报状态。",
+      "enableHook": "启用状态 Hook",
+      "disableHook": "关闭状态 Hook",
+      "clear": "清空记录",
+      "hookStatus": "Hook 状态",
+      "receiverStatus": "接收器",
+      "pendingAuth": "待授权",
+      "activeSessions": "活跃会话",
+      "phase": {
+        "waiting": "等待授权",
+        "running": "运行中",
+        "completed": "已完成",
+        "idle": "空闲"
+      },
+      "enabled": "已启用",
+      "disabled": "未启用",
+      "running": "运行中",
+      "stopped": "未运行",
+      "receiverUrl": "接收地址",
+      "settingsPath": "配置文件",
+      "sessions": "对话链路",
+      "events": "事件流",
+      "loading": "加载中",
+      "updatedAt": "更新于 {{time}}",
+      "emptySessions": "暂无 Claude Code 会话。",
+      "emptyEvents": "启用 Hook 后启动新的 Claude Code CLI 会话即可看到状态。",
+      "allSessions": "全部会话",
+      "allSessionsHint": "显示所有 Claude Code 事件流",
+      "allLabel": "all",
+      "filterAria": "事件筛选",
+      "heatmapAria": "活动热力图",
+      "heatmap": {
+        "session": "会话开始",
+        "tool": "工具调用",
+        "prompt": "提示词输入",
+        "loggedIn": "已登录",
+        "month": {
+          "jan": "1月",
+          "feb": "2月",
+          "mar": "3月",
+          "apr": "4月",
+          "may": "5月",
+          "jun": "6月",
+          "jul": "7月",
+          "aug": "8月",
+          "sep": "9月",
+          "oct": "10月",
+          "nov": "11月",
+          "dec": "12月"
+        }
+      },
+      "enterCliState": "进入实时流",
+      "prevPage": "上一页",
+      "nextPage": "下一页",
+      "bulkSelect": "批量选择",
+      "cancelSelection": "取消选择",
+      "selectedCount": "已选 {{count}} 项",
+      "deleteSelected": "删除所选",
+      "expand": "展开",
+      "collapse": "收起",
+      "permissionProject": "授权项目：{{project}}",
+      "filters": {
+        "all": "全部",
+        "message": "对话",
+        "tool": "工具调用",
+        "output": "输出",
+        "permission": "授权"
+      },
+      "detail": {
+        "userInput": "用户输入",
+        "assistantOutput": "Claude 输出",
+        "toolUseId": "工具调用 ID",
+        "toolInput": "工具入参",
+        "toolResult": "工具结果",
+        "model": "模型",
+        "notification": "通知",
+        "eventSubtype": "事件子类型",
+        "error": "错误信息",
+        "reason": "原因",
+        "rawEvent": "原始事件"
+      }
+    },
+    "toolbox": {
+      "sidebar": {
+        "index": "快速导航",
+        "download": "多线程下载",
+        "software": "常用软件",
+        "translate": "文本翻译",
+        "fileService": "文件服务",
+        "encodingService": "编码服务",
+        "networkService": "网络服务",
+        "fileCompression": "文件压缩",
+        "fileCompressionShort": "文件压缩",
+        "formatFactory": "格式工厂"
+      },
+      "index": {
+        "title": "快速导航",
+        "reset": "恢复默认",
+        "edit": "编辑",
+        "done": "完成",
+        "searchPlaceholder": "搜索工具项...",
+        "searchClear": "清空搜索",
+        "searchEmpty": "没有找到匹配的工具项",
+        "hintEdit": "拖拽卡片可调整排列顺序，点击「完成」保存。",
+        "hintView": "点击卡片可快速跳转到对应工具页。",
+        "ariaNav": "工具箱快速导航",
+        "removeCard": "删除 {{label}}",
+        "ariaAddPanel": "可添加导航卡片",
+        "addableTitle": "可添加卡片",
+        "emptyAddable": "当前没有可添加的卡片"
+      },
+      "nav": {
+        "download-create": {
+          "label": "创建下载",
+          "desc": "配置下载地址、保存路径和线程参数并启动任务。"
+        },
+        "download-history": {
+          "label": "下载历史",
+          "desc": "查看下载任务进度、状态并执行暂停/继续等操作。"
+        },
+        "software": {
+          "label": "常用软件",
+          "desc": "快速访问常用软件下载入口与反馈通道。"
+        },
+        "translate": {
+          "label": "文本翻译",
+          "desc": "输入文本并在多语言间进行翻译。"
+        },
+        "fileService-hash": {
+          "label": "文件哈希校验",
+          "desc": "计算并比对文件哈希值，校验文件完整性。"
+        },
+        "encodingService-json": {
+          "label": "JSON 编解码",
+          "desc": "对文本执行 JSON 编码与解码转换。"
+        },
+        "encodingService-base64": {
+          "label": "Base64 编解码",
+          "desc": "对文本执行 Base64 编码与解码转换。"
+        },
+        "networkService": {
+          "label": "网络服务",
+          "desc": "查询 IP 信息与网络相关工具结果。"
+        },
+        "fileCompression-imageCompression": {
+          "label": "图像压缩",
+          "desc": "批量压缩图片并设置输出目录与质量。"
+        },
+        "fileCompression-history": {
+          "label": "压缩历史",
+          "desc": "查看压缩任务结果并快速打开输出目录。"
+        },
+        "formatFactory-image": {
+          "label": "图片转换",
+          "desc": "将图片转换为目标格式并调整输出参数。"
+        },
+        "formatFactory-video": {
+          "label": "视频转换",
+          "desc": "对视频执行转封装、转码或音轨提取。"
+        }
+      },
+      "software": {
+        "title": "常用软件",
+        "subtitle": "快速访问和管理常用软件。",
+        "empty": "暂无常用软件",
+        "loading": "加载中…",
+        "refresh": "刷新界面",
+        "feedback": "反馈问题",
+        "download": "前往下载",
+        "items": {
+          "steam": "全球最大的游戏平台，海量游戏资源。"
+        }
+      },
+      "download": {
+        "title": "多线程下载",
+        "subtitle": "支持多线程下载，可自定义保存位置并查看实时进度。",
+        "pages": {
+          "create": "创建下载",
+          "history": "历史任务"
+        },
+        "form": {
+          "urlLabel": "下载地址",
+          "urlPlaceholder": "输入下载 URL，例如 https://example.com/file.zip",
+          "savePathLabel": "保存位置",
+          "savePathPlaceholder": "不填写时将使用系统下载目录",
+          "pickPath": "选择路径",
+          "defaultDirHint": "默认目录：{{dir}}",
+          "threadsLabel": "下载线程数 (1-16)",
+          "start": "开始下载",
+          "starting": "启动中...",
+          "cancelCurrent": "取消当前任务"
+        },
+        "tasks": {
+          "title": "下载任务",
+          "subtitle": "展示最近任务的进度、速度与状态。",
+          "empty": "暂无下载任务",
+          "etaLabel": "预计结束",
+          "remainingLabel": "剩余时间",
+          "elapsedLabel": "已使用下载时间",
+          "pause": "暂停",
+          "resume": "继续",
+          "delete": "删除记录",
+          "openFolder": "打开文件所在位置"
+        },
+        "status": {
+          "downloading": "下载中",
+          "paused": "已暂停",
+          "completed": "已完成",
+          "failed": "失败",
+          "canceled": "已取消"
+        },
+        "messages": {
+          "started": "已创建下载任务",
+          "startFailed": "启动下载失败",
+          "pickPathFailed": "选择保存路径失败",
+          "cancelSuccess": "已取消下载任务",
+          "cancelFailed": "取消下载失败",
+          "pauseSuccess": "已暂停下载任务",
+          "pauseFailed": "暂停下载失败",
+          "resumeSuccess": "已继续下载任务",
+          "resumeFailed": "继续下载失败",
+          "removeSuccess": "已删除下载记录",
+          "removeFailed": "删除下载记录失败",
+          "openFolderFailed": "打开文件所在位置失败"
+        }
+      },
+      "translate": {
+        "title": "文本翻译",
+        "subtitle": "由腾讯云提供机器翻译服务",
+        "inputPlaceholder": "输入要翻译的文本…",
+        "outputPlaceholder": "翻译结果将显示在此处",
+        "translateBtn": "翻译",
+        "translating": "翻译中…",
+        "swap": "交换语言",
+        "clear": "清空",
+        "copy": "复制",
+        "loginRequired": "请先登录后再使用翻译服务",
+        "error": "翻译失败，请稍后重试",
+        "lang": {
+          "auto": "自动检测",
+          "zh": "中文",
+          "en": "英语",
+          "ja": "日语",
+          "ko": "韩语",
+          "fr": "法语",
+          "de": "德语",
+          "es": "西班牙语",
+          "ru": "俄语"
+        }
+      },
+      "fileService": {
+        "hash": {
+          "title": "文件哈希校验",
+          "subtitle": "选择文件并计算哈希值，可与预期值对比校验文件完整性",
+          "pickFile": "选择文件",
+          "noFile": "未选择文件",
+          "expectedPlaceholder": "输入预期哈希值进行校验（可选）",
+          "computeBtn": "计算哈希",
+          "computing": "计算中…",
+          "copy": "复制",
+          "match": "校验通过：哈希值一致",
+          "mismatch": "校验失败：哈希值不一致"
+        }
+      },
+      "encodingService": {
+        "json": {
+          "title": "JSON 编解码",
+          "subtitle": "支持 JSON 字符串编码与解码",
+          "inputPlaceholder": "输入待处理文本（编码）或 JSON 字符串（解码）",
+          "outputPlaceholder": "处理结果将显示在这里",
+          "encodeBtn": "JSON 编码",
+          "decodeBtn": "JSON 解码",
+          "encodeError": "JSON 编码失败",
+          "decodeError": "JSON 解码失败，请检查输入格式"
+        },
+        "base64": {
+          "title": "Base64 编解码",
+          "subtitle": "支持 UTF-8 文本与 Base64 互转",
+          "inputPlaceholder": "输入待处理文本（编码）或 Base64 字符串（解码）",
+          "outputPlaceholder": "处理结果将显示在这里",
+          "encodeBtn": "Base64 编码",
+          "decodeBtn": "Base64 解码",
+          "encodeError": "Base64 编码失败",
+          "decodeError": "Base64 解码失败，请检查输入内容"
+        }
+      },
+      "networkService": {
+        "title": "IP 信息查询",
+        "subtitle": "IP 信息查询工具",
+        "ipinfo": {
+          "ipPlaceholder": "输入要查询的 IP 地址",
+          "fillLocal": "本机 IP",
+          "queryBtn": "查询",
+          "querying": "查询中...",
+          "emptyIp": "请输入 IP 地址",
+          "failed": "查询失败，请稍后重试",
+          "httpError": "请求失败：HTTP {{status}}",
+          "nonJson": "接口返回了非 JSON 内容",
+          "resultTitle": "查询结果",
+          "region": "地理位置",
+          "llc": "归属机构",
+          "latitude": "纬度",
+          "longitude": "经度",
+          "ipRange": "IP 段"
+        },
+        "librespeed": {
+          "urlPlaceholder": "输入 LibreSpeed 地址，例如 http://127.0.0.1:19366",
+          "applyBtn": "应用地址",
+          "testBtn": "开始测试",
+          "testing": "测试中...",
+          "failed": "测试失败，请稍后重试",
+          "ping": "延迟",
+          "download": "下载速度",
+          "upload": "上传速度",
+          "resultTitle": "测试结果",
+          "result": "结果"
+        }
+      },
+      "fileCompression": {
+        "title": "文件压缩",
+        "pages": {
+          "imageCompression": "图像压缩",
+          "history": "历史任务"
+        },
+        "subtitle": "选择图片并配置输出目录，输出格式与原图一致。",
+        "pickImages": "选择图片",
+        "pickFile": "选择图片",
+        "selectedCount": "已选择 {{count}} 张图片",
+        "noImages": "未选择图片",
+        "noFile": "未选择图片",
+        "outputDir": "输出目录",
+        "outputDirPlaceholder": "不填写时默认输出到首张图片所在目录",
+        "outputPlaceholder": "不填写时默认输出到首张图片所在目录",
+        "pickOutputDir": "选择目录",
+        "quality": "压缩质量",
+        "qualityHint": "可选范围 10-100，数值越高质量越高",
+        "startBtn": "开始压缩",
+        "compressing": "压缩中...",
+        "comingSoon": "文件压缩功能已可用。",
+        "resultsTitle": "压缩结果",
+        "resultsSubtitle": "成功 {{success}} / 共 {{total}}",
+        "pendingListTitle": "待处理文件",
+        "resultsEmpty": "暂无压缩结果",
+        "openOutput": "打开位置",
+        "removeTask": "删除任务",
+        "resultSuccess": "{{before}} → {{after}} · 压缩率 {{ratio}}",
+        "resultFailed": "压缩失败：{{reason}}",
+        "taskMeta": "状态：{{status}} · 质量：{{quality}}",
+        "status": {
+          "completed": "已完成",
+          "failed": "失败"
+        },
+        "messages": {
+          "pickFailed": "选择图片失败",
+          "pickOutputDirFailed": "选择输出目录失败",
+          "startFailed": "启动压缩失败，请稍后重试",
+          "done": "压缩完成：成功 {{success}} / {{total}}",
+          "openFolderFailed": "打开输出位置失败",
+          "removeFailed": "删除任务失败"
+        }
+      },
+      "formatFactory": {
+        "pages": {
+          "image": "图片转换",
+          "video": "视频转换"
+        },
+        "image": {
+          "title": "图片格式转换",
+          "subtitle": "选择图片文件并转换为目标格式，支持 PNG、JPG、WebP、BMP、ICO",
+          "pickFile": "选择图片",
+          "targetFormat": "目标格式",
+          "targetSize": "目标尺寸",
+          "quality": "输出质量",
+          "convertBtn": "开始转换",
+          "converting": "转换中…",
+          "success": "转换成功 → {{path}}",
+          "failed": "转换失败，请稍后重试",
+          "meta": {
+            "name": "文件名",
+            "mediaType": "媒体类型",
+            "mediaTypeImage": "图片",
+            "mime": "MIME",
+            "format": "格式",
+            "resolution": "分辨率",
+            "size": "文件大小",
+            "pixels": "像素总数",
+            "aspectRatio": "宽高比",
+            "targetFormat": "目标格式",
+            "path": "完整路径"
+          }
+        },
+        "video": {
+          "title": "视频轨道提取",
+          "subtitle": "从视频文件中提取音轨或视频轨，支持常见音视频封装格式",
+          "pickFile": "选择视频文件",
+          "trackType": "提取类型",
+          "trackAudio": "音轨",
+          "trackVideo": "视频轨",
+          "outputFormat": "输出格式",
+          "extractBtn": "开始提取",
+          "extracting": "提取中…",
+          "success": "提取成功 → {{path}}",
+          "failed": "提取失败，请稍后重试",
+          "meta": {
+            "name": "文件名",
+            "format": "封装格式",
+            "size": "文件大小",
+            "path": "完整路径"
+          }
+        }
+      }
+    },
+    "localFileSearch": {
+      "title": "本地文件查找",
+      "count": "{{count}} 项",
+      "pickDir": "选择目录",
+      "search": "搜索",
+      "config": "配置",
+      "limitLabel": "最大结果数",
+      "depthLabel": "最大深度",
+      "matchScopeLabel": "匹配范围",
+      "matchScopeName": "文件名",
+      "matchScopePath": "完整路径",
+      "matchModeLabel": "匹配方式",
+      "matchModeContains": "包含",
+      "matchModeStartsWith": "前缀",
+      "matchModeEndsWith": "后缀",
+      "matchModeExact": "精确匹配",
+      "includeFolders": "结果包含文件夹",
+      "includeFiles": "结果包含文件",
+      "includeHidden": "包含隐藏项",
+      "caseSensitive": "区分大小写",
+      "extensionsLabel": "文件后缀",
+      "extensionsPlaceholder": "如 pdf,docx,ts",
+      "excludeDirsLabel": "排除目录",
+      "excludeDirsPlaceholder": "如 dist,build,coverage",
+      "searching": "搜索中…",
+      "loading": "正在检索本地文件…",
+      "empty": "暂无结果，试试更换关键词或目录。",
+      "rootPlaceholder": "选择或输入搜索目录，例如 C:\\Users",
+      "keywordPlaceholder": "输入文件名关键词，例如 report、.pdf"
+    },
+    "memo": {
+      "search": "搜索标题、正文或标签…",
+      "tagFilter": "标签筛选",
+      "allTags": "全部标签",
+      "filterByTag": "按标签筛选",
+      "tagPlaceholder": "添加标签",
+      "addTag": "添加标签",
+      "removeTag": "移除标签",
+      "noTags": "暂无标签",
+      "add": "新建",
+      "loading": "加载中…",
+      "empty": "暂无备忘录",
+      "untitled": "无标题",
+      "noContent": "无内容",
+      "pinned": "已置顶",
+      "titlePlaceholder": "标题",
+      "contentPlaceholder": "在这里写点什么…",
+      "editMode": "编辑",
+      "previewMode": "预览",
+      "splitMode": "分屏",
+      "editTags": "编辑标签",
+      "markdownModeGroup": "Markdown 视图模式",
+      "bookmark": "标记书签",
+      "unbookmark": "取消书签",
+      "bookmarked": "已标记",
+      "showAll": "显示全部",
+      "showBookmarked": "仅显示书签",
+      "bulkSelect": "批量选择",
+      "cancelSelection": "取消选择",
+      "selectedCount": "已选 {{count}} 项",
+      "deleteSelected": "删除所选",
+      "pin": "置顶",
+      "unpin": "取消置顶",
+      "delete": "删除",
+      "created": "创建于",
+      "updated": "更新于",
+      "selectHint": "选择或新建一条备忘录"
+    },
+    "alarm": {
+      "title": "闹钟",
+      "add": "新建闹钟",
+      "newTitle": "新建闹钟",
+      "editTitle": "编辑闹钟",
+      "loading": "加载中…",
+      "empty": "暂无闹钟，点击右上角新建",
+      "labelField": "备注",
+      "labelPlaceholder": "闹钟备注（可选）",
+      "repeatField": "重复",
+      "ringtoneField": "铃声",
+      "previewRingtone": "试听",
+      "pausePreviewRingtone": "暂停",
+      "loopPlayback": "循环播放铃声",
+      "cancel": "取消",
+      "save": "保存",
+      "delete": "删除",
+      "turnOn": "开启",
+      "turnOff": "关闭",
+      "disabled": "已关闭",
+      "repeatOnce": "仅一次",
+      "repeatEveryday": "每天",
+      "repeatWeekdays": "工作日",
+      "repeatWeekend": "周末",
+      "ringIn": "{{h}}小时{{m}}分钟后",
+      "ringInMin": "{{m}}分钟后",
+      "ringTomorrow": "明天",
+      "ringInDays": "{{n}}天后",
+      "weekday": {
+        "sun": "日",
+        "mon": "一",
+        "tue": "二",
+        "wed": "三",
+        "thu": "四",
+        "fri": "五",
+        "sat": "六"
+      },
+      "ringtones": {
+        "alarm1": "系统铃声 1",
+        "alarm2": "核弹",
+        "alarm3": "奶蛙捧腹大笑"
+      }
+    }
+  },
+  "settings": {
+    "sidebar": {
+      "title": "设置"
+    },
+    "labels": {
+      "index": "快速导航",
+      "app": "软件设置",
+      "layout-preview": "布局预览",
+      "expand-layout": "展开布局",
+      "maxexpand-layout": "全展开布局",
+      "album": "相册配置",
+      "hide-process-list": "隐藏窗口管理",
+      "position": "位置校准",
+      "theme": "主题外观",
+      "language": "语言切换",
+      "behavior": "交互行为",
+      "animation": "软件动画",
+      "url-parser": "URL解析",
+      "clipboard-history": "剪贴板历史",
+      "alarm": "闹钟配置",
+      "break-reminder": "休息提醒",
+      "autostart": "实用工具",
+      "sound": "声音设置",
+      "notification": "通知设置",
+      "performance": "性能设置",
+      "performance-monitor": "性能监控",
+      "network": "网络配置",
+      "mail": "邮箱配置",
+      "weather": "天气配置",
+      "music": "歌曲设置",
+      "music-whitelist": "播放器白名单",
+      "music-lyrics": "歌词源",
+      "music-smtc": "SMTC",
+      "ai": "AI Agent",
+      "general": "通用配置",
+      "r1pxc": "r1pxc Agent",
+      "shortcut": "快捷键",
+      "user": "用户中心",
+      "update": "更新设置",
+      "pluginMarket": "壁纸市场",
+      "about": "关于软件"
+    },
+    "mail": {
+      "pagination": "邮箱配置分页",
+      "accounts": {
+        "unnamed": "未命名账户",
+        "add": "添加账户",
+        "remove": "移除",
+        "empty": "暂无账户，请点击上方 + 添加邮箱账户",
+        "label": "账户备注",
+        "labelHint": "自定义名称，方便区分多个邮箱",
+        "labelPlaceholder": "工作邮箱 / 个人邮箱"
+      },
+      "account": {
+        "title": "账户信息",
+        "hint": "邮箱地址用于展示与默认发件人信息。",
+        "emailAddress": "邮箱地址",
+        "emailAddressHint": "你的完整邮箱地址，例如 name@qq.com",
+        "authUser": "认证用户名",
+        "authUserHint": "通常与邮箱地址相同",
+        "authSecret": "认证密钥 / 应用专用密码",
+        "authSecretHint": "邮箱授权码或应用专用密码，非登录密码"
+      },
+      "imap": {
+        "title": "IMAP",
+        "hint": "用于收信、同步收件箱和文件夹状态。",
+        "quickFill": "快速填充",
+        "selectProvider": "选择邮箱服务商自动填充",
+        "host": "IMAP 服务器",
+        "port": "IMAP 端口",
+        "secure": "启用 TLS / SSL",
+        "providers": {
+          "qq": "QQ 邮箱",
+          "netease163": "网易 163",
+          "netease126": "网易 126",
+          "neteaseYeah": "网易 yeah",
+          "sina": "新浪邮箱",
+          "sohu": "搜狐邮箱",
+          "aliyun": "阿里邮箱",
+          "foxmail": "Foxmail",
+          "outlook": "Outlook / Hotmail",
+          "gmail": "Gmail"
+        }
+      },
+      "smtp": {
+        "hint": "用于发信。建议使用服务商推荐端口和加密方式。",
+        "host": "SMTP 服务器",
+        "port": "SMTP 端口",
+        "secure": "启用 TLS / SSL"
+      },
+      "actions": {
+        "title": "保存配置",
+        "hint": "当前仅保存本地配置。下一步可接入 IMAP 收信与 SMTP 发信实现。",
+        "save": "保存邮箱配置"
+      },
+      "preferences": {
+        "title": "收信设置",
+        "hint": "控制每次获取邮件的数量和其他收信行为。",
+        "fetchLimit": "每次获取邮件数",
+        "fetchLimitHint": "刷新收件箱时一次拉取的邮件数量，范围 1–30"
+      }
+    },
+    "mailPages": {
+      "account": "账户",
+      "imap": "IMAP",
+      "smtp": "SMTP",
+      "preferences": "收信设置"
+    },
+    "weatherPages": {
+      "location": "定位配置",
+      "provider": "接口配置"
+    },
+    "aiPages": {
+      "general": "通用配置",
+      "r1pxc": "r1pxc Agent"
+    },
+    "musicPages": {
+      "whitelist": "白名单",
+      "lyrics": "歌词源",
+      "smtc": "SMTC"
+    },
+    "index": {
+      "title": "快速导航",
+      "reset": "恢复默认",
+      "done": "完成",
+      "edit": "编辑",
+      "searchPlaceholder": "搜索配置项...",
+      "searchEmpty": "没有找到匹配的配置项",
+      "searchClear": "清空搜索",
+      "hintEdit": "拖拽卡片可调整排列顺序，点击「完成」保存。",
+      "hintView": "点击卡片可快速跳转到对应配置页。",
+      "ariaNav": "设置快速导航",
+      "removeCard": "删除 {{label}}",
+      "ariaAddPanel": "可添加导航卡片",
+      "addableTitle": "可添加卡片",
+      "emptyAddable": "当前没有可添加的卡片"
+    },
+    "language": {
+      "title": "显示语言",
+      "hint": "切换后将立即应用到支持多语言的界面文案",
+      "options": {
+        "zh-CN": "简体中文",
+        "en-US": "English"
+      },
+      "current": {
+        "zh-CN": "当前语言：简体中文",
+        "en-US": "Current language: English"
+      }
+    },
+    "app": {
+      "pagination": "软件设置分页",
+      "performance": {
+        "title": "性能设置",
+        "hint": "性能相关配置。",
+        "modeTitle": "启用性能模式",
+        "modeHint": "启用后 MaxExpand 首次进入将延迟加载各页面，降低首次切换卡顿；关闭后使用旧版一次性加载方式。",
+        "modeToggle": "启用性能模式",
+        "frameRateLimitTitle": "解除帧率限制",
+        "frameRateLimitHint": "启用后将解除 Chromium 帧率上限，适用于高刷新率显示器。更改后需重启应用生效。",
+        "frameRateLimitToggle": "解除帧率限制",
+        "frameRateLimitRestartHint": "帧率限制设置已变更，重启后生效。"
+      },
+      "performanceMonitor": {
+        "title": "性能监控",
+        "hint": "性能监控展示与硬件状态配置。",
+        "hardwareTitle": "监控硬件",
+        "hardwareHint": "选择性能监控图表读取的 CPU、GPU 和磁盘目标。",
+        "hardware": {
+          "cpu": "CPU",
+          "gpu": "GPU",
+          "disk": "磁盘"
+        },
+        "hardwareOptions": {
+          "allCpu": "全部 CPU",
+          "autoGpu": "自动选择 GPU",
+          "allDisks": "全部磁盘"
+        },
+        "colorsTitle": "图表颜色",
+        "colorsHint": "调整 Expand 性能监控中 CPU、GPU、内存和磁盘图表颜色。",
+        "resetColors": "恢复默认颜色",
+        "colors": {
+          "cpu": "CPU",
+          "gpu": "GPU",
+          "memory": "内存",
+          "disk": "磁盘"
+        }
+      },
+      "notifications": {
+        "configChanged": {
+          "title": "配置变更",
+          "body": "独立窗口模式设置已变更。"
+        },
+        "windowControlsChanged": {
+          "body": "独立窗口控制按钮样式已变更。"
+        },
+        "displayChanged": {
+          "body": "目标显示器已变更，是否立即重启生效？"
+        }
+      },
+      "layout": {
+        "previewTitle": "总览布局预览",
+        "previewHint": "实时显示左右控件组合后的 Expand 态灵动岛样式，切换下方控件可即时预览。",
+        "widgetPickerTitle": "控件组合",
+        "widgetPickerHint": "分别选择左右两侧展示的控件，切换后自动保存。",
+        "leftWidget": "左侧控件",
+        "rightWidget": "右侧控件",
+        "clockStyleTitle": "中间时钟样式",
+        "clockStyleHint": "选择总览中间时钟区域样式，切换后自动保存。",
+        "gradientEditorTitle": "渐变颜色编辑",
+        "gradientEditorHint": "选择一个基准色，自动生成渐变时钟字体。",
+        "gradientBaseColor": "基准色",
+        "musicBgTitle": "Hover 音乐背景样式",
+        "musicBgHint": "预览并选择 Hover 态歌曲界面的背景波浪效果样式。",
+        "musicBgCurrent": "目前状态",
+        "musicBgModified": "修改后效果",
+        "musicBgSilky": "丝滑波浪",
+        "musicBgWave": "音频波浪",
+        "gradientStart": "起始色",
+        "gradientMiddle": "中间色",
+        "gradientEnd": "结束色",
+        "clockStyleNames": {
+          "classic": "经典样式",
+          "gradient": "渐变样式",
+          "minimal": "极简艺术"
+        },
+        "widgetNames": {
+          "shortcuts": "快捷启动",
+          "todo": "待办事项",
+          "song": "歌曲",
+          "countdown": "倒数日",
+          "pomodoro": "番茄钟",
+          "urlFavorites": "URL 收藏",
+          "album": "相册轮播",
+          "mokugyo": "电子木鱼",
+          "breakReminder": "休息提醒"
+        },
+        "previewMock": {
+          "previewTag": "预览",
+          "shortcutA": "应用A",
+          "shortcutB": "应用B",
+          "shortcutC": "应用C",
+          "todoA": "示例待办 A",
+          "todoB": "示例待办 B",
+          "todoC": "示例待办 C",
+          "songTitle": "示例歌曲",
+          "songArtist": "示例艺术家",
+          "songAlbum": "示例专辑",
+          "samplePreview": "示例预览",
+          "albumFile": "示例图片.jpg",
+          "urlNoteGithub": "代码托管",
+          "urlNoteStackOverflow": "技术问答",
+          "breakSedentary": "站起来活动",
+          "breakGeneric": "休息一下",
+          "date": "2026年01月01日 星期四",
+          "lunar": "乙巳年 腊月十二",
+          "yiItems": "祈福 · 出行 · 开市",
+          "jiItems": "动土 · 安葬 · 破土"
+        }
+      },
+      "expandLayout": {
+        "previewTitle": "展开导航预览",
+        "previewHint": "预览展开态底部导航点顺序，灰色表示已隐藏页面。",
+        "orderTitle": "页面排序与可见性（展开）",
+        "orderHint": "拖拽调整展开态页面顺序，点击开关切换是否显示。当前显示 {{count}} / {{total}} 个页面。",
+        "orderHintStatic": "拖拽调整展开态页面顺序，点击开关切换是否显示。",
+        "moveUp": "上移",
+        "moveDown": "下移",
+        "hideTab": "隐藏此页面",
+        "showTab": "显示此页面",
+        "alwaysVisible": "此页面不可隐藏",
+        "resetDefault": "恢复默认",
+        "tabLabels": {
+          "overview": "总览",
+          "song": "歌曲",
+          "tools": "工具",
+          "translation": "翻译",
+          "performanceMonitor": "性能监控"
+        }
+      },
+      "maxExpandLayout": {
+        "previewTitle": "全展开导航预览",
+        "previewHint": "预览底部导航点的排列顺序，灰色表示已隐藏的页面。",
+        "backLabel": "返回",
+        "settingsLabel": "设置",
+        "orderTitle": "页面排序与可见性",
+        "orderHint": "拖拽调整页面顺序，点击开关切换是否显示。当前显示 {{count}} / {{total}} 个页面。",
+        "orderHintStatic": "拖拽调整页面顺序，点击开关切换是否显示。",
+        "moveUp": "上移",
+        "moveDown": "下移",
+        "hideTab": "隐藏此页面",
+        "showTab": "显示此页面",
+        "alwaysVisible": "此页面不可隐藏",
+        "resetDefault": "恢复默认",
+        "tabLabels": {
+          "todo": "待办事项",
+          "urlFavorites": "URL 收藏",
+          "album": "相册",
+          "mail": "邮箱",
+          "localFileSearch": "文件查找",
+          "clipboardHistory": "剪贴板",
+          "aiChat": "AI 对话",
+          "memo": "备忘录",
+          "countdown": "倒数日",
+          "alarm": "闹钟",
+          "toolbox": "工具箱",
+          "miniGame": "小游戏",
+          "stock": "股票行情",
+          "cli": "CLI 控制台",
+          "localHub": "本地工作台"
+        }
+      },
+      "hideProcess": {
+        "title": "隐藏窗口管理",
+        "hint": "当下方黑名单进程对应窗口处于焦点状态时，将立即隐藏灵动岛；失去焦点后自动显示。",
+        "fullscreenTitle": "全屏时自动隐藏",
+        "fullscreenHint": "检测到任意窗口进入全屏后自动隐藏灵动岛，退出全屏后自动显示。",
+        "fullscreenToggle": "启用全屏窗口自动隐藏",
+        "runningTitle": "当前运行的窗口",
+        "runningHint": "在列表中点击可将窗口加入 / 移出黑名单，支持按进程名搜索。",
+        "searchPlaceholder": "搜索进程名",
+        "refreshing": "刷新中…",
+        "refresh": "刷新窗口",
+        "empty": "暂无隐藏窗口",
+        "removeWindow": "移除该窗口"
+      },
+      "position": {
+        "title": "灵动岛位置偏移",
+        "hint": "调整后自动保存，重启后会按该位置校准。",
+        "quickAdjustTitle": "快速微调",
+        "quickAdjustHint": "每次按钮点击以 10px 步进移动灵动岛位置，并自动保存。",
+        "displayTitle": "显示器选择",
+        "displayHint": "多显示器环境可指定灵动岛显示器。",
+        "displayLabel": "目标显示器",
+        "displayPrimaryOption": "主显示器（推荐）",
+        "displayOption": "显示器 {{index}}（{{width}}×{{height}}）",
+        "displayPrimarySuffix": " · 主显示器",
+        "preciseTitle": "精确偏移",
+        "preciseHint": "手动输入水平 / 垂直偏移量（单位 px），回车或点击“应用”后生效。",
+        "moveLeft": "左移 10",
+        "moveRight": "右移 10",
+        "moveUp": "上移 10",
+        "moveDown": "下移 10",
+        "xLabel": "水平偏移 X（px）",
+        "yLabel": "垂直偏移 Y（px）",
+        "apply": "应用",
+        "cancel": "取消",
+        "resetDefault": "重置为默认位置"
+      },
+      "theme": {
+        "title": "主题模式",
+        "hint": "选择深色、浅色或跟随系统主题",
+        "musicOuterGlowTitle": "音乐外光圈特效",
+        "musicOuterGlowHint": "控制歌曲播放时专辑封面外圈的跑马灯/光晕动态效果。",
+        "musicOuterGlowToggle": "启用歌曲播放外光圈跑马灯特效",
+        "windowControlsTitle": "独立窗口控制按钮样式",
+        "windowControlsHint": "启用后，独立窗口右上角将显示 macOS 风格三色圆点控制按钮",
+        "windowControlsMacToggle": "使用 Mac 风格窗口控制按钮",
+        "dark": "深色模式",
+        "light": "浅色模式",
+        "system": "跟随系统",
+        "builtinWallpaper": "内置壁纸",
+        "builtinWallpaperHint": "选择一张内置壁纸作为灵动岛背景",
+        "customImage": "自定义图片",
+        "customImageHint": "从本地选择图片，支持 jpg / png / gif / webp",
+        "changeImage": "更换图片",
+        "selectImage": "选择图片",
+        "customVideo": "自定义视频",
+        "customVideoHint": "从本地选择视频，仅支持 mp4 格式",
+        "changeVideo": "更换视频",
+        "selectVideo": "选择视频",
+        "videoFitHint": "视频填充模式",
+        "videoFitCover": "覆盖（裁切）",
+        "videoFitContain": "完整（留边）",
+        "videoMutedToggle": "静音播放视频",
+        "videoLoopToggle": "循环播放视频",
+        "videoVolumeHint": "背景视频音量（0 - 100%），取消静音后生效",
+        "videoRateHint": "播放速度",
+        "videoHwDecodeToggle": "启用硬件解码",
+        "syncDesktopWallpaperTitle": "同步系统桌面壁纸",
+        "syncDesktopWallpaperHint": "背景图片/视频变化时，同步更新 Windows 系统桌面壁纸（视频将使用封面图）",
+        "syncDesktopWallpaperToggle": "背景变化时同步到系统桌面",
+        "clearBackground": "清除背景",
+        "previewAlt": "背景预览",
+        "previewLabel": "实时预览",
+        "bgCardTitle": "壁纸背景",
+        "bgCardSubtitle": "选择内置壁纸，或从本地导入图片 / 视频作为灵动岛背景",
+        "effectCardTitle": "背景显示效果",
+        "effectCardSubtitle": "调整背景的透明度与模糊度",
+        "opacityTitle": "背景透明度",
+        "blurTitle": "背景模糊度",
+        "videoCardTitle": "视频播放",
+        "videoCardSubtitle": "背景视频的填充、声音与播放控制",
+        "videoAudioTitle": "声音与循环",
+        "videoPerfTitle": "性能",
+        "imageOpacityHint": "背景图片透明度（0% - 100%），数值越高图片越明显",
+        "imageBlurHint": "背景图片模糊度（0px - 20px），数值越高越模糊",
+        "islandOpacityTitle": "灵动岛透明度",
+        "islandOpacityHint": "数值越低越透明（10% - 100%）",
+        "autoDimTitle": "闲置自动降低不透明度",
+        "autoDimHint": "开启后，灵动岛在指定时间内无鼠标操作时将自动降低不透明度，鼠标移入后恢复",
+        "autoDimToggle": "启用闲置自动降低不透明度",
+        "autoDimDelayHint": "无操作多少秒后自动降低（1 - 120 秒）",
+        "defaultOpacitySuffix": "（默认透明度 {{opacity}}%）"
+      },
+      "behavior": {
+        "mouseLeaveTitle": "鼠标移开自动收回",
+        "mouseLeaveHint": "启用后，鼠标离开灵动岛时将自动回到空闲状态",
+        "expandLeaveToggle": "展开态（Expand）鼠标移开后自动收回",
+        "maxExpandLeaveToggle": "最大展开态（MaxExpand）鼠标移开后自动收回",
+        "idleClickExpandTitle": "空闲态点击展开",
+        "idleClickExpandHint": "启用后，鼠标悬停在灵动岛上不会自动展开，需要点击才能展开，后续交互不受影响",
+        "idleClickExpandToggle": "空闲状态下点击展开（禁用悬停自动展开）",
+        "windowModeTitle": "独立窗口模式",
+        "windowModeHint": "启用后，待办事项、倒数日、设置将在独立窗口中打开，而非灵动岛内",
+        "integratedMode": "集成在灵动岛中",
+        "standaloneMode": "独立窗口",
+        "hoverScreenshotModeTitle": "悬停界面截图按钮模式",
+        "hoverScreenshotModeHint": "配置 hover 界面的截图按钮触发选区截图或显示器截图",
+        "hoverScreenshotModeLabel": "截图方式",
+        "hoverScreenshotModeRegion": "选区截图",
+        "hoverScreenshotModeDisplay": "显示器截图",
+        "shapeModeTitle": "岛屿形态",
+        "shapeModeHint": "切换灵动岛的外观形态，刘海屏贴于屏幕顶部，灵动岛为胶囊形状",
+        "shapeModeNotch": "刘海屏",
+        "shapeModePill": "灵动岛"
+      },
+      "animation": {
+        "springTitle": "灵动岛弹性动画",
+        "springHint": "关闭后，展开和收起动画将变得更加平滑内敛，消除弹跳感",
+        "springToggle": "启用弹性动画",
+        "animSpeedTitle": "灵动岛动画速度",
+        "animSpeedHint": "控制灵动岛状态切换时的过渡动画快慢",
+        "animSpeed_slow": "慢",
+        "animSpeed_medium": "中",
+        "animSpeed_fast": "快",
+        "expandTabSwitchTitle": "Expand 切换动画",
+        "expandTabSwitchHint": "启用后，展开态切换页面时将播放左右滑动过渡动画",
+        "expandTabSwitchToggle": "启用切换动画",
+        "maxExpandTabSwitchTitle": "MaxExpand 切换动画",
+        "maxExpandTabSwitchHint": "启用后，最大展开态切换页面时将播放左右滑动过渡动画",
+        "maxExpandTabSwitchToggle": "启用切换动画",
+        "startupAnimationTitle": "是否显示启动动画",
+        "startupAnimationHint": "开启后每次启动显示启动动画，关闭后不显示",
+        "startupAnimationToggle": "显示启动动画",
+        "splashBgColorTitle": "启动画面背景颜色",
+        "splashBgColorHint": "自定义启动画面的背景颜色",
+        "resetDefault": "恢复默认",
+        "previewPlay": "预览",
+        "previewStop": "停止"
+      },
+      "album": {
+        "carouselTitle": "相册轮播方式",
+        "carouselHint": "配置总览相册卡片的轮播顺序、频率、展示内容与点击行为",
+        "intervalLabel": "轮播间隔",
+        "interval3s": "3 秒",
+        "interval5s": "5 秒",
+        "interval8s": "8 秒",
+        "orderLabel": "轮播顺序",
+        "orderSequential": "顺序轮播",
+        "orderRandom": "随机轮播",
+        "filterLabel": "展示资源",
+        "filterHint": "选择总览相册卡片参与轮播的资源类型",
+        "filterAll": "全部",
+        "filterImage": "仅图片",
+        "filterVideo": "仅视频",
+        "clickBehaviorLabel": "点击卡片行为",
+        "clickBehaviorHint": "配置点击总览相册卡片后的行为",
+        "clickBehaviorOpen": "打开相册页",
+        "clickBehaviorNone": "无动作",
+        "playbackTitle": "自动播放与视频行为",
+        "playbackHint": "仅影响总览相册轮播卡片，不影响相册主页面。",
+        "autoRotateToggle": "启用自动轮播",
+        "videoAutoPlayToggle": "视频自动播放",
+        "videoMutedToggle": "视频静音播放"
+      },
+      "urlParser": {
+        "title": "剪贴板 URL 监听",
+        "hint": "启用后，检测到剪贴板含链接时会弹出询问通知",
+        "enableToggle": "启用剪贴板 URL 监听",
+        "detectModes": "识别项目",
+        "detectModesHint": "选择剪贴板中被识别为 URL 的匹配范围，并可在收藏界面临时静音通知。",
+        "modeHttpsOnly": "强制包含 https 头",
+        "modeHttpHttps": "包含 http 头",
+        "modeDomainOnly": "仅含有域名",
+        "suppressInFavorites": "在 URL 收藏界面时不弹通知",
+        "blacklistTitle": "URL 黑名单（按域名）",
+        "blacklistHint": "命中黑名单域名时：单个链接不弹窗，多链接自动剔除",
+        "blacklistPlaceholder": "输入域名，如 example.com",
+        "addDomain": "添加域名",
+        "emptyBlacklist": "暂无黑名单域名",
+        "removeDomain": "移除该域名",
+        "errors": {
+          "invalidDomain": "请输入有效域名",
+          "domainExists": "该域名已在黑名单中",
+          "saveFailed": "保存失败，请稍后重试"
+        }
+      },
+      "autostart": {
+        "toolsHint": "常用应用操作与日志工具",
+        "quit": "关闭灵动岛",
+        "restart": "重启灵动岛",
+        "openLogs": "打开日志文件夹",
+        "clearLogs": "清理日志缓存",
+        "logsClearing": "清理中…",
+        "logsCleared": "已清理 {{kb}} KB",
+        "logsClearFailed": "清理失败",
+        "title": "开机自启",
+        "hint": "设置系统启动时是否自动运行灵动岛",
+        "options": {
+          "disabled": "禁用",
+          "enabled": "启用",
+          "highPriority": "高优先级"
+        },
+        "status": {
+          "disabled": "当前已禁用开机自启。",
+          "enabled": "系统登录后将自动启动灵动岛。",
+          "highPriority": "以高优先级启动，更早完成加载。"
+        }
+      }
+    },
+    "common": {
+      "add": "添加",
+      "remove": "移除",
+      "save": "保存",
+      "saveFailed": "保存失败：{{error}}",
+      "unknownError": "未知错误"
+    },
+    "clipboardHistory": {
+      "enabled": {
+        "title": "历史记录开关",
+        "hint": "关闭后不再追加新的剪贴板记录，已有记录会保留。",
+        "toggle": "启用剪贴板历史记录"
+      },
+      "limit": {
+        "title": "最大保留条数",
+        "hint": "新记录会在前端按该条数滚动保存。",
+        "options": {
+          "10": "10 条",
+          "20": "20 条",
+          "30": "30 条",
+          "50": "50 条"
+        }
+      },
+      "exitMaxExpandOnCopy": {
+        "title": "复制后自动退出",
+        "hint": "复制历史项后自动退出最大展开；有歌曲时回到歌曲态，无歌曲时回到 idle。",
+        "toggle": "启用复制后退出最大展开"
+      },
+      "actions": {
+        "title": "数据管理",
+        "hint": "可一键清空已保存的剪贴板历史记录。",
+        "clear": "清空历史记录"
+      },
+      "messages": {
+        "clearSuccess": "剪贴板历史已清空",
+        "clearFailed": "清空失败，请稍后重试"
+      }
+    },
+    "alarm": {
+      "sound": {
+        "title": "提醒音",
+        "hint": "闹钟到点时播放提示音效。",
+        "toggle": "启用闹钟提醒音"
+      },
+      "notification": {
+        "title": "系统通知",
+        "hint": "闹钟触发时发送系统通知提醒。",
+        "toggle": "启用系统通知"
+      },
+      "snooze": {
+        "title": "贪睡时长",
+        "hint": "点击贪睡后延迟再次提醒的分钟数。",
+        "options": {
+          "1": "1 分钟",
+          "3": "3 分钟",
+          "5": "5 分钟",
+          "10": "10 分钟",
+          "15": "15 分钟"
+        }
+      },
+      "autoDismiss": {
+        "title": "自动关闭",
+        "hint": "闹钟响铃后自动关闭的分钟数，设为「不自动关闭」则需手动操作。",
+        "never": "不自动关闭",
+        "options": {
+          "1": "1 分钟",
+          "3": "3 分钟",
+          "5": "5 分钟",
+          "10": "10 分钟"
+        }
+      }
+    },
+    "sound": {
+      "global": {
+        "title": "全局音量",
+        "hint": "影响闹钟与音效的整体输出音量。"
+      },
+      "alarmVolume": {
+        "title": "闹钟音量",
+        "hint": "仅影响闹钟响铃与试听音量。"
+      },
+      "effectVolume": {
+        "title": "音效音量",
+        "hint": "影响 STT 触发音与木鱼敲击音。"
+      }
+    },
+    "notification": {
+      "pageTitle": "通知设置",
+      "pageHint": "配置灵动岛通知提醒与展示行为。",
+      "sound": {
+        "title": "通知音效",
+        "hint": "通知触发时播放一次提示音。",
+        "toggle": "启用通知音效"
+      },
+      "agentNotification": {
+        "title": "Agent 启动通知",
+        "hint": "检测到桌面 Agent 启动或关闭时弹出灵动岛通知。",
+        "toggle": "启用 Agent 启动通知"
+      }
+    },
+    "breakReminder": {
+      "listTitle": "提醒事项",
+      "listHint": "开启后，到达设定的间隔时间将弹出休息提醒通知。",
+      "addBtn": "新建提醒",
+      "deleteBtn": "删除",
+      "nameLabel": "提醒名称",
+      "intervalLabel": "间隔（分钟）",
+      "enabledLabel": "启用",
+      "emptyHint": "暂无提醒事项，点击上方按钮新建。",
+      "resetBtn": "恢复默认",
+      "defaultSedentary": "起来动动",
+      "defaultHydration": "喝水",
+      "notificationTitle": "休息提醒",
+      "notificationBody": "该{{name}}啦！"
+    },
+    "network": {
+      "timeout": {
+        "title": "请求超时时间",
+        "hint": "设置网络请求的最长等待时间，网络较差时可适当增大",
+        "presetTitle": "常用预设",
+        "customTitle": "自定义秒数",
+        "customHint": "输入 1 - 120 之间的秒数，回车或失去焦点后应用。",
+        "unitSecond": "秒",
+        "options": {
+          "ms5000": "5 秒",
+          "ms10000": "10 秒（默认）",
+          "ms15000": "15 秒",
+          "ms20000": "20 秒",
+          "ms30000": "30 秒"
+        }
+      },
+      "staticAssetNode": {
+        "title": "静态资源节点",
+        "hint": "所有用户默认使用 R2，可选择 R2/COS/OSS。",
+        "proOnlyHint": "当前账户不可用",
+        "proHint": "可切换 COS/OSS 节点（也可继续使用 R2）。"
+      }
+    },
+    "weather": {
+      "locationPriority": {
+        "title": "定位来源优先级",
+        "hint": "选择天气定位优先使用 IP 自动定位或自定义位置"
+      },
+      "customCityTitle": "自定义城市",
+      "customCityHint": "仅在“自定义位置优先”生效，可先测试再保存；支持中文 / 拼音 / 英文。",
+      "cityName": "城市名称",
+      "cityPlaceholder": "例如：杭州 / Tokyo / New York",
+      "testing": "测试中...",
+      "testCustomLocation": "测试自定义位置（多接口）",
+      "saveLocation": "保存定位配置",
+      "providerPriority": {
+        "title": "天气接口优先级",
+        "hint": "可选择优先使用 Open-Meteo、UAPI 或和风天气，失败时自动切换到可用源"
+      },
+      "alert": {
+        "title": "启动天气预警提醒",
+        "hint": "应用启动自动检查更新前，先请求和风天气预警并提示；确认关闭后再继续检查更新。",
+        "enabled": "开启预警提醒",
+        "disabled": "关闭预警提醒"
+      },
+      "proBadge": "",
+      "proOnlyHint": "当前账户不可用",
+      "options": {
+        "locationPriority": {
+          "ip": "IP 定位优先",
+          "custom": "自定义位置优先"
+        },
+        "providerPriority": {
+          "openMeteo": "Open-Meteo 优先",
+          "uapi": "UAPI 优先",
+          "qweatherPro": "和风天气优先"
+        }
+      },
+      "messages": {
+        "switchPriorityFailed": "切换优先级失败：{{error}}",
+        "testFailed": "测试失败：{{error}}",
+        "cityRequired": "请先输入城市名称后再测试",
+        "cityResolveFailed": "城市解析失败：{{error}}",
+        "providerNonJson": "{{name}} 返回了非 JSON",
+        "providerAvailable": "{{name}} 可用",
+        "providerUnavailable": "{{name}} 不可用：{{error}}",
+        "proLoginRequired": "请先登录账号",
+        "testResult": "{{city}}（{{lat}}, {{lng}}） - {{details}}",
+        "detailSeparator": "；",
+        "customNeedsCity": "选择“自定义位置优先”时请先输入城市名称",
+        "priorityApplied": "定位来源优先级已应用",
+        "customMissingFallback": "已切换为自定义位置优先，但未配置城市，将自动回退到 IP 定位",
+        "configSavedWithCity": "天气定位配置已保存（{{city}} {{lat}}, {{lng}}）",
+        "configSaved": "天气定位配置已保存"
+      },
+      "adcode": {
+        "missingParams": "District API 缺少查询参数（adcode 或 keyword）",
+        "httpError": "Adcode API HTTP {{status}}：{{body}}",
+        "nonJson": "Adcode API 返回了非 JSON 内容，请检查网络环境",
+        "errorCode": "Adcode API 返回错误码 {{code}}",
+        "emptyKeyword": "请输入城市名称",
+        "notFound": "未查询到该城市，请尝试更完整名称",
+        "noCoords": "查询结果缺少经纬度信息"
+      },
+      "pagination": "天气配置分页"
+    },
+    "music": {
+      "whitelist": {
+        "title": "播放器白名单",
+        "hint": "只有白名单内的播放器才会触发歌曲信息获取",
+        "empty": "暂无已加入的播放器",
+        "addTitle": "添加播放器",
+        "addHint": "手动输入播放器进程名，或自动从当前 SMTC 会话中检测",
+        "detectedTitle": "当前检测到",
+        "placeholder": "输入播放器进程名（如 Spotify.exe）",
+        "fetching": "获取中…",
+        "fetchSourceProcess": "获取播放进程",
+        "added": "已添加",
+        "alreadyExists": "已在白名单中"
+      },
+      "lyrics": {
+        "enabledTitle": "歌词功能",
+        "enabledHint": "关闭后不再发送歌词相关网络请求，不显示歌词，不切换到歌词状态",
+        "enabledToggle": "启用歌词功能",
+        "translationTitle": "翻译歌词",
+        "translationHint": "关闭后不显示翻译歌词，不切换到翻译歌词状态",
+        "translationToggle": "显示翻译歌词",
+        "title": "歌词源",
+        "hint": "自动模式根据 SMTC 检测到的播放器进程选择对应源，失败后依次尝试其他源，最后使用 LRCLIB 兜底",
+        "displayTitle": "歌词显示",
+        "displayHint": "控制歌词界面的展示效果",
+        "sourceOptions": {
+          "auto": "自动（跟随播放器）",
+          "neteaseOnly": "仅网易云",
+          "qqmusicOnly": "仅 QQ音乐",
+          "kugouOnly": "仅酷狗",
+          "sodamusicOnly": "仅汽水音乐",
+          "applemusicOnly": "仅 Apple Music",
+          "spotifyOnly": "仅 Spotify",
+          "moekoeOnly": "仅 MoeKoe",
+          "lrclibOnly": "仅 LRCLIB"
+        },
+        "karaokeTitle": "逐字扫光",
+        "karaokeHint": "启用后歌词将以逐字高亮方式显示",
+        "karaokeToggle": "启用逐字扫光效果",
+        "clockTitle": "歌词时钟",
+        "clockHint": "在歌词界面封面与歌词之间显示当前北京时间",
+        "clockToggle": "显示当前时间",
+        "calibrateTitle": "歌词校准",
+        "calibrateHint": "歌词获取后延迟读取 SMTC 时间戳，修正歌词时间偏移",
+        "calibrateToggle": "启用歌词校准",
+        "calibrateDelayLabel": "触发延迟（秒）"
+      },
+      "smtc": {
+        "title": "SMTC 自动取消订阅",
+        "hint": "用于清理长时间无更新的播放会话，默认永不取消订阅",
+        "unsubscribeMs": "取消订阅时间（毫秒）",
+        "neverUnsubscribe": "永不取消订阅",
+        "invalidMsValue": "请输入有效毫秒值（>= 1000）或开启「永不取消订阅」",
+        "saveFailed": "保存失败，请稍后重试",
+        "savedNeverUnsubscribe": "已保存：永不自动取消订阅",
+        "savedAutoUnsubscribe": "已保存：{{ms}} ms 自动取消订阅"
+      },
+      "pagination": "歌曲设置分页"
+    },
+    "hotkey": {
+      "duplicateHotkey": "重复快捷键",
+      "registerFailed": "快捷键注册失败",
+      "registerFailedRetry": "快捷键注册失败，请尝试其他组合"
+    },
+    "shortcut": {
+      "pages": {
+        "window": "窗口控制",
+        "agent": "Agent 快捷键",
+        "capture": "截图",
+        "media": "音乐控制"
+      },
+      "common": {
+        "recordingValue": "请按下快捷键组合…",
+        "notSetValue": "未设置",
+        "recordingBtn": "录入中",
+        "editBtn": "修改",
+        "clearBtn": "清除"
+      },
+      "window": {
+        "toggleIsland": {
+          "title": "隐藏/显示快捷键",
+          "hint": "点击“修改”后按下组合键（如 Alt+X、Ctrl+Shift+H）"
+        },
+        "quitApp": {
+          "title": "关闭灵动岛快捷键",
+          "hint": "按下此快捷键将立即关闭灵动岛应用（如 Alt+Q、Ctrl+Shift+Q）"
+        },
+        "resetPosition": {
+          "title": "还原默认位置快捷键",
+          "hint": "按下此快捷键将把灵动岛恢复到默认顶部居中位置"
+        },
+        "toggleTray": {
+          "title": "隐藏/显示托盘图标快捷键",
+          "hint": "按下此快捷键将隐藏或显示系统托盘中的灵动岛图标"
+        },
+        "showConfig": {
+          "title": "显示配置窗口快捷键",
+          "hint": "仅在独立窗口模式下生效：按下后将打开独立配置窗口并切换到设置页"
+        },
+        "openClipboardHistory": {
+          "title": "打开剪贴板历史快捷键",
+          "hint": "按下后将打开灵动岛并直接切换到剪贴板历史界面"
+        },
+        "togglePassthrough": {
+          "title": "切换鼠标穿透快捷键",
+          "hint": "按下此快捷键将锁定或解锁鼠标穿透状态，锁定后灵动岛不会拦截鼠标事件"
+        },
+        "toggleUiLock": {
+          "title": "切换 UI 状态锁定快捷键",
+          "hint": "按下后锁定当前 UI 状态，锁定期间不会因鼠标进入/移出或自动逻辑切换状态，再次按下解锁"
+        },
+        "agentVoiceInput": {
+          "title": "Agent 语音输入快捷键",
+          "hint": "长按此快捷键将触发 Agent 语音输入，释放后自动关闭"
+        },
+        "toggleShapeMode": {
+          "title": "切换形态模式快捷键",
+          "hint": "按下此快捷键将在刘海屏与灵动岛形态之间快速切换"
+        }
+      },
+      "capture": {
+        "screenshot": {
+          "title": "选区截图快捷键",
+          "hint": "按下此快捷键将触发截图选区流程（如 Alt+A、Ctrl+Shift+A）"
+        }
+      },
+      "media": {
+        "nextSong": {
+          "title": "快速切换歌曲快捷键",
+          "hint": "按下后触发系统下一曲媒体按键（仅白名单播放器生效）"
+        },
+        "playPause": {
+          "title": "暂停/播放歌曲快捷键",
+          "hint": "按下后触发系统播放/暂停媒体按键（仅白名单播放器生效）"
+        }
+      },
+      "pagination": "快捷键设置分页"
+    },
+    "update": {
+      "versionCardTitle": "版本信息",
+      "versionCardHint": "查看当前版本并选择更新源，应用所有补丁包均通过该更新源下载",
+      "autoPromptTitle": "更新提示",
+      "autoPromptHintStatic": "控制是否自动提示版本更新和公告展示策略",
+      "autoPromptEnabled": "自动提示版本更新",
+      "announcementShowModeAlways": "每次都显示公告",
+      "announcementShowModeVersionOnly": "仅版本更新时显示公告",
+      "actionCardTitle": "检查与安装",
+      "actionCardHint": "手动触发检查，有新版本时可下载安装；下载完成后点击“安装并重启”应用更新",
+      "currentVersion": "当前版本",
+      "source": "更新源",
+      "sourceHint": "Cloudflare R2：全球访问稳定，综合速度均衡\nESA CDN：ESA全球CDN，所有用户可用\nTencent COS：国内网络通常更快\nAliyun OSS：国内节点覆盖广，峰值速度高\nGitHub Releases：海外链路较稳，国内可能偏慢",
+      "proOnlyTag": "",
+      "proOnlyError": "当前账户不可用该更新源",
+      "proOnlyNeedLogin": "请先登录账号后再使用该更新源",
+      "sourceResolveFailed": "获取更新源地址失败",
+      "latestVersion": "最新版本",
+      "downloadingFrom": "正在从 {{source}} 下载更新…",
+      "preparingDownload": "准备下载…",
+      "downloadFailed": "下载失败，请稍后重试",
+      "actions": {
+        "check": "检查更新",
+        "checking": "检查中…",
+        "latest": "已是最新版本",
+        "download": "下载更新",
+        "installRestart": "安装并重启",
+        "retry": "重试",
+        "resetGuide": "下次启动显示引导"
+      },
+      "guideCardTitle": "引导界面",
+      "guideCardHint": "重新显示首次启动引导界面",
+      "guideResetSuccess": "设置成功，下次启动将显示引导界面",
+      "guideResetError": "设置失败，请稍后重试"
+    },
+    "pluginMarket": {
+      "search": {
+        "wallpaperTitle": "壁纸市场",
+        "wallpaperHint": "浏览并应用社区分享的壁纸资源，支持图片和视频壁纸",
+        "contributionTitle": "壁纸贡献",
+        "contributionHint": "上传你的壁纸作品，分享给社区用户",
+        "editTitle": "壁纸管理",
+        "editHint": "查看和编辑你已贡献的壁纸作品，管理审核状态"
+      },
+      "auth": {
+        "entryTitle": "登录后即可访问壁纸市场内容",
+        "gotoLogin": "前往登录",
+        "gotoRegister": "前往注册",
+        "hint": "登录后可浏览壁纸内容。"
+      },
+      "pages": {
+        "wallpaper": "壁纸",
+        "contribution": "贡献",
+        "edit": "修改壁纸"
+      },
+      "tag": {
+        "placeholder": "输入标签后回车或逗号确认",
+        "createNew": "创建新标签",
+        "removeTag": "移除标签"
+      },
+      "contribution": {
+        "title": "贡献你的壁纸",
+        "actions": {
+          "backToWallpaper": "返回壁纸市场"
+        }
+      },
+      "edit": {
+        "searchPlaceholder": "搜索自己的壁纸",
+        "actions": {
+          "backToMarket": "返回壁纸市场"
+        },
+        "feedback": {
+          "emptyMine": "你还没有上传过壁纸",
+          "selectHint": "请选择左侧壁纸查看元数据"
+        },
+        "meta": {
+          "status": "状态"
+        },
+        "status": {
+          "published": "已发布",
+          "pending": "待审核",
+          "rejected": "已拒绝",
+          "delisted": "已下架",
+          "deleted": "已删除"
+        }
+      },
+      "wallpaper": {
+        "searchPlaceholder": "搜索标题/作者/描述/标签",
+        "sort": {
+          "newest": "最新",
+          "rating": "评分最高",
+          "apply": "应用最多"
+        },
+        "badges": {
+          "video": "视频"
+        },
+        "videoControls": {
+          "play": "播放",
+          "pause": "暂停",
+          "mute": "静音",
+          "unmute": "取消静音",
+          "volume": "音量",
+          "rate": "速度"
+        },
+        "ratingLevels": {
+          "1": "很差",
+          "2": "较差",
+          "3": "一般",
+          "4": "不错",
+          "5": "超赞"
+        },
+        "rating": {
+          "current": "当前评分",
+          "help": "点击星星选择分数，5 分表示最喜欢"
+        },
+        "upload": {
+          "titlePlaceholder": "标题",
+          "tagsPlaceholder": "标签（逗号分隔）",
+          "descriptionPlaceholder": "描述",
+          "typeImage": "图片",
+          "typeVideo": "视频",
+          "chooseFile": "选择图片文件",
+          "chooseVideoFile": "选择视频文件",
+          "noFile": "未选择文件",
+          "progress": "上传进度",
+          "videoMeta": "时长 {{seconds}}s / 帧率 {{fps}} fps / 分辨率 {{width}}x{{height}}",
+          "transcodePreparing": "正在准备视频…",
+          "transcodeRemux": "原生规格兼容，正在快速封装…",
+          "transcodeEncoding": "正在本地转码视频（libx264 / aac）…",
+          "transcodeCopy": "未检测到 ffmpeg，正在直接复制原始文件…",
+          "transcodeMode": {
+            "remux": "已快速封装",
+            "transcode": "已本地转码",
+            "copy": "已直接复制"
+          },
+          "copyright": "我确认拥有该图片版权或已获授权",
+          "copyrightInfoPlaceholder": "声明版权信息（如原创、授权来源、授权编号）",
+          "previewGenerating": "正在生成预览…"
+        },
+        "meta": {
+          "description": "描述",
+          "tags": "标签",
+          "rating": "评分",
+          "apply": "应用次数",
+          "copyrightInfo": "版权声明"
+        },
+        "report": {
+          "copyright": "版权问题",
+          "illegal": "违规内容",
+          "other": "其他",
+          "detailPlaceholder": "举报补充说明（可选）"
+        },
+        "actions": {
+          "search": "搜索",
+          "refresh": "刷新壁纸列表",
+          "expandSearch": "展开搜索",
+          "collapseSearch": "收起搜索",
+          "goContribution": "前往贡献",
+          "prevPage": "上一页",
+          "nextPage": "下一页",
+          "upload": "上传壁纸",
+          "uploading": "上传中…",
+          "apply": "应用为背景",
+          "applying": "应用中…",
+          "rate": "提交评分",
+          "rating": "提交中…",
+          "report": "举报",
+          "reporting": "提交中…",
+          "expandRate": "评分",
+          "collapseRate": "收起评分",
+          "expandReport": "举报",
+          "collapseReport": "收起举报",
+          "submitReport": "提交举报",
+          "editMetadata": "编辑元数据",
+          "cancelEdit": "取消编辑",
+          "saveMetadata": "保存元数据",
+          "savingMetadata": "保存中…",
+          "delete": "删除壁纸",
+          "deleting": "删除中…",
+          "confirmDelete": "确认删除该壁纸？",
+          "confirmDeleteBtn": "确认删除",
+          "cancelDelete": "取消"
+        },
+        "feedback": {
+          "loading": "加载中…",
+          "empty": "暂无壁纸",
+          "selectHint": "请选择左侧壁纸查看详情",
+          "loadFailed": "加载失败",
+          "detailFailed": "加载详情失败",
+          "titleRequired": "请填写标题",
+          "fileRequired": "请选择图片文件",
+          "copyrightRequired": "请先勾选版权声明",
+          "copyrightInfoRequired": "请填写版权声明信息",
+          "fileTooLarge": "图片不能超过 20MB",
+          "videoTypeInvalid": "仅支持 mp4 视频文件",
+          "videoTooLarge": "视频不能超过 100MB",
+          "uploadFailed": "上传失败",
+          "uploadSuccess": "上传成功，等待审核",
+          "applying": "应用中…",
+          "applyFailed": "应用失败",
+          "applySuccess": "已应用壁纸背景",
+          "rating": "评分提交中…",
+          "rateFailed": "评分失败",
+          "rateSuccess": "评分成功",
+          "reporting": "举报提交中…",
+          "reportFailed": "举报失败",
+          "reportSuccess": "举报已提交",
+          "deleting": "删除中…",
+          "deleteFailed": "删除失败",
+          "deleteSuccess": "删除成功",
+          "saving": "保存中…",
+          "updateFailed": "保存失败",
+          "updateSuccess": "已保存，等待审核"
+        },
+        "pagination": {
+          "page": "第 {{page}} / {{total}} 页"
+        }
+      }
+    },
+    "ai": {
+      "apiKey": "API Key",
+      "apiEndpoint": "API Endpoint",
+      "model": "模型",
+      "deepseekThinking": "DeepSeek Thinking 模式",
+      "deepseekThinkingOptions": {
+        "off": "关闭",
+        "on": "开启"
+      },
+      "deepseekReasoningEffort": "DeepSeek 推理强度",
+      "mimoReasoningEffort": "Mimo 推理强度",
+      "ollamaReasoningEffort": "思考强度",
+      "customReasoningEffort": "推理强度",
+      "minimaxReasoningEffort": "MiniMax 推理强度",
+      "deepseekReasoningEffortOptions": {
+        "low": "低 (low)",
+        "medium": "中 (medium)",
+        "high": "高 (high)"
+      },
+      "mcpEndpoint": "MCP Endpoint",
+      "mcpPlaceholder": "http://localhost:3000/mcp (可选)",
+      "systemPrompt": "System Prompt",
+      "promptPlaceholder": "你是一个有用的助手。",
+      "saveTitle": "保存 (Ctrl+Enter)",
+      "editPromptTitle": "编辑 Prompt",
+      "credentialsTitle": "模型凭据",
+      "credentialsHint": "兼容 OpenAI 接口协议，填写你的 API Key、Endpoint 与模型名称",
+      "agentModel": "Agent 模型",
+      "agentModelFetching": "正在获取…",
+      "agentModelFetchBtn": "获取可用模型",
+      "agentModelDropdown": "模型下拉选择",
+      "agentModelSelectPlaceholder": "请选择模型",
+      "agentModelFetchNeedEndpoint": "请先填写 API Endpoint",
+      "agentModelFetchOk": "已获取 {{count}} 个模型",
+      "agentModelFetchEmpty": "未获取到模型，请检查接口是否支持 /models",
+      "agentModelFetchFail": "获取模型列表失败，请检查 Endpoint / Key",
+      "mcpTitle": "MCP 工具接入",
+      "mcpHint": "可选，配置 MCP 服务端点后 Agent 可调用对接的外部工具",
+      "systemPromptHint": "用于限定 Agent 的角色与风格，留空则使用默认提示词",
+      "workspaceTitle": "Agent 工作区",
+      "workspaceHint": "配置 Agent 可操作的文件目录，所有文件读写、搜索、命令执行仅限于工作区内",
+      "workspaceAdd": "+ 添加工作区文件夹",
+      "workspaceRemove": "移除",
+      "workspaceEmpty": "未配置工作区，Agent 文件操作将被禁止",
+      "ollamaTitle": "Ollama 本地模型",
+      "ollamaHint": "配置本地 Ollama 服务地址与默认模型，在模型下拉中选择 ollama 即可使用",
+      "ollamaModel": "模型名称",
+      "ollamaFetching": "正在获取…",
+      "ollamaFetchBtn": "获取本地模型列表",
+      "ollamaFetchEmpty": "未检测到本地 Ollama 模型",
+      "ollamaFetchOk": "已找到 {{count}} 个本地模型",
+      "ollamaFetchFail": "获取模型列表失败，请检查 Ollama 服务",
+      "ollamaBaseUrl": "服务地址",
+      "ollamaDetecting": "正在检测…",
+      "ollamaDetectBtn": "自动检测 Ollama 端口",
+      "ollamaDetectOk": "已检测到 {{url}}",
+      "ollamaDetectFail": "未检测到运行中的 Ollama 服务，请确认已启动 ollama serve",
+      "r1pxcConfigTitle": "r1pxc Agent 头像配置",
+      "r1pxcConfigHint": "支持拖入图片或从文件资源管理器选择，不支持 URL",
+      "r1pxcAvatarReplace": "点击或拖入图片以替换头像",
+      "r1pxcAvatarUploadHint": "拖入图片，或点击从文件资源管理器选择",
+      "r1pxcAvatarClear": "清除头像",
+      "r1pxcAvatarFileTypeError": "请选择图片文件（png/jpg/webp 等）",
+      "r1pxcAvatarReadError": "头像读取失败，请换一张图片重试",
+      "pagination": "AI 设置分页"
+    },
+    "about": {
+      "pagination": "关于软件分页",
+      "pages": {
+        "development": "开发信息",
+        "feedback": "问题反馈"
+      },
+      "authorAvatarAlt": "作者头像",
+      "githubHome": "GitHub 主页",
+      "notice": "本软件开源免费，如果你在任何地方付费购买了本软件，请立即退款并给差评。",
+      "links": {
+        "website": "官网",
+        "docs": "文档站",
+        "sourceCode": "开源代码",
+        "license": "开源协议",
+        "iconLibrary": "图标库",
+        "icpRecord": "ICP备案",
+        "publicSecurityRecord": "公安备案"
+      },
+      "depsTitle": "开源框架、依赖 & 项目",
+      "wallpaperTitle": "壁纸素材",
+      "wallpaper": {
+        "source": "来源",
+        "capture": "拍摄",
+        "link": "原始链接",
+        "notice": "所有 NASA 图像均按照 NASA 图像使用政策使用，不暗示 NASA 对本项目的任何认可。"
+      },
+      "feedback": {
+        "intro": "问题反馈会进入管理后台审核，请尽量提供完整复现信息。",
+        "types": {
+          "bug": "Bug 问题",
+          "feature": "功能建议",
+          "experience": "体验优化",
+          "other": "其他"
+        },
+        "fields": {
+          "type": "反馈类型",
+          "contact": "联系方式（选填）",
+          "contactPlaceholder": "邮箱、QQ 或其他可联系信息",
+          "title": "标题",
+          "titlePlaceholder": "请简要描述你遇到的问题",
+          "content": "详细描述",
+          "contentPlaceholder": "请提供复现步骤、实际结果、期望结果等信息",
+          "logFile": "日志文件（选填，<=5MB）",
+          "logFilePlaceholder": "可上传日志辅助定位问题",
+          "logFileView": "查看已上传日志",
+          "logFileMeta": "文件大小：{{size}}MB",
+          "screenshotFile": "问题截图（选填，<=10MB）",
+          "screenshotFileMeta": "文件大小：{{size}}MB",
+          "logNotePlaceholder": "备注（选填）",
+          "logNoteSubmitPrefix": "日志备注："
+        },
+        "actions": {
+          "submit": "提交反馈",
+          "submitting": "提交中…",
+          "refresh": "刷新",
+          "openGithubIssue": "前往 GitHub 提交 Issue",
+          "useBoundEmail": "填充邮箱",
+          "uploadLog": "上传日志",
+          "uploadingLog": "上传中…",
+          "clearLog": "移除日志",
+          "uploadScreenshot": "上传截图",
+          "uploadingScreenshot": "上传中…",
+          "clearScreenshot": "移除截图"
+        },
+        "messages": {
+          "loginRequired": "请先登录后再使用反馈功能",
+          "titleRequired": "请填写反馈标题",
+          "contentRequired": "请填写详细描述",
+          "captchaCancelled": "请完成滑块验证后再提交反馈",
+          "boundEmailNotFound": "当前账号未找到绑定邮箱",
+          "boundEmailFilled": "已自动填充当前账号邮箱",
+          "logOnly": "仅支持上传 .log 日志文件",
+          "logReadFailed": "日志文件读取失败，请重试",
+          "logTooLarge": "日志文件不能超过 5MB",
+          "logUploadSuccess": "日志上传成功，提交反馈时会自动携带",
+          "logUploadFailed": "日志上传失败，请稍后重试",
+          "screenshotOnly": "仅支持上传图片截图文件",
+          "screenshotReadFailed": "截图文件读取失败，请重试",
+          "screenshotTooLarge": "截图文件不能超过 10MB",
+          "screenshotUploadSuccess": "截图上传成功，提交反馈时会自动携带",
+          "screenshotUploadFailed": "截图上传失败，请稍后重试",
+          "openGithubIssueFailed": "打开 GitHub Issue 失败，请稍后重试",
+          "submitSuccess": "反馈已提交，感谢你的建议",
+          "submitFailed": "反馈提交失败，请稍后重试",
+          "loadFailed": "反馈记录加载失败",
+          "prefilledFromAgent": "已自动填充 Agent 输出，你可以补充复现步骤后直接提交。"
+        },
+        "history": {
+          "title": "我的反馈记录",
+          "loading": "加载反馈记录中…",
+          "empty": "暂无反馈记录",
+          "loginHint": "登录后可查看你提交过的反馈记录",
+          "adminReply": "管理员回复：{{reply}}",
+          "meta": "类型：{{type}} · 提交于：{{time}}",
+          "filters": {
+            "all": "全部状态",
+            "pending": "待处理",
+            "resolved": "已处理",
+            "rejected": "已拒绝"
+          },
+          "status": {
+            "pending": "待处理",
+            "resolved": "已处理",
+            "rejected": "已拒绝"
+          }
+        }
+      },
+      "copyright": "© JNTMTMTM, pyisland.com 版权所有",
+      "slogan": "算法诠释一切 质疑即是认可",
+      "authorName": "鸡哥"
+    },
+    "user": {
+      "auth": {
+        "login": "登录",
+        "register": "注册",
+        "loginBtn": "登录",
+        "registerBtn": "注册并登录",
+        "hint": "登录注册服务由 eIsland server 提供",
+        "entryTitle": "登录后可管理头像、资料与账号安全设置",
+        "gotoLogin": "前往登录",
+        "gotoRegister": "前往注册",
+        "forgotPassword": "忘记密码",
+        "resetPassword": "重置密码",
+        "resetPasswordHint": "通过邮箱验证码校验身份后，可继续修改登录密码",
+        "resetPasswordBtn": "重置密码"
+      },
+      "fields": {
+        "username": "用户名",
+        "nickname": "昵称",
+        "usernamePlaceholder": "2-32 位，支持中英文 / 数字 / 下划线",
+        "account": "用户名或邮箱",
+        "accountPlaceholder": "请输入用户名或邮箱",
+        "boundEmail": "绑定邮箱",
+        "email": "邮箱",
+        "emailPlaceholder": "请输入邮箱地址",
+        "emailCode": "邮箱验证码",
+        "emailCodePlaceholder": "请输入邮箱验证码",
+        "password": "密码",
+        "passwordPlaceholder": "至少 8 位，含字母与数字",
+        "confirmPassword": "确认密码",
+        "confirmPasswordPlaceholder": "请再次输入密码",
+        "avatarUrlPlaceholder": "或直接粘贴头像 URL",
+        "gender": "性别",
+        "genderCustom": "自定义性别",
+        "genderCustomPlaceholder": "最长 64 个字符",
+        "birthday": "生日",
+        "newPassword": "新密码",
+        "newPasswordPlaceholder": "留空则不修改，至少 8 位含字母数字",
+        "currentPassword": "当前密码",
+        "currentPasswordPlaceholder": "输入当前密码进行确认"
+      },
+      "sections": {
+        "avatar": "头像",
+        "avatarHint": "上传新头像",
+        "profile": "基本资料",
+        "profileHint": "完善公开资料信息，便于账号识别",
+        "password": "修改密码",
+        "passwordHint": "留空则保持当前密码不变",
+        "danger": "危险操作"
+      },
+      "card": {
+        "memberSince": "加入时间",
+        "proExpireAt": "Pro到期时间",
+        "balance": "余额",
+        "loginDays": "登录天数",
+        "expandHeatmap": "展开热力图",
+        "collapseHeatmap": "收起热力图"
+      },
+      "infoNav": {
+        "editDesc": "修改性别、生日等基本资料",
+        "avatarDesc": "上传或更换账号头像",
+        "passwordDesc": "通过邮箱验证码修改登录密码",
+        "proDesc": "查看 Pro 计划权益及当前订阅价格",
+        "rechargeDesc": "为 AI 助手对话余额充值",
+        "ordersDesc": "查看订单状态、继续支付或主动关闭待支付订单",
+        "logoutDesc": "退出当前账号或注销",
+        "oauthDesc": "查看已绑定的第三方登录账号"
+      },
+      "pages": {
+        "info": "用户信息",
+        "edit": "修改信息",
+        "password": "修改密码",
+        "pro": "PRO功能",
+        "recharge": "余额充值",
+        "orders": "我的订单",
+        "account": "关于账户",
+        "oauth": "第三方应用绑定",
+        "switchTo": "切换到{{label}}"
+      },
+      "oauth": {
+        "subtitle": "管理已绑定的第三方登录账号",
+        "loading": "加载中…",
+        "empty": "暂无第三方绑定",
+        "provider": {
+          "wechat": "微信"
+        },
+        "fields": {
+          "username": "用户名",
+          "providerUserId": "第三方用户ID",
+          "boundAt": "绑定时间"
+        },
+        "actions": {
+          "unbind": "解除绑定",
+          "unbinding": "解除中…"
+        },
+        "feedback": {
+          "unbindSuccess": "已解除绑定",
+          "unbindFailed": "解除绑定失败"
+        }
+      },
+      "recharge": {
+        "title": "余额充值",
+        "subtitle": "充值后可用于 AI 助手对话消耗",
+        "paymentTitle": "Agent 余额充值",
+        "paymentSubtitle": "选择支付方式后完成支付，余额将自动到账。",
+        "rechargeAmountLabel": "充值金额",
+        "currentBalance": "当前余额",
+        "customPlaceholder": "自定义",
+        "selectAmount": "请选择充值金额",
+        "confirm": "确认充值 ¥{{amount}}",
+        "submitting": "充值中…",
+        "success": "充值成功",
+        "fail": "充值失败，请稍后重试"
+      },
+      "orders": {
+        "title": "我的订单",
+        "subtitle": "查询当前账号订单，并可继续支付或关闭待支付订单",
+        "loading": "订单加载中…",
+        "empty": "暂无订单记录",
+        "actions": {
+          "refresh": "刷新订单",
+          "refreshing": "刷新中…",
+          "continuePay": "继续支付",
+          "closeOrder": "关闭订单",
+          "closing": "关闭中…"
+        },
+        "feedback": {
+          "loadFailed": "加载订单失败",
+          "closeFailed": "关闭订单失败，请稍后重试",
+          "closeSuccess": "订单已关闭"
+        }
+      },
+      "pro": {
+        "title": "产品类型",
+        "subtitle": "根据你的使用场景选择 Free 或 Pro 版本",
+        "free": {
+          "name": "Free",
+          "price": "¥0 / 月",
+          "desc": "基础功能可用，适合轻度日常使用。",
+          "feature1": "基础灵动岛组件",
+          "feature2": "常规设置与个性化",
+          "feature3": "社区公开内容浏览"
+        },
+        "pro": {
+          "name": "Pro",
+          "price": "¥15 / 月",
+          "priceLoading": "价格加载中…",
+          "priceUnavailable": "价格待定",
+          "desc": "完整高级能力与持续更新支持。",
+          "feature1": "全部 Free 权益",
+          "feature2": "高级功能与扩展",
+          "feature3": "优先体验新功能"
+        },
+        "billingCycle": {
+          "month": "月"
+        }
+      },
+      "payment": {
+        "title": "购买 Pro",
+        "subtitle": "选择支付方式后前往官网完成支付，支付成功后账号会自动同步 Pro 权益。",
+        "method": "支付方式",
+        "wechat": "微信支付",
+        "alipay": "支付宝",
+        "orderTitle": "确认订单",
+        "receiptEmailLabel": "收据发送邮箱",
+        "receiptEmailPlaceholder": "请输入接收收据的邮箱地址",
+        "fillAccountEmail": "填充本账号邮箱",
+        "priceLabel": "价格",
+        "subscriptionPeriodLabel": "订阅时间",
+        "expireLabel": "订单到期时间",
+        "confirmPay": "创建订单",
+        "emailInvalid": "请输入有效的收据邮箱地址",
+        "loginRequired": "登录状态已失效，请重新登录后再试。",
+        "createOrderFailed": "创建支付订单失败，请稍后重试。",
+        "payUrlMissing": "订单创建成功但未返回支付链接，请稍后重试。",
+        "openPayFailed": "无法打开支付页面，请稍后重试。",
+        "refreshStatusFailed": "刷新支付状态失败，请稍后重试。",
+        "boundEmailNotFound": "当前账号未找到绑定邮箱",
+        "channelsUnavailable": "当前支付通道暂不可用，请稍后重试。",
+        "creatingOrder": "创建订单中...",
+        "pendingTitle": "待支付界面",
+        "orderNoLabel": "订单号",
+        "payAmountLabel": "付款金额",
+        "payStatusLabel": "支付状态",
+        "productTypeLabel": "购买类型",
+        "createdAtLabel": "下单时间",
+        "paidAtLabel": "支付时间",
+        "productType": {
+          "PRO_MONTH": "Pro 月度订阅",
+          "AGENT_RECHARGE": "余额充值",
+          "unknown": "未知类型"
+        },
+        "refreshStatus": "刷新支付状态",
+        "refreshingStatus": "刷新中...",
+        "openPaymentPage": "打开支付界面",
+        "viewOrders": "查看订单",
+        "goUserCenter": "前往用户中心",
+        "status": {
+          "paying": "待支付",
+          "success": "已支付",
+          "closed": "已关闭",
+          "failed": "支付失败",
+          "unknown": "未知"
+        },
+        "wechatHint": "推荐使用微信扫码完成支付",
+        "alipayHint": "推荐使用支付宝扫码完成支付",
+        "selectMethodHint": "请选择上方支付方式后再创建订单。",
+        "fallbackHint": "如果扫码不可用，可点击下方按钮前往官网支付页面。",
+        "goCheckout": "前往官网支付"
+      },
+      "gender": {
+        "male": "男",
+        "female": "女",
+        "custom": "自定义",
+        "undisclosed": "不愿透露"
+      },
+      "actions": {
+        "refresh": "刷新资料",
+        "refreshing": "刷新中…",
+        "refreshHint": "邮箱用于接收验证和通知",
+        "refreshHint2": "加入日期以服务端记录为准",
+        "refreshingHint": "同步服务器中的最新个人信息",
+        "chooseAvatar": "选择图片上传",
+        "uploading": "上传中…",
+        "show": "显示",
+        "hide": "隐藏",
+        "showPassword": "显示密码",
+        "hidePassword": "隐藏密码",
+        "saveProfile": "保存资料",
+        "saving": "保存中…",
+        "changePassword": "修改密码",
+        "changingPassword": "修改中…",
+        "logout": "退出登录",
+        "loggingOut": "登出中…",
+        "backToCenter": "返回上一页",
+        "cancelLogin": "取消",
+        "cancelRegister": "取消注册",
+        "unregister": "注销账号",
+        "confirmUnregister": "确认注销",
+        "unregistering": "注销中…",
+        "cancel": "取消",
+        "cancelChanges": "取消更改",
+        "sendCode": "发送验证码",
+        "sendCodeCooldown": "{{seconds}}s后重试",
+        "reportIssue": "报告问题",
+        "currentPlan": "当前可用",
+        "buyPro": "购买 Pro",
+        "renewPro": "前往续费",
+        "proActivated": "已开通 Pro"
+      },
+      "danger": {
+        "hint": "注销后账号与关联资料将被立即删除，无法恢复，请谨慎操作。"
+      },
+      "feedback": {
+        "submitting": "处理中…",
+        "loadingProfile": "加载账号资料中…",
+        "needLogin": "请先登录后再上传头像",
+        "loadFailed": "加载资料失败",
+        "sessionExpired": "登录已过期，请重新登录",
+        "usernameRequired": "请输入用户名",
+        "usernameFormatInvalid": "用户名仅支持中文、英文和数字",
+        "accountRequired": "请输入用户名或邮箱",
+        "passwordRequired": "请输入密码",
+        "confirmPasswordRequired": "请再次输入密码",
+        "passwordNotMatch": "两次输入的密码不一致",
+        "emailRequired": "请输入邮箱",
+        "emailInvalid": "请输入有效邮箱地址",
+        "emailCodeRequired": "请输入邮箱验证码",
+        "emailCodeSending": "发送中…",
+        "emailCodeSent": "验证码已发送，请查收邮箱",
+        "emailCodeSendFailed": "验证码发送失败",
+        "resetPasswordFailed": "重置密码失败",
+        "resetPasswordSuccess": "密码重置成功，请使用新密码登录",
+        "captchaCancelled": "请完成滑块验证后再发送验证码",
+        "avatarTooLarge": "头像文件不能超过 5MB",
+        "avatarNotImage": "仅支持上传图片文件",
+        "avatarUploaded": "头像已更新",
+        "avatarUploadFailed": "头像上传失败",
+        "avatarUploadTooFrequent": "头像上传过于频繁，请稍后再试",
+        "passwordTooShort": "密码至少 8 位且包含字母与数字",
+        "usernameInvalid": "用户名格式不正确",
+        "passwordMismatch": "两次密码不一致",
+        "passwordConfirmRequired": "请再次输入新密码进行确认",
+        "passwordConfirmMismatch": "两次输入的新密码不一致",
+        "saveFailed": "保存失败",
+        "saveSuccess": "资料已更新",
+        "refreshSuccess": "资料已刷新",
+        "refreshFailed": "刷新资料失败",
+        "passwordChangeSuccess": "密码已更新",
+        "logoutSuccess": "已退出登录",
+        "logoutLocalOnly": "服务端响应异常，已在本地清除登录态",
+        "unregisterPasswordRequired": "请输入当前密码以确认注销",
+        "unregisterFailed": "注销失败",
+        "unregisterSuccess": "账号已注销",
+        "operationFailed": "操作失败",
+        "loginSuccess": "登录成功",
+        "registerSuccess": "注册成功",
+        "passwordConfirmNeedsPassword": "请先输入当前密码",
+        "birthdayInvalid": "请输入有效的生日日期",
+        "emailVerificationRequired": "当前登录风险较高，请先完成邮箱验证"
+      }
+    },
+    "nav": {
+      "guide": {
+        "label": "使用教程",
+        "desc": "查看灵动岛功能引导与操作说明。"
+      },
+      "layout-preview": {
+        "label": "布局预览",
+        "desc": "进入布局预览并调整左右控件展示。"
+      },
+      "expand-layout": {
+        "label": "展开布局",
+        "desc": "调整展开界面页面顺序与显示开关。"
+      },
+      "maxexpand-layout": {
+        "label": "全展开布局",
+        "desc": "调整页面顺序与显示开关。"
+      },
+      "album": {
+        "label": "相册配置",
+        "desc": "相册轮播与相册入口相关配置。"
+      },
+      "hide-process-list": {
+        "label": "隐藏窗口管理",
+        "desc": "管理隐藏窗口名单与自动隐藏规则。"
+      },
+      "position": {
+        "label": "位置校准",
+        "desc": "动态调整灵动岛位置并保存"
+      },
+      "theme": {
+        "label": "主题外观",
+        "desc": "切换深色、浅色或跟随系统主题。"
+      },
+      "language": {
+        "label": "语言切换",
+        "desc": "切换应用显示语言并即时生效。"
+      },
+      "behavior": {
+        "label": "交互行为",
+        "desc": "配置鼠标移开后是否自动收回。"
+      },
+      "animation": {
+        "label": "软件动画",
+        "desc": "灵动岛弹性动画与动画速度配置。"
+      },
+      "break-reminder": {
+        "label": "休息提醒",
+        "desc": "定时休息与喝水提醒。"
+      },
+      "url-parser": {
+        "label": "URL解析",
+        "desc": "配置剪贴板 URL 识别模式与黑名单。"
+      },
+      "clipboard-history": {
+        "label": "剪贴板历史",
+        "desc": "配置剪贴板历史记录能力与条数。"
+      },
+      "alarm": {
+        "label": "闹钟配置",
+        "desc": "配置闹钟提醒音、贪睡与通知行为。"
+      },
+      "autostart": {
+        "label": "实用工具",
+        "desc": "应用控制、日志与开机启动配置。"
+      },
+      "sound": {
+        "label": "声音设置",
+        "desc": "音效、通知声音与音频输出配置。"
+      },
+      "notification": {
+        "label": "通知设置",
+        "desc": "配置灵动岛通知提醒与展示行为。"
+      },
+      "performance": {
+        "label": "性能设置",
+        "desc": "性能相关配置。"
+      },
+      "performance-monitor": {
+        "label": "性能监控",
+        "desc": "性能监控展示与硬件状态配置。"
+      },
+      "network": {
+        "label": "网络配置",
+        "desc": "请求超时与网络行为设置"
+      },
+      "mail": {
+        "label": "邮箱配置",
+        "desc": "配置 IMAP 收信参数"
+      },
+      "weather": {
+        "label": "天气配置",
+        "desc": "天气接口优先级设置"
+      },
+      "ai": {
+        "label": "AI Agent",
+        "desc": "AI 服务与 Prompt 配置"
+      },
+      "shortcut": {
+        "label": "快捷键",
+        "desc": "隐藏、关闭、截图快捷键"
+      },
+      "update": {
+        "label": "更新设置",
+        "desc": "检查与下载软件更新"
+      },
+      "pluginMarket": {
+        "label": "壁纸市场",
+        "desc": "壁纸市场入口与壁纸管理"
+      },
+      "user": {
+        "label": "用户中心",
+        "desc": "登录、注册、修改、注销等账号操作"
+      },
+      "user-pro": {
+        "label": "PRO功能",
+        "desc": "查看 Pro 计划权益及当前订阅价格"
+      },
+      "user-recharge": {
+        "label": "余额充值",
+        "desc": "为 AI 助手对话余额充值"
+      },
+      "about": {
+        "label": "关于软件",
+        "desc": "版本信息与项目链接"
+      },
+      "music-whitelist": {
+        "label": "播放器白名单",
+        "desc": "配置允许接入灵动岛的播放器。"
+      },
+      "music-lyrics": {
+        "label": "歌词源",
+        "desc": "选择歌词来源与显示模式。"
+      },
+      "music-smtc": {
+        "label": "SMTC",
+        "desc": "系统媒体传输控制相关配置。"
+      }
+    }
+  },
+  "idle": {
+    "pomodoro": {
+      "label": "番茄钟"
+    }
+  },
+  "oauth": {
+    "divider": "或",
+    "github": {
+      "login": "GitHub",
+      "loading": "连接中"
+    },
+    "microsoft": {
+      "login": "Microsoft",
+      "loading": "连接中"
+    },
+    "wechat": {
+      "login": "WeChat",
+      "loading": "连接中"
+    },
+    "gitee": {
+      "login": "Gitee",
+      "loading": "连接中"
+    },
+    "kook": {
+      "login": "KOOK",
+      "loading": "连接中"
+    },
+    "setPassword": {
+      "title": "设置密码",
+      "hint": "OAuth 登录成功，请设置密码以完成注册",
+      "submit": "设置密码并注册"
+    },
+    "bindOAuth": {
+      "title": "绑定账号",
+      "hint": "该邮箱已注册，请输入密码将第三方账号绑定到已有账号",
+      "submit": "绑定并登录",
+      "bindSuccess": "绑定成功",
+      "bindFailed": "绑定失败"
+    },
+    "bindEmail": {
+      "title": "绑定邮箱",
+      "hint": "请绑定邮箱以完成注册",
+      "submit": "验证并继续",
+      "verifyFailed": "验证码错误"
+    },
+    "feedback": {
+      "loginCancelled": "登录已取消或超时"
+    }
+  },
+  "localHub": {
+    "title": "本地工作台",
+    "sections": {
+      "commands": "快捷命令",
+      "notifications": "通知中心",
+      "backup": "备份恢复",
+      "automation": "自动化",
+      "clipboard": "智能剪贴板",
+      "mail": "邮件助手",
+      "focus": "专注模式",
+      "plugins": "本地插件",
+      "calendar": "日历",
+      "sync": "本地同步"
+    },
+    "common": {
+      "add": "添加",
+      "save": "保存",
+      "copy": "复制",
+      "delete": "删除",
+      "clear": "清空",
+      "enabled": "已启用",
+      "disabled": "已停用"
+    },
+    "commands": {
+      "ai": "打开 AI 对话",
+      "todo": "打开待办事项",
+      "files": "查找本地文件",
+      "mail": "打开邮箱",
+      "clipboard": "打开剪贴板历史",
+      "settings": "打开设置",
+      "screenshot": "截取当前窗口",
+      "search": "搜索命令…",
+      "shortcut": "在应用中按 Ctrl+K 可随时打开本地工作台。"
+    },
+    "notifications": {
+      "title": "通知历史",
+      "empty": "暂无通知记录"
+    },
+    "backup": {
+      "title": "本地备份与恢复",
+      "hint": "导出待办、备忘录、闹钟、收藏、工作台等本地数据，不包含密码、令牌和 API Key。",
+      "export": "导出备份",
+      "import": "恢复备份",
+      "exported": "备份已导出，敏感凭据未包含。",
+      "restored": "备份恢复完成，重启应用后全部生效。",
+      "invalid": "备份文件无效或版本不兼容。"
+    },
+    "automation": {
+      "name": "规则名称",
+      "message": "提醒内容",
+      "run": "运行"
+    },
+    "clipboard": {
+      "title": "片段名称",
+      "content": "常用文本内容",
+      "capture": "读取剪贴板",
+      "secretRejected": "疑似密码或令牌，未保存。",
+      "secretDetected": "检测到疑似敏感内容，不建议保存。"
+    },
+    "mail": {
+      "title": "邮件助手",
+      "hint": "使用现有 IMAP 账号查看邮件；后台轮询偏好保存在本机。",
+      "interval": "后台检查间隔（分钟）",
+      "open": "打开收件箱",
+      "newMailTitle": "收到新邮件"
+    },
+    "focus": {
+      "start": "开始专注",
+      "pause": "暂停",
+      "reset": "重置",
+      "minutes": "专注分钟数",
+      "finishedTitle": "专注完成",
+      "finishedBody": "休息一下，然后开始下一轮。"
+    },
+    "plugins": {
+      "import": "导入声明式插件",
+      "hint": "本地插件只注册声明式命令，不执行任意 JavaScript；高风险工具仍需确认。",
+      "example": "{\"id\":\"example\",\"name\":\"示例插件\",\"version\":\"1.0.0\",\"commands\":[{\"id\":\"info\",\"title\":\"系统信息\",\"tool\":\"sys.info\"}]}",
+      "imported": "插件清单已导入。",
+      "invalid": "插件清单格式无效。",
+      "highRiskConfirm": "该插件命令会执行高风险系统操作，是否继续？"
+    },
+    "calendar": {
+      "title": "日程标题",
+      "note": "备注"
+    },
+    "sync": {
+      "title": "本地同步",
+      "hint": "通过加密盘、NAS 或其他同步文件夹传递备份文件；应用本身不会上传你的数据。",
+      "snapshot": "生成同步快照"
+    }
+  }
+}

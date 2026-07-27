@@ -1,0 +1,219 @@
+/*
+ * eIsland - A sleek, Apple Dynamic Island inspired floating widget for Windows, built with Electron.
+ * https://github.com/JNTMTMTM/eIsland
+ *
+ * Copyright (C) 2026 JNTMTMTM
+ * Copyright (C) 2026 pyisland.com
+ *
+ * Original author: JNTMTMTM[](https://github.com/JNTMTMTM)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ */
+
+/**
+ * @file localHub.css
+ * @description 本地工作台布局与交互样式。
+ */
+
+.local-hub-root {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  width: 100%;
+  height: 100%;
+  color: rgb(var(--color-text-rgb));
+}
+
+.local-hub-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 18px 10px;
+  overflow-y: auto;
+  border-right: 1px solid rgba(var(--color-text-rgb), .1);
+}
+
+.local-hub-sidebar h2 {
+  margin: 0 8px 10px;
+  font-size: 16px;
+}
+
+.local-hub-sidebar button,
+.local-hub-list-item,
+.local-hub-actions button,
+.local-hub-panel > button,
+.local-hub-card button,
+.local-hub-form-row button,
+.local-hub-toolbar button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 10px;
+  color: inherit;
+  background: rgba(var(--color-text-rgb), .07);
+  border: 1px solid rgba(var(--color-text-rgb), .1);
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.local-hub-sidebar button {
+  justify-content: flex-start;
+  background: transparent;
+  border-color: transparent;
+}
+
+.local-hub-sidebar button.active,
+.local-hub-sidebar button:hover,
+.local-hub-list-item:hover {
+  background: rgba(var(--color-text-rgb), .12);
+}
+
+.local-hub-content {
+  min-width: 0;
+  padding: 18px;
+  overflow-y: auto;
+}
+
+.local-hub-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 100%;
+}
+
+.local-hub-centered {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.local-hub-centered p {
+  max-width: 520px;
+  margin: 0;
+  opacity: .72;
+}
+
+.local-hub-search,
+.local-hub-form-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.local-hub-search {
+  padding: 9px 12px;
+  background: rgba(var(--color-text-rgb), .06);
+  border: 1px solid rgba(var(--color-text-rgb), .12);
+  border-radius: 10px;
+}
+
+.local-hub-search input,
+.local-hub-form-row input,
+.local-hub-form-row textarea,
+.local-hub-manifest,
+.local-hub-centered input {
+  min-width: 0;
+  padding: 8px 10px;
+  color: inherit;
+  background: rgba(var(--color-text-rgb), .06);
+  border: 1px solid rgba(var(--color-text-rgb), .12);
+  border-radius: 8px;
+  outline: none;
+}
+
+.local-hub-search input {
+  flex: 1;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.local-hub-form-row input,
+.local-hub-form-row textarea {
+  flex: 1;
+}
+
+.local-hub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.local-hub-list-item {
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.local-hub-card {
+  padding: 11px 13px;
+  background: rgba(var(--color-text-rgb), .055);
+  border: 1px solid rgba(var(--color-text-rgb), .1);
+  border-radius: 10px;
+}
+
+.local-hub-card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.local-hub-card-row > div:last-child,
+.local-hub-actions,
+.local-hub-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.local-hub-toolbar {
+  justify-content: space-between;
+}
+
+.local-hub-card p,
+.local-hub-card small {
+  margin: 5px 0 0;
+  opacity: .68;
+  overflow-wrap: anywhere;
+}
+
+.local-hub-status {
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  background: rgba(67, 160, 71, .16);
+  border-radius: 8px;
+}
+
+.local-hub-hint,
+.local-hub-empty {
+  margin: 0;
+  font-size: 12px;
+  opacity: .6;
+}
+
+.local-hub-focus-time {
+  font-size: 64px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.local-hub-manifest {
+  min-height: 120px;
+  resize: vertical;
+  font-family: monospace;
+}
+
+@media (max-width: 720px) {
+  .local-hub-root {
+    grid-template-columns: 116px minmax(0, 1fr);
+  }
+
+  .local-hub-form-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

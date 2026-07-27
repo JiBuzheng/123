@@ -1,0 +1,74 @@
+<!-- /*
+ * eIsland - A sleek, Apple Dynamic Island inspired floating widget for Windows, built with Electron.
+ * https://github.com/JNTMTMTM/eIsland
+ *
+ * Copyright (C) 2026 JNTMTMTM
+ * Copyright (C) 2026 pyisland.com
+ *
+ * Original author: JNTMTMTM[](https://github.com/JNTMTMTM)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */ -->
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>eIsland Screenshot</title>
+<link rel="stylesheet" href="./capture.css">
+</head>
+<body>
+<canvas class="capture-canvas capture-bg-canvas" id="bg-canvas"></canvas>
+<canvas class="capture-canvas capture-draw-canvas" id="draw-canvas"></canvas>
+<canvas class="capture-canvas capture-temp-canvas" id="temp-canvas"></canvas>
+<canvas class="capture-canvas capture-mask-canvas" id="mask-canvas"></canvas>
+
+<div class="capture-size-info" id="size-info"></div>
+
+<div class="capture-toolbar" id="toolbar">
+  <span class="capture-source-badge" id="captureSourceBadge" data-capture-source="js">使用js</span>
+  <button class="tool active" data-tool="select" data-i18n="select">选区</button>
+  <button class="tool" data-tool="mosaic" data-i18n="mosaic">马赛克</button>
+  <button class="tool" data-tool="line" data-i18n="line">直线</button>
+  <button class="tool" data-tool="rect" data-i18n="rect">矩形</button>
+  <button class="tool" data-tool="pen" data-i18n="pen">画笔</button>
+  <button class="capture-btn-undo" id="btnUndo" data-i18n="undo">撤销</button>
+
+  <div class="sep"></div>
+  <span class="label" data-i18n="color">颜色</span>
+  <input class="capture-color-picker" id="colorPicker" type="color" value="#ff4d4f">
+  <span class="label" data-i18n="size">粗细</span>
+  <select class="capture-size-picker" id="sizePicker">
+    <option value="2">2px</option>
+    <option value="4" selected>4px</option>
+    <option value="6">6px</option>
+    <option value="8">8px</option>
+    <option value="12">12px</option>
+  </select>
+
+  <div class="sep"></div>
+  <button id="btnSave">
+    <img class="capture-btn-icon" src="./svg/SAVE.svg" alt="" aria-hidden="true">
+    <span data-i18n="save">保存</span>
+  </button>
+  <button class="danger" id="btnCancel">
+    <img class="capture-btn-icon" src="./svg/CANCEL.svg" alt="" aria-hidden="true">
+    <span data-i18n="cancel">取消</span>
+  </button>
+  <button class="primary" id="btnCopy">
+    <img class="capture-btn-icon" src="./svg/FINISH.svg" alt="" aria-hidden="true">
+    <span data-i18n="done">完成</span>
+  </button>
+</div>
+
+<script src="./capture.js"></script>
+</body>
+</html>
