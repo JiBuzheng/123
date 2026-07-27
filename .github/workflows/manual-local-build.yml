@@ -14,7 +14,9 @@ permissions:
 jobs:
   build-windows:
     name: Build Windows x64 installer
-    runs-on: windows-latest
+    # node-gyp 11 does not recognize the Visual Studio 2026 installation on
+    # windows-latest yet. Pin VS 2022 so the four N-API C++ plugins can build.
+    runs-on: windows-2022
     timeout-minutes: 90
 
     steps:
