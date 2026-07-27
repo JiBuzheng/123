@@ -55,11 +55,127 @@ jobs:
           node node_modules/electron/install.js
           node node_modules/ffmpeg-static/install.js
 
-      - name: Build every Windows native plugin
+      - name: Build Bluetooth plugin
+        id: build_bluetooth
+        continue-on-error: true
         shell: pwsh
         env:
           npm_config_msvs_version: 2022
-        run: npm run plugins:build
+        run: npm run plugin:build:bluetooth
+
+      - name: Build brightness plugin
+        id: build_brightness
+        continue-on-error: true
+        shell: pwsh
+        env:
+          npm_config_msvs_version: 2022
+        run: npm run plugin:build:brightness
+
+      - name: Build volume plugin
+        id: build_volume
+        continue-on-error: true
+        shell: pwsh
+        env:
+          npm_config_msvs_version: 2022
+        run: npm run plugin:build:volume
+
+      - name: Build power plugin
+        id: build_power
+        continue-on-error: true
+        shell: pwsh
+        env:
+          npm_config_msvs_version: 2022
+        run: npm run plugin:build:power
+
+      - name: Build processes plugin
+        id: build_processes
+        continue-on-error: true
+        shell: pwsh
+        env:
+          npm_config_msvs_version: 2022
+        run: npm run plugin:build:processes
+
+      - name: Build SMTC plugin
+        id: build_smtc
+        continue-on-error: true
+        shell: pwsh
+        env:
+          npm_config_msvs_version: 2022
+        run: npm run plugin:build:smtc
+
+      - name: Build toast plugin
+        id: build_toast
+        continue-on-error: true
+        shell: pwsh
+        env:
+          npm_config_msvs_version: 2022
+        run: npm run plugin:build:toast
+
+      - name: Build Wi-Fi plugin
+        id: build_wifi
+        continue-on-error: true
+        shell: pwsh
+        env:
+          npm_config_msvs_version: 2022
+        run: npm run plugin:build:wifi
+
+      - name: Build fullscreen plugin
+        id: build_fullscreen
+        continue-on-error: true
+        shell: pwsh
+        env:
+          npm_config_msvs_version: 2022
+        run: npm run plugin:build:fullscreen
+
+      - name: Build performance monitor plugin
+        id: build_perfmon
+        continue-on-error: true
+        shell: pwsh
+        env:
+          npm_config_msvs_version: 2022
+        run: npm run plugin:build:perfmon
+
+      - name: Build application icon plugin
+        id: build_icon
+        continue-on-error: true
+        shell: pwsh
+        env:
+          npm_config_msvs_version: 2022
+        run: npm run plugin:build:icon-helper
+
+      - name: Build screenshot plugin
+        id: build_screenshot
+        continue-on-error: true
+        shell: pwsh
+        env:
+          npm_config_msvs_version: 2022
+        run: npm run plugin:build:screenshot-helper
+
+      - name: Report failed native plugins
+        shell: pwsh
+        run: |
+          $outcomes = @{
+            bluetooth = "${{ steps.build_bluetooth.outcome }}"
+            brightness = "${{ steps.build_brightness.outcome }}"
+            volume = "${{ steps.build_volume.outcome }}"
+            power = "${{ steps.build_power.outcome }}"
+            processes = "${{ steps.build_processes.outcome }}"
+            smtc = "${{ steps.build_smtc.outcome }}"
+            toast = "${{ steps.build_toast.outcome }}"
+            wifi = "${{ steps.build_wifi.outcome }}"
+            fullscreen = "${{ steps.build_fullscreen.outcome }}"
+            perfmon = "${{ steps.build_perfmon.outcome }}"
+            icon = "${{ steps.build_icon.outcome }}"
+            screenshot = "${{ steps.build_screenshot.outcome }}"
+          }
+          $failed = @($outcomes.GetEnumerator() |
+            Where-Object { $_.Value -ne "success" } |
+            ForEach-Object { $_.Key })
+          if ($failed.Count -gt 0) {
+            $names = $failed -join ", "
+            Write-Host "::error title=Native plugin builds failed::$names"
+            throw "Native plugin builds failed: $names"
+          }
 
       - name: Verify required native outputs
         shell: pwsh
