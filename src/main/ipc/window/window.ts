@@ -100,6 +100,8 @@ export function toggleMousePassthroughLock(getMainWindow: () => BrowserWindow | 
  * @param options - 配置选项，包含窗口获取和位置管理函数
  */
 export function registerWindowIpcHandlers(options: RegisterWindowIpcHandlersOptions): void {
+  let activeDragOffset: { x: number; y: number } | null = null;
+
   const withWindow = (fn: (win: BrowserWindow) => void): void => {
     const win = options.getMainWindow();
     if (!win || win.isDestroyed()) return;
@@ -111,6 +113,38 @@ export function registerWindowIpcHandlers(options: RegisterWindowIpcHandlersOpti
         console.error('[WindowIPC] handler error:', err);
       }
     }
+  };
+
+  /** 获取用户选择的灵动岛显示器 */
+  const getTargetDisplay = (): Electron.Display => {
+    const selection = options.getIslandDisplaySelection();
+    if (selection !== 'primary') {
+      const targetId = Number(selection);
+      if (Number.isFinite(targetId)) {
+        const found = screen.getAllDisplays().find((display) => display.id === targetId);
+        if (found) return found;
+      }
+    }
+    return screen.getPrimaryDisplay();
+  };
+
+  /** 将窗口边界限制在目标显示器工作区内 */
+  const clampBoundsToDisplay = (bounds: Electron.Rectangle): Electron.Rectangle => {
+    const workArea = getTargetDisplay().workArea;
+    const maxX = workArea.x + Math.max(0, workArea.width - bounds.width);
+    const maxY = workArea.y + Math.max(0, workArea.height - bounds.height);
+    return {
+      ...bounds,
+      x: Math.min(maxX, Math.max(workArea.x, Math.round(bounds.x))),
+      y: Math.min(maxY, Math.max(workArea.y, Math.round(bounds.y))),
+    };
+  };
+
+  /** 设置窗口边界并保证窗口始终可见 */
+  const setClampedBounds = (win: BrowserWindow, bounds: Electron.Rectangle): Electron.Rectangle => {
+    const nextBounds = clampBoundsToDisplay(bounds);
+    win.setBounds(nextBounds);
+    return nextBounds;
   };
 
   /** 获取当前窗口水平中心点（pill 模式用当前窗口中心，notch 模式用初始中心） */
@@ -127,16 +161,7 @@ export function registerWindowIpcHandlers(options: RegisterWindowIpcHandlersOpti
   const getEffectiveY = (win: BrowserWindow): number => {
     const shapeMode = readIslandShapeModeConfig();
     if (shapeMode === 'notch') {
-      const selection = options.getIslandDisplaySelection();
-      let targetDisplay = screen.getPrimaryDisplay();
-      if (selection !== 'primary') {
-        const targetId = Number(selection);
-        if (Number.isFinite(targetId)) {
-          const found = screen.getAllDisplays().find((d) => d.id === targetId);
-          if (found) targetDisplay = found;
-        }
-      }
-      return targetDisplay.workArea.y;
+      return getTargetDisplay().workArea.y;
     }
     return win.getBounds().y;
   };
@@ -162,7 +187,7 @@ export function registerWindowIpcHandlers(options: RegisterWindowIpcHandlersOpti
   ipcMain.on('window:expand', () => {
     withWindow((win) => {
       const centerX = getEffectiveCenterX(win);
-      win.setBounds({
+      setClampedBounds(win, {
         x: Math.round(centerX - options.sizes.expandedWidth / 2),
         y: getEffectiveY(win),
         width: options.sizes.expandedWidth,
@@ -174,7 +199,7 @@ export function registerWindowIpcHandlers(options: RegisterWindowIpcHandlersOpti
   ipcMain.on('window:expand-notification', () => {
     withWindow((win) => {
       const centerX = getEffectiveCenterX(win);
-      win.setBounds({
+      setClampedBounds(win, {
         x: Math.round(centerX - options.sizes.notificationWidth / 2),
         y: getEffectiveY(win),
         width: options.sizes.notificationWidth,
@@ -186,7 +211,7 @@ export function registerWindowIpcHandlers(options: RegisterWindowIpcHandlersOpti
   ipcMain.on('window:expand-lyrics', () => {
     withWindow((win) => {
       const centerX = getEffectiveCenterX(win);
-      win.setBounds({
+      setClampedBounds(win, {
         x: Math.round(centerX - options.sizes.lyricsWidth / 2),
         y: getEffectiveY(win),
         width: options.sizes.lyricsWidth,
@@ -198,7 +223,7 @@ export function registerWindowIpcHandlers(options: RegisterWindowIpcHandlersOpti
   ipcMain.on('window:expand-lyrics-translation', () => {
     withWindow((win) => {
       const centerX = getEffectiveCenterX(win);
-      win.setBounds({
+      setClampedBounds(win, {
         x: Math.round(centerX - options.sizes.lyricsWidth / 2),
         y: getEffectiveY(win),
         width: options.sizes.lyricsWidth,
@@ -210,7 +235,7 @@ export function registerWindowIpcHandlers(options: RegisterWindowIpcHandlersOpti
   ipcMain.on('window:expand-full', () => {
     withWindow((win) => {
       const centerX = getEffectiveCenterX(win);
-      win.setBounds({
+      setClampedBounds(win, {
         x: Math.round(centerX - options.sizes.expandedFullWidth / 2),
         y: getEffectiveY(win),
         width: options.sizes.expandedFullWidth,
@@ -222,7 +247,7 @@ export function registerWindowIpcHandlers(options: RegisterWindowIpcHandlersOpti
   ipcMain.on('window:expand-settings', () => {
     withWindow((win) => {
       const centerX = getEffectiveCenterX(win);
-      win.setBounds({
+      setClampedBounds(win, {
         x: Math.round(centerX - options.sizes.settingsWidth / 2),
         y: getEffectiveY(win),
         width: options.sizes.settingsWidth,
@@ -234,7 +259,7 @@ export function registerWindowIpcHandlers(options: RegisterWindowIpcHandlersOpti
   ipcMain.on('window:collapse', () => {
     withWindow((win) => {
       const centerX = getEffectiveCenterX(win);
-      win.setBounds({
+      setClampedBounds(win, {
         x: Math.round(centerX - options.sizes.islandWidth / 2),
         y: getEffectiveY(win),
         width: options.sizes.islandWidth,
@@ -255,17 +280,37 @@ export function registerWindowIpcHandlers(options: RegisterWindowIpcHandlersOpti
     return { x: point.x, y: point.y };
   });
 
+  ipcMain.on('window:move-start', () => {
+    activeDragOffset = { ...options.getIslandPositionOffset() };
+  });
+
   ipcMain.on('window:move-delta', (_event, dx: number, dy: number) => {
     if (!Number.isFinite(dx) || !Number.isFinite(dy)) return;
     withWindow((win) => {
       const bounds = win.getBounds();
-      win.setBounds({
+      const nextBounds = setClampedBounds(win, {
         x: Math.round(bounds.x + dx),
         y: Math.round(bounds.y + dy),
         width: bounds.width,
         height: bounds.height,
       });
+      if (activeDragOffset) {
+        activeDragOffset = options.sanitizeIslandPositionOffset({
+          x: activeDragOffset.x + nextBounds.x - bounds.x,
+          y: activeDragOffset.y + nextBounds.y - bounds.y,
+        });
+      }
     });
+  });
+
+  ipcMain.on('window:move-end', (event, moved: boolean) => {
+    if (!activeDragOffset) return;
+    const nextOffset = activeDragOffset;
+    activeDragOffset = null;
+    if (!moved) return;
+    options.applyIslandPositionOffset(nextOffset);
+    options.writeIslandPositionOffsetConfig(nextOffset);
+    broadcastSettingChange(event.sender.id, 'island:position', nextOffset);
   });
 
   ipcMain.handle('window:get-bounds', () => {

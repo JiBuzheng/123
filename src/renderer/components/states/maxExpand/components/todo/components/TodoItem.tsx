@@ -92,7 +92,10 @@ export function TodoItem({
         <span className={`expand-todo-arrow ${isExpanded ? 'open' : ''}`}>›</span>
         <button
           className="expand-todo-delete"
-          onClick={(e) => { e.stopPropagation(); onRemove(todo.id); }}
+          onClick={(e) => {
+            e.stopPropagation();
+            if (window.confirm(t('common.confirmDelete', { defaultValue: '确定删除吗？此操作无法撤销。' }))) onRemove(todo.id);
+          }}
           aria-label={t('todo.delete', { defaultValue: '删除' })}
         >
           ×

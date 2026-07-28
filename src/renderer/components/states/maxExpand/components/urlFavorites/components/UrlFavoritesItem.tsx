@@ -66,9 +66,10 @@ export function UrlFavoritesItem({
       onDragOver={(e) => onDragOver(e, item.id)}
       onDrop={(e) => onDrop(e, item.id)}
     >
-      <button
+      <div
         className="url-favorites-summary"
-        type="button"
+        role="button"
+        tabIndex={0}
         draggable
         onDragStart={(e) => onDragStart(e, item.id)}
         onDragEnd={onDragEnd}
@@ -76,11 +77,19 @@ export function UrlFavoritesItem({
           if (dragMovedRef.current) return;
           onToggleExpand(item);
         }}
+        onKeyDown={(e) => {
+          if (e.target !== e.currentTarget) return;
+          if (e.key !== 'Enter' && e.key !== ' ') return;
+          e.preventDefault();
+          onToggleExpand(item);
+        }}
+        aria-expanded={isExpanded}
         title={item.url}
       >
         <img className="url-favorites-favicon" src={getWebsiteFaviconUrl(item.url)} alt="" aria-hidden="true" onError={(e) => { (e.target as HTMLImageElement).src = SvgIcon.LINK; }} />
-        <span
+        <button
           className="url-favorites-site-name"
+          type="button"
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -89,7 +98,7 @@ export function UrlFavoritesItem({
           title={t('urlFavoritesTab.openWebsiteTitle', { defaultValue: '点击打开网站' })}
         >
           {item.title && item.title !== item.url ? item.title : t('urlFavoritesTab.resolvingTitle', { defaultValue: '读取网页名称中…' })}
-        </span>
+        </button>
         <span className="url-favorites-note" title={item.note || t('urlFavoritesTab.noNote', { defaultValue: '未备注' })}>{item.note || t('urlFavoritesTab.noNote', { defaultValue: '未备注' })}</span>
         <span className="url-favorites-folder-label" title={item.folder || t('urlFavoritesTab.folders.uncategorized', { defaultValue: '未分类' })}>
           {item.folder || t('urlFavoritesTab.folders.uncategorized', { defaultValue: '未分类' })}
@@ -99,7 +108,7 @@ export function UrlFavoritesItem({
             ? t('urlFavoritesTab.actions.collapse', { defaultValue: '收起' })
             : t('urlFavoritesTab.actions.expand', { defaultValue: '展开' })}
         </span>
-      </button>
+      </div>
 
       <div className={`url-favorites-editor-wrapper${isExpanded ? ' url-favorites-editor-wrapper--open' : ''}`}>
         <div className="url-favorites-editor-inner">
@@ -154,7 +163,9 @@ export function UrlFavoritesItem({
               <button
                 className="url-favorites-remove"
                 type="button"
-                onClick={() => onRemove(item.id)}
+                onClick={() => {
+                  if (window.confirm(t('common.confirmDelete', { defaultValue: '确定删除吗？此操作无法撤销。' }))) onRemove(item.id);
+                }}
                 aria-label={t('urlFavoritesTab.actions.removeAria', { defaultValue: '删除 URL 收藏' })}
               >
                 ×

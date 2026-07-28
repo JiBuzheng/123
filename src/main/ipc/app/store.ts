@@ -112,15 +112,15 @@ export function registerStoreIpcHandlers(options: RegisterStoreIpcHandlersOption
 
   ipcMain.handle('store:write', (event, key: string, data: unknown) => {
     try {
-      if (!isTrustedIpcSender(event)) return false;
-      if (!isValidStoreKey(key)) return false;
+      if (!isTrustedIpcSender(event)) throw new Error('Untrusted IPC sender');
+      if (!isValidStoreKey(key)) throw new Error('Invalid store key');
       const filePath = join(options.storeDir, `${key}.json`);
       writeFileSync(filePath, encodeStoreValue(key, data), 'utf-8');
       broadcastSettingChange(event.sender.id, `store:${key}`, data);
       return true;
     } catch (err) {
       console.error(`[Store] write '${key}' error:`, err);
-      return false;
+      throw err;
     }
   });
 }

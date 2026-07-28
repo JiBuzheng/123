@@ -239,7 +239,7 @@ describe('registerStoreIpcHandlers', () => {
       );
     });
 
-    it('returns false and logs error when writeFileSync throws', () => {
+    it('throws and logs error when writeFileSync throws', () => {
       const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
       registerStoreIpcHandlers({ storeDir: 'C:/store' });
 
@@ -248,9 +248,8 @@ describe('registerStoreIpcHandlers', () => {
       });
 
       const event = { sender: { id: 5 } };
-      const result = handlers.get('store:write')!(event, 'bigdata', { x: 'y' });
+      expect(() => handlers.get('store:write')!(event, 'bigdata', { x: 'y' })).toThrow('ENOSPC');
 
-      expect(result).toBe(false);
       expect(broadcastSettingChangeMock).not.toHaveBeenCalled();
       expect(consoleSpy).toHaveBeenCalledWith(
         "[Store] write 'bigdata' error:",

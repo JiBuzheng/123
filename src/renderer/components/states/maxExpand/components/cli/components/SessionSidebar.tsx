@@ -75,7 +75,13 @@ export function SessionSidebar({
         <button
           className="cli-tab-bulk-delete"
           type="button"
-          onClick={handleDeleteSelectedSessions}
+          onClick={() => {
+            const confirmed = window.confirm(t('maxExpand.cli.confirmDeleteSelected', {
+              defaultValue: '确定删除已选择的 {{count}} 个会话吗？此操作无法撤销。',
+              count: selectedSessionCount,
+            }));
+            if (confirmed) handleDeleteSelectedSessions();
+          }}
           disabled={!bulkSelectMode || selectedSessionCount === 0}
           tabIndex={bulkSelectMode ? 0 : -1}
         >

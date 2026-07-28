@@ -47,12 +47,6 @@ export interface MaxExpandContentShellProps {
   deferContent?: boolean;
 }
 
-function isEditableTarget(target: EventTarget | null): boolean {
-  if (!(target instanceof HTMLElement)) return false;
-  const tagName = target.tagName.toLowerCase();
-  return target.isContentEditable || tagName === 'input' || tagName === 'textarea' || tagName === 'select';
-}
-
 /**
  * 渲染 MaxExpand 通用壳层，负责导航与内容切换控制。
  */
@@ -121,27 +115,31 @@ export function MaxExpandContentShell({ renderActiveTab, deferContent = true }: 
   useEffect(() => {
     const el = contentRef.current;
     if (!el) return;
+    let lastWheelNavigationAt = 0;
 
     const handleWheel = (e: WheelEvent): void => {
       const target = e.target as HTMLElement;
       if (shouldIgnoreWheelEvent(target)) return;
       e.preventDefault();
+      const now = Date.now();
+      if (now - lastWheelNavigationAt < 250) return;
 
       const dots = filteredNavDotsRef.current;
       const cur = activeTabRef.current;
       const currentIndex = dots.findIndex(d => d.id === cur);
+      if (currentIndex < 0 || dots.length === 0) return;
       let nextId: NavDotId;
       if (e.deltaY > 0) {
         nextId = dots[(currentIndex + 1) % dots.length].id;
       } else {
         nextId = dots[(currentIndex - 1 + dots.length) % dots.length].id;
       }
+      lastWheelNavigationAt = now;
       navigateTab(nextId);
     };
 
     const handleKeyDown = (e: KeyboardEvent): void => {
-      if (e.key !== 'Tab' || e.repeat || e.defaultPrevented) return;
-      if (isEditableTarget(e.target)) return;
+      if (e.key !== 'Tab' || !e.ctrlKey || e.altKey || e.metaKey || e.repeat || e.defaultPrevented) return;
 
       const tabIds = filteredNavDotsRef.current
         .map((dot) => dot.id)
@@ -175,7 +173,7 @@ export function MaxExpandContentShell({ renderActiveTab, deferContent = true }: 
   );
 
   return (
-    <div className="settings-content" ref={contentRef}>
+    <div className="settings-content" ref={contentRef} onClick={(e) => e.stopPropagation()}>
       <div className="max-expand-tab-content" onClick={(e) => e.stopPropagation()}>
         <div className={`max-expand-tab-transition${tabAnimation ? ` max-expand-tab-slide-${slideDir}` : ''}`} key={activeTab}>
           {renderActiveTab(activeTab, loadingFallback, contentReady)}

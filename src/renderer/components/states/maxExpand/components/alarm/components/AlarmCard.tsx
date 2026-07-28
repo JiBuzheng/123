@@ -75,7 +75,9 @@ export function AlarmCard({
         <button
           className="alarm-delete-btn"
           type="button"
-          onClick={() => onDelete(alarm.id)}
+          onClick={() => {
+            if (window.confirm(t('common.confirmDelete', { defaultValue: '确定删除吗？此操作无法撤销。' }))) onDelete(alarm.id);
+          }}
           title={t('maxExpand.alarm.delete', { defaultValue: '删除' })}
         >
           <img src={SvgIcon.DELETE} alt="" className="alarm-tab-btn-icon" />

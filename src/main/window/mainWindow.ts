@@ -83,13 +83,17 @@ export function createMainWindowService(options: CreateMainWindowServiceOptions)
     const { x: workX, y: workY, width: workWidth, height: workHeight } = targetDisplay.workArea;
     const centeredX = Math.round(workX + (workWidth - options.sizes.islandWidth) / 2);
     const offset = options.getIslandPositionOffset();
-    const x = centeredX + offset.x;
     const shapeMode = readIslandShapeModeConfig();
     /** notch 模式贴顶（忽略 y 偏移）；pill 模式贴近顶部 + 用户拖动偏移 */
-    const y = shapeMode === 'pill'
+    const height = shapeMode === 'pill' ? PILL_ISLAND_HEIGHT : options.sizes.islandHeight;
+    const requestedX = centeredX + offset.x;
+    const requestedY = shapeMode === 'pill'
       ? workY + 46 + offset.y
       : workY;
-    const height = shapeMode === 'pill' ? PILL_ISLAND_HEIGHT : options.sizes.islandHeight;
+    const maxX = workX + Math.max(0, workWidth - options.sizes.islandWidth);
+    const maxY = workY + Math.max(0, workHeight - height);
+    const x = Math.min(maxX, Math.max(workX, requestedX));
+    const y = Math.min(maxY, Math.max(workY, requestedY));
     return {
       x,
       y,

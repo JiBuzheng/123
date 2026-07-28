@@ -91,6 +91,8 @@ declare global {
       collapseWindow: () => void;
       hideWindow: () => void;
       moveWindowDelta: (dx: number, dy: number) => void;
+      startWindowMove: () => void;
+      finishWindowMove: (moved: boolean) => void;
       getMousePosition: () => Promise<Point>;
       getWindowBounds: () => Promise<Bounds>;
       getIslandDisplays: () => Promise<IslandDisplayInfo[]>;

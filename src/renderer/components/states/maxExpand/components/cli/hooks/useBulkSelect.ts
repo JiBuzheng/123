@@ -66,10 +66,11 @@ export function useBulkSelect(
   const handleDeleteSelectedSessions = useCallback((): void => {
     if (selectedSessionIds.size === 0) return;
     const deletedIds = Array.from(selectedSessionIds);
-    deleteSessions(deletedIds).catch(() => {});
-    if (selectedSessionId && selectedSessionIds.has(selectedSessionId)) setSelectedSessionId(null);
-    setSelectedSessionIds(new Set());
-    setBulkSelectMode(false);
+    void deleteSessions(deletedIds).then(() => {
+      if (selectedSessionId && selectedSessionIds.has(selectedSessionId)) setSelectedSessionId(null);
+      setSelectedSessionIds(new Set());
+      setBulkSelectMode(false);
+    }).catch(() => {});
   }, [deleteSessions, selectedSessionId, selectedSessionIds, setSelectedSessionId]);
 
   // 会话列表变化时清理已不存在的选中 id

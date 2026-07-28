@@ -91,33 +91,45 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 4px 0;
+  gap: 2px;
+  padding: 0;
   flex-shrink: 0;
 }
 
 /** Expanded 单个导航点 */
 .expand-nav-dot {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.expand-nav-dot::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 5px;
   height: 5px;
   border-radius: 50%;
   background: rgba(var(--color-text-rgb), 0.25);
-  border: none;
-  padding: 0;
-  cursor: pointer;
+  content: "";
+  transform: translate(-50%, -50%);
   transition: background 0.25s ease,
               transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
               box-shadow 0.25s ease;
 }
 
-.expand-nav-dot:hover {
+.expand-nav-dot:hover::before {
   background: rgba(var(--color-text-rgb), 0.5);
-  transform: scale(1.25);
+  transform: translate(-50%, -50%) scale(1.25);
 }
 
-.expand-nav-dot.active {
+.expand-nav-dot.active::before {
   background: var(--color-island-text);
-  transform: scale(1.2);
+  transform: translate(-50%, -50%) scale(1.2);
   box-shadow: 0 0 6px rgba(var(--color-text-rgb), 0.5);
 }
 

@@ -477,6 +477,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 0;
 }
 
 .url-favorites-site-name:hover {

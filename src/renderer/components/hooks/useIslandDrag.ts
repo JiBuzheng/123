@@ -62,6 +62,7 @@ export function useIslandDrag(options: UseIslandDragOptions): UseIslandDragResul
       isDraggingRef.current = true;
       hasMovedRef.current = false;
       startPosRef.current = { x: e.screenX, y: e.screenY };
+      window.api?.startWindowMove?.();
     };
 
     const handleMouseMove = (e: MouseEvent): void => {
@@ -78,17 +79,24 @@ export function useIslandDrag(options: UseIslandDragOptions): UseIslandDragResul
     };
 
     const handleMouseUp = (): void => {
+      if (!isDraggingRef.current) return;
       isDraggingRef.current = false;
+      window.api?.finishWindowMove?.(hasMovedRef.current);
     };
 
     document.addEventListener('mousedown', handleMouseDown);
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener('blur', handleMouseUp);
+    document.addEventListener('mouseleave', handleMouseUp);
 
     return () => {
       document.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('blur', handleMouseUp);
+      document.removeEventListener('mouseleave', handleMouseUp);
+      if (isDraggingRef.current) window.api?.finishWindowMove?.(hasMovedRef.current);
       /** 形态模式切换（如 pill→notch）导致 draggable 变为 false 时，重置拖动标记以恢复点击 */
       isDraggingRef.current = false;
       hasMovedRef.current = false;

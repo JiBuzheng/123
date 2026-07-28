@@ -56,6 +56,7 @@ export function useExpandWheelNav({
   useEffect(() => {
     const el = contentRef.current;
     if (!el) return;
+    let lastWheelNavigationAt = 0;
 
     const handleWheel = (e: WheelEvent): void => {
       const target = e.target as HTMLElement;
@@ -66,6 +67,8 @@ export function useExpandWheelNav({
       if (target.closest('.tools-app-list-body')) return;
       if (target.closest('.translation-editor-textarea')) return;
       e.preventDefault();
+      const now = Date.now();
+      if (now - lastWheelNavigationAt < 250) return;
       const cur = expandTabRef.current;
       const dots = navDotsRef.current;
       const currentIndex = dots.findIndex((d) => d === cur);
@@ -76,6 +79,7 @@ export function useExpandWheelNav({
       } else {
         nextId = dots[(currentIndex - 1 + dots.length) % dots.length];
       }
+      lastWheelNavigationAt = now;
       if (nextId === 'hover') { setHover(); return; }
       if (nextId === 'maxExpand') { handleSetMaxExpandRef.current(); return; }
       const curIdx = dots.indexOf(expandTabRef.current);

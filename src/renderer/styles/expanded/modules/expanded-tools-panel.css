@@ -171,6 +171,9 @@
   width: 22px;
   height: 22px;
   flex-shrink: 0;
+  border: 0;
+  background: transparent;
+  padding: 0;
   cursor: pointer;
   display: flex;
   align-items: center;

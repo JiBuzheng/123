@@ -1,6 +1,7 @@
 {
   "common": {
     "appName": "eIsland",
+    "confirmDelete": "确定删除吗？此操作无法撤销。",
     "errors": {
       "rootMountNotFound": "未找到 #root 挂载节点"
     }
@@ -491,6 +492,12 @@
     "sourceSwitch": {
       "title": "检测到其他播放源"
     },
+    "passthrough": {
+      "lockedTitle": "鼠标穿透已锁定",
+      "lockedBody": "灵动岛当前不拦截鼠标事件，请再次按下鼠标穿透快捷键解锁。",
+      "unlockedTitle": "鼠标穿透已解锁",
+      "unlockedBody": "灵动岛已恢复正常点击交互。"
+    },
     "update": {
       "availableTitle": "发现新版本",
       "availableBody": "是否立即下载？",
@@ -518,6 +525,13 @@
       "prevUrl": "上一个链接",
       "nextUrl": "下一个链接",
       "jumpToFavorites": "前往 URL 收藏"
+    },
+    "feedback": {
+      "installFailed": "安装更新失败，请稍后重试。",
+      "restartFailed": "重启失败，请稍后重试。",
+      "openUrlFailed": "部分链接打开失败，请稍后重试。",
+      "blacklistFailed": "加入黑名单失败，请稍后重试。",
+      "openManyConfirm": "检测到 {{count}} 个链接。为避免一次打开过多页面，本次只打开前 {{max}} 个，是否继续？"
     },
     "pomodoro": {
       "title": "番茄钟",
@@ -1443,6 +1457,7 @@
       "cancelSelection": "取消选择",
       "selectedCount": "已选 {{count}} 项",
       "deleteSelected": "删除所选",
+      "confirmDeleteSelected": "确定删除已选择的 {{count}} 个会话吗？此操作无法撤销。",
       "expand": "展开",
       "collapse": "收起",
       "permissionProject": "授权项目：{{project}}",

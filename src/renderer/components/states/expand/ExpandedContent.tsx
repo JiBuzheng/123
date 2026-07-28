@@ -115,7 +115,7 @@ export function ExpandedContent(): React.ReactElement {
   });
 
   return (
-    <div className="expanded-content" ref={contentRef}>
+    <div className="expanded-content" ref={contentRef} onClick={(e) => e.stopPropagation()}>
       {/* Tab 内容区域 */}
       <div className="expand-tab-content" onClick={(e) => e.stopPropagation()}>
         <div className={`expand-tab-transition${tabAnimation ? ` expand-tab-slide-${slideDir}` : ''}`} key={expandTab}>

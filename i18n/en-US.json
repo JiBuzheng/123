@@ -1,6 +1,7 @@
 {
   "common": {
     "appName": "eIsland",
+    "confirmDelete": "Delete this item? This action cannot be undone.",
     "errors": {
       "rootMountNotFound": "#root mount node not found"
     }
@@ -491,6 +492,12 @@
     "sourceSwitch": {
       "title": "Other playback source detected"
     },
+    "passthrough": {
+      "lockedTitle": "Mouse passthrough locked",
+      "lockedBody": "eIsland is not intercepting mouse events. Press the mouse passthrough shortcut again to unlock it.",
+      "unlockedTitle": "Mouse passthrough unlocked",
+      "unlockedBody": "Normal click interaction has been restored."
+    },
     "update": {
       "availableTitle": "New version available",
       "availableBody": "Download now?",
@@ -518,6 +525,13 @@
       "prevUrl": "Previous link",
       "nextUrl": "Next link",
       "jumpToFavorites": "Go to URL Favorites"
+    },
+    "feedback": {
+      "installFailed": "Failed to install the update. Please try again.",
+      "restartFailed": "Failed to restart the app. Please try again.",
+      "openUrlFailed": "Some links could not be opened. Please try again.",
+      "blacklistFailed": "Failed to add the domain to the blacklist. Please try again.",
+      "openManyConfirm": "{{count}} links were detected. To avoid opening too many pages, only the first {{max}} will be opened. Continue?"
     },
     "pomodoro": {
       "title": "Pomodoro",
@@ -1443,6 +1457,7 @@
       "cancelSelection": "Cancel Selection",
       "selectedCount": "{{count}} selected",
       "deleteSelected": "Delete Selected",
+      "confirmDeleteSelected": "Delete the {{count}} selected sessions? This action cannot be undone.",
       "expand": "Expand",
       "collapse": "Collapse",
       "permissionProject": "Permission: {{project}}",

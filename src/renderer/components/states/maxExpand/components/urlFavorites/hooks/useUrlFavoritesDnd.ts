@@ -33,7 +33,7 @@ export interface UseUrlFavoritesDndReturn {
   draggingId: number | null;
   dragOverId: number | null;
   dragMovedRef: RefObject<boolean>;
-  handleDragStart: (e: DragEvent<HTMLButtonElement>, id: number) => void;
+  handleDragStart: (e: DragEvent<HTMLDivElement>, id: number) => void;
   handleDragOver: (e: DragEvent<HTMLDivElement>, id: number) => void;
   handleDrop: (e: DragEvent<HTMLDivElement>, id: number) => void;
   resetDragState: () => void;
@@ -61,7 +61,7 @@ export function useUrlFavoritesDnd(
     }, 0);
   };
 
-  const handleDragStart = (e: DragEvent<HTMLButtonElement>, id: number): void => {
+  const handleDragStart = (e: DragEvent<HTMLDivElement>, id: number): void => {
     dragFromIdRef.current = id;
     dragMovedRef.current = false;
     setDraggingId(id);

@@ -88,7 +88,7 @@ export function useIslandHoverInteraction(options: UseIslandHoverInteractionOpti
     let rafId: number | null = null;
     let aborted = false;
     let lastCheckTime = 0;
-    const CHECK_INTERVAL = 16;
+    const CHECK_INTERVAL = 100;
 
     if (state === 'maxExpand' || state === 'expanded' || state === 'announcement') {
       isHoveringRef.current = true;

@@ -1715,6 +1715,7 @@ export function SettingsTab(): ReactElement {
   useEffect(() => {
     const el = settingsRef.current;
     if (!el) return;
+    let lastPageWheelNavigationAt = 0;
     const handleWheel = (e: WheelEvent): void => {
       const target = e.target as HTMLElement;
       if (target.closest('.settings-field-input')) return;
@@ -1739,7 +1740,11 @@ export function SettingsTab(): ReactElement {
             ? Math.min(currentIdx + 1, pages.length - 1)
             : Math.max(currentIdx - 1, 0);
           if (nextIdx !== currentIdx) {
-            setAppSettingsPage(pages[nextIdx]);
+            const now = Date.now();
+            if (now - lastPageWheelNavigationAt >= 250) {
+              lastPageWheelNavigationAt = now;
+              setAppSettingsPage(pages[nextIdx]);
+            }
           }
           e.preventDefault();
           e.stopPropagation();
@@ -1758,7 +1763,11 @@ export function SettingsTab(): ReactElement {
             ? Math.min(currentIdx + 1, pages.length - 1)
             : Math.max(currentIdx - 1, 0);
           if (nextIdx !== currentIdx) {
-            setAiSettingsPage(pages[nextIdx]);
+            const now = Date.now();
+            if (now - lastPageWheelNavigationAt >= 250) {
+              lastPageWheelNavigationAt = now;
+              setAiSettingsPage(pages[nextIdx]);
+            }
           }
           e.preventDefault();
           e.stopPropagation();
@@ -1777,7 +1786,11 @@ export function SettingsTab(): ReactElement {
             ? Math.min(currentIdx + 1, pages.length - 1)
             : Math.max(currentIdx - 1, 0);
           if (nextIdx !== currentIdx) {
-            setMusicSettingsPage(pages[nextIdx]);
+            const now = Date.now();
+            if (now - lastPageWheelNavigationAt >= 250) {
+              lastPageWheelNavigationAt = now;
+              setMusicSettingsPage(pages[nextIdx]);
+            }
           }
           e.preventDefault();
           e.stopPropagation();
@@ -1796,7 +1809,11 @@ export function SettingsTab(): ReactElement {
             ? Math.min(currentIdx + 1, pages.length - 1)
             : Math.max(currentIdx - 1, 0);
           if (nextIdx !== currentIdx) {
-            setWeatherSettingsPage(pages[nextIdx]);
+            const now = Date.now();
+            if (now - lastPageWheelNavigationAt >= 250) {
+              lastPageWheelNavigationAt = now;
+              setWeatherSettingsPage(pages[nextIdx]);
+            }
           }
           e.preventDefault();
           e.stopPropagation();
@@ -1813,7 +1830,11 @@ export function SettingsTab(): ReactElement {
             ? Math.min(currentIdx + 1, pages.length - 1)
             : Math.max(currentIdx - 1, 0);
           if (nextIdx !== currentIdx) {
-            setPluginMarketPage(pages[nextIdx]);
+            const now = Date.now();
+            if (now - lastPageWheelNavigationAt >= 250) {
+              lastPageWheelNavigationAt = now;
+              setPluginMarketPage(pages[nextIdx]);
+            }
           }
           e.preventDefault();
           e.stopPropagation();

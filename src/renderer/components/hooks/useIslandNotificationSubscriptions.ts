@@ -60,6 +60,24 @@ export function useIslandNotificationSubscriptions(options: UseIslandNotificatio
   }, []);
 
   useEffect(() => {
+    const unsubscribe = window.api?.onPassthroughLockChanged?.((locked) => {
+      setNotificationRef.current({
+        title: locked
+          ? t('notification.passthrough.lockedTitle', { defaultValue: '鼠标穿透已锁定' })
+          : t('notification.passthrough.unlockedTitle', { defaultValue: '鼠标穿透已解锁' }),
+        body: locked
+          ? t('notification.passthrough.lockedBody', { defaultValue: '灵动岛当前不拦截鼠标事件，请再次按下鼠标穿透快捷键解锁。' })
+          : t('notification.passthrough.unlockedBody', { defaultValue: '灵动岛已恢复正常点击交互。' }),
+        icon: SvgIcon.INTERACTION,
+        type: 'default',
+      });
+    });
+    return () => {
+      unsubscribe?.();
+    };
+  }, [language, setNotificationRef, t]);
+
+  useEffect(() => {
     const unsubSwitch = window.api?.onSourceSwitchRequest((data) => {
       setNotificationRef.current({
         title: t('notification.sourceSwitch.title', { defaultValue: '检测到其他播放源' }),

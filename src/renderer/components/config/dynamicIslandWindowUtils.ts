@@ -30,8 +30,10 @@
  */
 export async function isMouseInWindow(): Promise<boolean> {
   try {
-    const mousePos = await window.api?.getMousePosition();
-    const bounds = await window.api?.getWindowBounds();
+    const [mousePos, bounds] = await Promise.all([
+      window.api?.getMousePosition(),
+      window.api?.getWindowBounds(),
+    ]);
 
     if (!mousePos || !bounds) return false;
 

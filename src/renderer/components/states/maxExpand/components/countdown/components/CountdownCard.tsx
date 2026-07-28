@@ -25,6 +25,7 @@
  */
 
 import type { ReactElement } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { CountdownCardProps } from '../types/countdownTypes';
 
 /** 单个倒数日卡片 */
@@ -35,6 +36,7 @@ export function CountdownCard({
   showDelete, onDelete, onClick,
   getEventTypeLabel,
 }: CountdownCardProps): ReactElement {
+  const { t } = useTranslation();
   return (
     <div
       className={`cd-card cd-card-${type}`}
@@ -49,7 +51,10 @@ export function CountdownCard({
           {showDelete && onDelete && (
             <button
               className="cd-card-delete"
-              onClick={onDelete}
+              onClick={(e) => {
+                e.stopPropagation();
+                if (window.confirm(t('common.confirmDelete', { defaultValue: '确定删除吗？此操作无法撤销。' }))) onDelete(e);
+              }}
               type="button"
             >x</button>
           )}

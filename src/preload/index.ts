@@ -149,6 +149,12 @@ const api = {
   moveWindowDelta: (dx: number, dy: number): void => {
     ipcRenderer.send('window:move-delta', dx, dy);
   },
+  startWindowMove: (): void => {
+    ipcRenderer.send('window:move-start');
+  },
+  finishWindowMove: (moved: boolean): void => {
+    ipcRenderer.send('window:move-end', moved);
+  },
   /**
    * 隐藏窗口
    */

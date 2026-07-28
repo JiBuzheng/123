@@ -42,8 +42,8 @@ vi.mock('electron', () => ({
   },
   screen: {
     getCursorScreenPoint: vi.fn(() => ({ x: 10, y: 20 })),
-    getPrimaryDisplay: vi.fn(() => ({ id: 1, workArea: { y: 0, width: 1920, height: 1080 } })),
-    getAllDisplays: vi.fn(() => [{ id: 1, workArea: { width: 1920, height: 1080 } }]),
+    getPrimaryDisplay: vi.fn(() => ({ id: 1, workArea: { x: 0, y: 0, width: 1920, height: 1080 } })),
+    getAllDisplays: vi.fn(() => [{ id: 1, workArea: { x: 0, y: 0, width: 1920, height: 1080 } }]),
   },
   BrowserWindow: class {},
 }));
@@ -190,5 +190,51 @@ describe('window ipc handlers', () => {
     expect(applyIslandPositionOffset).toHaveBeenCalledWith({ x: 8, y: 9 });
     expect(broadcastSettingChangeMock).toHaveBeenCalledWith(1, 'island:display', 'display-2');
     expect(broadcastSettingChangeMock).toHaveBeenCalledWith(2, 'island:position', { x: 8, y: 9 });
+  });
+
+  it('clamps dragged bounds and persists the final position offset', () => {
+    const applyIslandPositionOffset = vi.fn();
+    const writeIslandPositionOffsetConfig = vi.fn(() => true);
+
+    registerWindowIpcHandlers({
+      getMainWindow: () => win as never,
+      getInitialCenterX: () => 500,
+      setHiddenByAutoHideProcess: vi.fn(),
+      getIslandPositionOffset: () => ({ x: 1, y: 2 }),
+      getIslandDisplaySelection: () => 'primary',
+      sanitizeIslandDisplaySelection: () => 'primary',
+      setIslandDisplaySelection: vi.fn(),
+      sanitizeIslandPositionOffset: (offset) => ({
+        x: Math.round(offset.x ?? 0),
+        y: Math.round(offset.y ?? 0),
+      }),
+      applyIslandPositionOffset,
+      writeIslandPositionOffsetConfig,
+      writeIslandDisplaySelectionConfig: vi.fn(() => true),
+      sizes: {
+        expandedWidth: 600,
+        expandedHeight: 200,
+        notificationWidth: 500,
+        notificationHeight: 200,
+        lyricsWidth: 700,
+        lyricsHeight: 240,
+        lyricsTranslationHeight: 300,
+        expandedFullWidth: 900,
+        expandedFullHeight: 400,
+        settingsWidth: 1000,
+        settingsHeight: 600,
+        islandWidth: 300,
+        islandHeight: 100,
+      },
+    });
+
+    onHandlers.get('window:move-start')?.();
+    onHandlers.get('window:move-delta')?.({}, -500, -500);
+    onHandlers.get('window:move-end')?.({ sender: { id: 7 } }, true);
+
+    expect(win.setBounds).toHaveBeenCalledWith({ x: 0, y: 0, width: 300, height: 100 });
+    expect(applyIslandPositionOffset).toHaveBeenCalledWith({ x: -99, y: -198 });
+    expect(writeIslandPositionOffsetConfig).toHaveBeenCalledWith({ x: -99, y: -198 });
+    expect(broadcastSettingChangeMock).toHaveBeenCalledWith(7, 'island:position', { x: -99, y: -198 });
   });
 });

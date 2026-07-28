@@ -213,13 +213,13 @@ export function ToolsTab(): React.ReactElement {
           ) : (
             apps.map(app => (
               <div key={app.id} className="tools-app-row">
-                <div className="tools-app-icon-wrap" onClick={() => openApp(app.path)} title={t('toolsTab.launchTitle', { defaultValue: '点击启动' })}>
+                <button className="tools-app-icon-wrap" type="button" onClick={() => openApp(app.path)} title={t('toolsTab.launchTitle', { defaultValue: '点击启动' })}>
                   {app.iconBase64 ? (
                     <img className="tools-app-icon" src={`data:image/png;base64,${app.iconBase64}`} alt={app.name} />
                   ) : (
                     <span className="tools-app-icon-placeholder">📂</span>
                   )}
-                </div>
+                </button>
                 {editingId === app.id ? (
                   <input
                     ref={editRef}
@@ -239,7 +239,13 @@ export function ToolsTab(): React.ReactElement {
                 )}
                 <span className="tools-app-path" title={app.path}>{app.path}</span>
                 <button className="tools-app-edit" onClick={() => startEdit(app)} title={t('toolsTab.editName', { defaultValue: '编辑名称' })}>✎</button>
-                <button className="tools-app-delete" onClick={() => removeApp(app.id)} title={t('toolsTab.delete', { defaultValue: '删除' })}>×</button>
+                <button
+                  className="tools-app-delete"
+                  onClick={() => {
+                    if (window.confirm(t('common.confirmDelete', { defaultValue: '确定删除吗？此操作无法撤销。' }))) removeApp(app.id);
+                  }}
+                  title={t('toolsTab.delete', { defaultValue: '删除' })}
+                >×</button>
               </div>
             ))
           )}

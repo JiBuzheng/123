@@ -33,12 +33,14 @@ import { getWebsiteFaviconUrl, getWebsiteFaviconUrls, getWebsiteHostname } from 
 import { fetchUpdateSourceUrl } from '../../../api/user/userAccountApi';
 import { readLocalToken } from '../../../utils/userAccount';
 import { URL_FAVORITES_STORE_KEY, URL_FAVORITES_FOCUS_KEY, UPDATE_SOURCE_STORE_KEY, SETTINGS_OPEN_TAB_STORE_KEY } from './config/notificationConstants';
-import type { NotificationContentProps, UrlFavoriteItem, UpdateSourceKey } from './config/notificationTypes';
+import type { NotificationContentProps, UrlFavoriteItem } from './config/notificationTypes';
 import { formatBytes, formatEta, normalizeUrl, resolveNotificationIconUrl, normalizeUpdateSource, isProOnlySource, sanitizeFavorites, persistFavorites } from './utils/notificationHelpers';
 import { useNotificationFavorites } from './hooks/useNotificationFavorites';
 import { useUpdateDownloadProgress } from './hooks/useUpdateDownloadProgress';
 import { useResetOnTypeChange } from './hooks/useResetOnTypeChange';
 import '../../../styles/notification/notification.css';
+
+const MAX_URLS_TO_OPEN_AT_ONCE = 10;
 
 /**
  * Notification 状态内容组件
@@ -225,10 +227,11 @@ export function NotificationContent({
       window.dispatchEvent(new CustomEvent('break-reminder-snooze', {
         detail: { itemId: breakReminderItemId, snoozeMinutes: minutes },
       }));
+    } else {
+      window.setTimeout(() => {
+        setNotification({ title, body, icon, type });
+      }, minutes * 60 * 1000);
     }
-    window.setTimeout(() => {
-      setNotification({ title, body, icon, breakReminderItemId });
-    }, minutes * 60 * 1000);
     dismiss();
   };
 
@@ -236,7 +239,26 @@ export function NotificationContent({
   const handleIgnore = (): void => { dismiss(); };
   const handleAcceptSwitch = (): void => { window.api?.mediaAcceptSourceSwitch(); dismiss(); };
   const handleRejectSwitch = (): void => { window.api?.mediaRejectSourceSwitch(); dismiss(); };
-  const handleInstallUpdate = (): void => { void window.api?.updaterInstall().catch(() => {}); dismiss(); };
+  const handleInstallUpdate = (): void => {
+    void window.api.updaterInstall().then((ok) => {
+      if (ok) return;
+      setNotification({
+        title: t('notification.update.readyTitle', { defaultValue: '更新就绪' }),
+        body: t('notification.feedback.installFailed', { defaultValue: '安装更新失败，请稍后重试。' }),
+        icon: SvgIcon.UPDATE,
+        type: 'update-ready',
+        updateVersion,
+      });
+    }).catch(() => {
+      setNotification({
+        title: t('notification.update.readyTitle', { defaultValue: '更新就绪' }),
+        body: t('notification.feedback.installFailed', { defaultValue: '安装更新失败，请稍后重试。' }),
+        icon: SvgIcon.UPDATE,
+        type: 'update-ready',
+        updateVersion,
+      });
+    });
+  };
 
   const handleGoToUpdate = (): void => {
     setNotification({
@@ -311,23 +333,111 @@ export function NotificationContent({
     dismiss();
   };
 
-  const handleRestartNow = (): void => { void window.api?.restartApp?.().catch(() => {}); dismiss(); };  const handleRestartLater = (): void => { dismiss(); };
+  const handleRestartNow = (): void => {
+    void window.api.restartApp().then((ok) => {
+      if (ok) return;
+      setNotification({
+        title,
+        body: t('notification.feedback.restartFailed', { defaultValue: '重启失败，请稍后重试。' }),
+        icon,
+        type: 'restart-required',
+      });
+    }).catch(() => {
+      setNotification({
+        title,
+        body: t('notification.feedback.restartFailed', { defaultValue: '重启失败，请稍后重试。' }),
+        icon,
+        type: 'restart-required',
+      });
+    });
+  };
+  const handleRestartLater = (): void => { dismiss(); };
   const handleSwitchToCli = (): void => { void window.api?.cliGlowHide?.(); setMaxExpandTab('cli'); setMaxExpand(); };
   const handleSwitchToCliState = (): void => { void window.api?.cliGlowHide?.(); setCli(); };
   const handleCliIgnore = (): void => { void window.api?.cliGlowHide?.(); dismiss(); };
-  const handleOpenUrl = (url: string): void => { window.api?.clipboardOpenUrl(url); dismiss(); };
+  const handleOpenUrl = (url: string): void => {
+    void window.api.clipboardOpenUrl(url).then((ok) => {
+      if (ok) {
+        dismiss();
+        return;
+      }
+      setNotification({
+        title,
+        body: t('notification.feedback.openUrlFailed', { defaultValue: '打开链接失败，请稍后重试。' }),
+        icon,
+        type: 'clipboard-url',
+        urls,
+      });
+    }).catch(() => {
+      setNotification({
+        title,
+        body: t('notification.feedback.openUrlFailed', { defaultValue: '打开链接失败，请稍后重试。' }),
+        icon,
+        type: 'clipboard-url',
+        urls,
+      });
+    });
+  };
 
   const handleOpenAllUrls = (): void => {
     if (!urls?.length) return;
-    urls.forEach((url) => { window.api?.clipboardOpenUrl(url); });
-    dismiss();
+    const urlsToOpen = urls.slice(0, MAX_URLS_TO_OPEN_AT_ONCE);
+    if (urls.length > MAX_URLS_TO_OPEN_AT_ONCE) {
+      const confirmed = window.confirm(t('notification.feedback.openManyConfirm', {
+        defaultValue: '检测到 {{count}} 个链接。为避免一次打开过多页面，本次只打开前 {{max}} 个，是否继续？',
+        count: urls.length,
+        max: MAX_URLS_TO_OPEN_AT_ONCE,
+      }));
+      if (!confirmed) return;
+    }
+    void Promise.all(urlsToOpen.map((url) => window.api.clipboardOpenUrl(url))).then((results) => {
+      if (results.every(Boolean)) {
+        dismiss();
+        return;
+      }
+      setNotification({
+        title,
+        body: t('notification.feedback.openUrlFailed', { defaultValue: '部分链接打开失败，请稍后重试。' }),
+        icon,
+        type: 'clipboard-url',
+        urls,
+      });
+    }).catch(() => {
+      setNotification({
+        title,
+        body: t('notification.feedback.openUrlFailed', { defaultValue: '部分链接打开失败，请稍后重试。' }),
+        icon,
+        type: 'clipboard-url',
+        urls,
+      });
+    });
   };
 
   const handleDismissUrl = (): void => { dismiss(); };
 
   const handleAddDomainToBlacklist = (): void => {
     if (!currentClipboardDomain) return;
-    window.api?.clipboardUrlBlacklistAddDomain(currentClipboardDomain).finally(() => { dismiss(); });
+    void window.api.clipboardUrlBlacklistAddDomain(currentClipboardDomain).then((ok) => {
+      if (ok) {
+        dismiss();
+        return;
+      }
+      setNotification({
+        title,
+        body: t('notification.feedback.blacklistFailed', { defaultValue: '加入黑名单失败，请稍后重试。' }),
+        icon,
+        type: 'clipboard-url',
+        urls,
+      });
+    }).catch(() => {
+      setNotification({
+        title,
+        body: t('notification.feedback.blacklistFailed', { defaultValue: '加入黑名单失败，请稍后重试。' }),
+        icon,
+        type: 'clipboard-url',
+        urls,
+      });
+    });
   };
 
   const handlePrevUrl = (): void => {

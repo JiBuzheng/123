@@ -84,7 +84,7 @@ export interface UseUrlFavoritesReturn {
   handleImportFile: (file: File | null) => void;
   handleExport: () => void;
   dragMovedRef: RefObject<boolean>;
-  handleDragStart: (e: DragEvent<HTMLButtonElement>, id: number) => void;
+  handleDragStart: (e: DragEvent<HTMLDivElement>, id: number) => void;
   handleDragOver: (e: DragEvent<HTMLDivElement>, id: number) => void;
   handleDrop: (e: DragEvent<HTMLDivElement>, id: number) => void;
   resetDragState: () => void;
@@ -157,7 +157,7 @@ export interface UrlFavoritesItemProps {
   onOpen: (url: string) => void;
   onSaveEdit: (id: number) => void;
   onRemove: (id: number) => void;
-  onDragStart: (e: DragEvent<HTMLButtonElement>, id: number) => void;
+  onDragStart: (e: DragEvent<HTMLDivElement>, id: number) => void;
   onDragOver: (e: DragEvent<HTMLDivElement>, id: number) => void;
   onDrop: (e: DragEvent<HTMLDivElement>, id: number) => void;
   onDragEnd: () => void;
